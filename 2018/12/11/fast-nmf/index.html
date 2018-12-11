@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="ぼっち・ざ・はっく！">
 <meta property="og:description" content="はじめにおばんです！ localminと申します。現在M2で、普段の研究ではあえてぼかした言い方をすると行列演算について考えたり、パソコンをカタカタしています。本記事は#今年読んだ一番好きな論文2018の11日目の記事です。本記事でも少し古いですが行列にまつわる論文について紹介していきたいと思います。 紹介論文[1] 題名Fast Coordinate Descent Methods with V">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-12-11T06:55:58.389Z">
+<meta property="og:updated_time" content="2018-12-11T07:10:18.849Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="論文紹介：変数選択を用いた高速な非負値行列因子分解 + α">
 <meta name="twitter:description" content="はじめにおばんです！ localminと申します。現在M2で、普段の研究ではあえてぼかした言い方をすると行列演算について考えたり、パソコンをカタカタしています。本記事は#今年読んだ一番好きな論文2018の11日目の記事です。本記事でも少し古いですが行列にまつわる論文について紹介していきたいと思います。 紹介論文[1] 題名Fast Coordinate Descent Methods with V">
@@ -43,7 +43,7 @@
     
       <link rel="stylesheet" href="/css/rtl.css">
     
-    <!-- rss --><!-- hexo-inject:begin --><link rel='stylesheet' href='custom_css_source'><!-- hexo-inject:end -->
+    <!-- rss --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
     
     
 </head>
@@ -154,12 +154,12 @@
 <p>と表現することができます。<br>すなわちNMFは観測行列の各列を$W$の列ベクトルの線形結合で近似していると解釈することができます。<br>線形結合に使用されるベクトル(基底)を格納した行列なので基底行列、そして線形結合に置ける係数を格納した列ベクトル$h_{j}$を並べているので係数行列というわけです。</p>
 <p>NMF以外にも行列を分解する手法で有名なものに特異値分解(SVD)や固有分解(スペクトル分解)などがあります。しかし非負値行列を適用した場合に、分解した結果に負の値が出現してしまったり、得られるベクトルが直交してしまうため、結果の解釈が難しくなる欠点が存在します。<br>そこでNMFでは与えられたデータはもちろん、分解結果にも非負の制約与えることでデータの見通しが良くなる長所があります。また分解して得られた基底ベクトルは必ずしも直交しません。</p>
 <h2 id="NMFの解法"><a href="#NMFの解法" class="headerlink" title="NMFの解法"></a>NMFの解法</h2><h3 id="目的関数の設定"><a href="#目的関数の設定" class="headerlink" title="目的関数の設定"></a>目的関数の設定</h3><p>次にどうやって$W$、$H$を求めるのかという話に移っていきます。<br>人によっては行列を二つの積にバラすのは簡単では？と思う人もいるかもしれません。でもそれは具体例をみれば難しいとわかるでしょう。<br>では以下の方程式をを$k=2$という条件で二つの非負値行列$ W$、$H$を求めてみてください。</p>
-<span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mrow><mo fence="true">(</mo><mtable><mtr><mtd><mrow><mn>2</mn><mn>3</mn></mrow></mtd><mtd><mrow><mn>1</mn><mn>3</mn></mrow></mtd><mtd><mrow><mn>2</mn><mn>2</mn></mrow></mtd></mtr><mtr><mtd><mrow><mn>8</mn></mrow></mtd><mtd><mrow><mn>1</mn><mn>6</mn></mrow></mtd><mtd><mrow><mn>4</mn><mn>0</mn></mrow></mtd></mtr><mtr><mtd><mrow><mn>8</mn></mrow></mtd><mtd><mrow><mn>5</mn></mrow></mtd><mtd><mrow><mn>9</mn></mrow></mtd></mtr></mtable><mo fence="true">)</mo></mrow><mo>=</mo><mi>W</mi><mi>H</mi></mrow><annotation encoding="application/x-tex">\begin{pmatrix} 
+<span>$$\begin{pmatrix} 
  23 &amp; 13  &amp; 22\\
  8  &amp; 16  &amp;40\\
  8  &amp; 5  &amp;  9  
 \end{pmatrix}=
-WH</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:2.05002em;"></span><span class="strut bottom" style="height:3.60004em;vertical-align:-1.55002em;"></span><span class="base displaystyle textstyle uncramped"><span class="minner displaystyle textstyle uncramped"><span class="style-wrap reset-textstyle textstyle uncramped"><span class="delimsizing mult"><span class="vlist"><span style="top:0.9049999999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎝</span></span></span><span style="top:-0.89502em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎛</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span><span class="mord"><span class="mtable"><span class="col-align-c"><span class="vlist"><span style="top:-1.2099999999999997em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">2</span><span class="mord mathrm">3</span></span></span><span style="top:-0.00999999999999951em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">8</span></span></span><span style="top:1.1900000000000006em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">8</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist"><span style="top:-1.2099999999999997em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">1</span><span class="mord mathrm">3</span></span></span><span style="top:-0.00999999999999951em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">1</span><span class="mord mathrm">6</span></span></span><span style="top:1.1900000000000006em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">5</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist"><span style="top:-1.2099999999999997em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">2</span><span class="mord mathrm">2</span></span></span><span style="top:-0.00999999999999951em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">4</span><span class="mord mathrm">0</span></span></span><span style="top:1.1900000000000006em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">9</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span><span class="style-wrap reset-textstyle textstyle uncramped"><span class="delimsizing mult"><span class="vlist"><span style="top:0.9049999999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎠</span></span></span><span style="top:-0.89502em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎞</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span><span class="mrel">=</span><span class="mord mathit" style="margin-right:0.13889em;">W</span><span class="mord mathit" style="margin-right:0.08125em;">H</span></span></span></span></span>
+WH$$</span><!-- Has MathJax -->
 <p>どうですか？難しくないですか？っていうかそもそも解あるのか？ってなると思います。実際のデータは何百、何千のサイズになるのでもっと大変です。</p>
 <p>実際にこのような行列 $W, H$を求めることは可能とは限りません。しかし不可能であっても近似的に求めることは可能なはずです。</p>
 <p>ここで目的関数を用意します</p>
@@ -177,7 +177,7 @@ WH</annotation></semantics></math></span><span class="katex-html" aria-hidden="t
 <p>要するに$W_{i,r}$を$s$だけ更新した時、目的関数を最小化するような$s$を求めることになります。<br>$g_{i,r}^{W}(s)$を$s$について整理してあげると、</p>
 <p>$$<br>g_{i,r}^{W}(s) =  g_{i,r}^{W}(0) +  (g_{i,r}^{W})^{’}(0)s + \frac{1}{2}(g_{i,r}^{W})^{’’}(0)s^2<br>$$</p>
 <p>となり、$s$に関する二次関数になります。こうなってしまえば簡単で、$s$について微分し、その導関数を0にするような$s$を求めます。ただし、$W_{i,r}+s\geq 0$なる制約があるので</p>
-s =  \max \left(0, -\frac{(WHH^{T}-VH)_{i,r}}{(HH^{T})_{r,r}}\right) - W_{i,r}\\
+<span>$$s =  \max \left(0, -\frac{(WHH^{T}-VH)_{i,r}}{(HH^{T})_{r,r}}\right) - W_{i,r}\\$$</span><!-- Has MathJax -->
 <p>という結果になります。max関数を使用することで非負性を保持できます(実際に値が負になるような数値を代入してもmax関数のおかげで0になります)。<br>これによって</p>
 <p>$$<br>W_{i,r}\leftarrow W_{i,r} + s<br>$$</p>
 <p>と更新することができます(ちなみに $V$についても同様)。</p>
@@ -351,11 +351,11 @@ s =  \max \left(0, -\frac{(WHH^{T}-VH)_{i,r}}{(HH^{T})_{r,r}}\right) - W_{i,r}\\
 <ul>
 <li>KL-divergence</li>
 </ul>
-L(W, H) = \sum_{i,j}V_{i,j}log(\frac{V_{i,j}}{(WH)_{i,j}})-V_{i,j}+(WH)_{i,j}\\
+<span>$$L(W, H) = \sum_{i,j}V_{i,j}log(\frac{V_{i,j}}{(WH)_{i,j}})-V_{i,j}+(WH)_{i,j}\\$$</span><!-- Has MathJax -->
 <p>フロべニウスノルムの二乗の場合と異なり、変数選択は用いない循環座標降下法(CCD)になっています。<br>更新幅$s$をニュートン法を用いて高速に求めるのが特徴的な手法です。</p>
-s \leftarrow \max(-W_{i,r}, s-h_{i,r}^{'}(s)/h_{i,r}^{''}(s))\\
-h_{i,r}^{'} = \sum_{j=1}^{n}H_{r,j}\left( 1 - \frac{V_{i,j}}{(WH)_{i,j}+sH_{r,j}} \right) \\
-h_{i,r}^{''} = \sum_{j=1}^{n}1 - \frac{V_{i,j}H_{r,j}^{2}}{((WH)_{i,j}+sH_{r,j})^{2}}
+<span>$$s \leftarrow \max(-W_{i,r}, s-h_{i,r}^{&apos;}(s)/h_{i,r}^{&apos;&apos;}(s))\\
+h_{i,r}^{&apos;} = \sum_{j=1}^{n}H_{r,j}\left( 1 - \frac{V_{i,j}}{(WH)_{i,j}+sH_{r,j}} \right) \\
+h_{i,r}^{&apos;&apos;} = \sum_{j=1}^{n}1 - \frac{V_{i,j}H_{r,j}^{2}}{((WH)_{i,j}+sH_{r,j})^{2}}$$</span><!-- Has MathJax -->
 <p>この手法は同じ密なデータでMultiplicative Updateと比較されており、高速化に成功しています。<br>結果は<a href="http://www.cs.utexas.edu/~cjhsieh/nmf_kdd11.pdf" target="_blank" rel="noopener">論文8ページTable3</a>。<br>ただKL-divergenceに関しては2012年にsBCD[7]というより高速な手法が提案されています…。</p>
 <h2 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h2><p>本論文では目的関数がフロべニウスノルムの二乗に用いた時に、変数選択を用いた座標降下法を提案しました。またKL-divergenceにおいてもニュートン法を利用した循環座標降下法を提案しました。この二つの手法に関して実データを用いて実験を行い、高速化に成功したことを確認できました。</p>
 <h2 id="その後-amp-感想"><a href="#その後-amp-感想" class="headerlink" title="その後&amp;感想"></a>その後&amp;感想</h2><p>以上が論文の内容になります。KL-divergenceの話もそうですが、収束の保証の議論、Inner Updateの停止条件、各ステップでの計算量の議論などここに書ききれなかった話が論文にはあるので興味がある人は是非。</p>
@@ -364,7 +364,7 @@ h_{i,r}^{''} = \sum_{j=1}^{n}1 - \frac{V_{i,j}H_{r,j}^{2}}{((WH)_{i,j}+sH_{r,j})
 <p>NMFの研究は現在も続けられており、毎年多くの論文が出ています。特にNMFの亜種や使用条件を絞った場合に性能を向上させる手法などが多い印象です。それには現実に欲しい結果と誤差の小ささが必ずしも関係してないことや、初期値依存性(反復更新の際にどの初期値を入れるのがベストかは基本不明な問題)など、残された問題や改良できる余地が多くあるからだと思います。とにかく今後も目が離せないですね。</p>
 <p>来年からは少なくとも仕事で論文を読むようなことはないでしょうが、せっかく大学で論文を読む能力を身につけたのだから、年に一回こういう場でアウトプットできるぐらいには論文を読んでいきたいと思います。</p>
 <h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>これを読んでNMFに興味を持った方はぜひ参考にしてみてください。</p>
-<h3 id="論文"><a href="#論文" class="headerlink" title="論文"></a>論文</h3><p>[1]. <a href="http://www.cs.utexas.edu/~cjhsieh/nmf_kdd11.pdf" target="_blank" rel="noopener">Fast Coordinate Descent Methods with Variable Selection for Non-negative Matrix Factorization</a> ：今回紹介した論文です。コードは<a href="http://www.cs.utexas.edu/~cjhsieh/nmf/" target="_blank" rel="noopener">筆者のホームページ</a>に公開されています。<br>[2]. <a href="https://www.nature.com/articles/44565" target="_blank" rel="noopener">Learning the parts of objects by non-negative matrix factorization</a>:NMFが最初に世に出た時の論文です。<br>[3]. <a href="http://papers.nips.cc/paper/1861-algorithms-for-non-negative-matrix-factorization.pdf" target="_blank" rel="noopener">Algorithms for Non-negative Matrix Factorization</a>：一番有名なNMFのアルゴリズムであるMultiplicative Updateの論文です。<br>[4].<a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.214.6398&amp;rep=rep1&amp;type=pdf" target="_blank" rel="noopener">Fast local algorithms for large scale nonnegative matrix and tensor factorizations</a>:FastHALSの論文です。<br>[5]. <a href="https://www.mitpressjournals.org/action/captchaChallenge?redirectUrl=https%3A%2F%2Fwww.mitpressjournals.org%2Fdoi%2Fpdfplus%2F10.1162%2Fneco.2007.19.10.2756%3Fcasa_token%3DjlubOQwKdb4AAAAA%253AHBNw9iRU6Xsf2grl1CRBhiopkx7uHNNp1b5mnQHlrQ38fgbqZU-BZPoyoLerOTeUtEfc7_GqDC9_Pw" target="_blank" rel="noopener">Projected gradient methods for nonnegative matrix factorization</a>：実験の比較に出てきた手法です。<br>[6]. <a href="https://smartech.gatech.edu/bitstream/handle/1853/25538/GT-CSE-08-03.pdf?sequence=1&amp;isAllowed=y" target="_blank" rel="noopener">Toward Faster Nonnegative Matrix Factorization: A New Algorithm and Comparisons</a>：実験の(ry<br>[7]. <a href="https://www.ime.usp.br/~jstern/miscellanea/seminario/Lebanon13.pdf" target="_blank" rel="noopener">Fast Bregman Divergence NMF using Taylor Expansion and Coordinate Descent</a>:2012に出てきた手法です。僕はこの手法はFastHALSの一般化と考えられます。</p>
+<h3 id="論文"><a href="#論文" class="headerlink" title="論文"></a>論文</h3><p>[1]. <a href="http://www.cs.utexas.edu/~cjhsieh/nmf_kdd11.pdf" target="_blank" rel="noopener">Fast Coordinate Descent Methods with Variable Selection for Non-negative Matrix Factorization</a> ：今回紹介した論文です。コードは<a href="http://www.cs.utexas.edu/~cjhsieh/nmf/" target="_blank" rel="noopener">筆者のホームページ</a>に公開されています。<br>[2]. <a href="https://www.nature.com/articles/44565" target="_blank" rel="noopener">Learning the parts of objects by non-negative matrix factorization</a>:NMFが最初に世に出た時の論文です。<br>[3]. <a href="http://papers.nips.cc/paper/1861-algorithms-for-non-negative-matrix-factorization.pdf" target="_blank" rel="noopener">Algorithms for Non-negative Matrix Factorization</a>：一番有名なNMFのアルゴリズムであるMultiplicative Updateの論文です。<br>[4].<a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.214.6398&amp;rep=rep1&amp;type=pdf" target="_blank" rel="noopener">Fast local algorithms for large scale nonnegative matrix and tensor factorizations</a>:FastHALSの論文です。<br>[5]. <a href="https://www.mitpressjournals.org/action/captchaChallenge?redirectUrl=https%3A%2F%2Fwww.mitpressjournals.org%2Fdoi%2Fpdfplus%2F10.1162%2Fneco.2007.19.10.2756%3Fcasa_token%3DjlubOQwKdb4AAAAA%253AHBNw9iRU6Xsf2grl1CRBhiopkx7uHNNp1b5mnQHlrQ38fgbqZU-BZPoyoLerOTeUtEfc7_GqDC9_Pw" target="_blank" rel="noopener">Projected gradient methods for nonnegative matrix factorization</a>：実験の比較に出てきた手法です。<br>[6]. <a href="https://smartech.gatech.edu/bitstream/handle/1853/25538/GT-CSE-08-03.pdf?sequence=1&amp;isAllowed=y" target="_blank" rel="noopener">Toward Faster Nonnegative Matrix Factorization: A New Algorithm and Comparisons</a>：実験の(ry<br>[7]. <a href="https://www.ime.usp.br/~jstern/miscellanea/seminario/Lebanon13.pdf" target="_blank" rel="noopener">Fast Bregman Divergence NMF using Taylor Expansion and Coordinate Descent</a>:2012に出てきた手法です。僕はこの手法はFastHALSの一般化と解釈しています。</p>
 <h3 id="日本語記事"><a href="#日本語記事" class="headerlink" title="日本語記事"></a>日本語記事</h3><p><a href="http://www.kecl.ntt.co.jp/people/kameoka.hirokazu/publications/Kameoka2012SICE09published.pdf" target="_blank" rel="noopener">非負値行列因子分解</a>：NTT研究所の方によるNMFの解説記事です。非常にわかりやすいです。<br><a href="http://kkimura.hatenablog.com/entry/2017/10/07/211926" target="_blank" rel="noopener">Nonnegative Matrix Factorization:NMFの最適化法についてのまとめ</a>：色々なNMFのアルゴリズムの概説が載っています。</p>
 <p>誤字脱字の指摘から記事の内容に関するツッコミなどなんでも歓迎です！<br>twitterアカウント<a href="https://twitter.com/localmin?lang=ja" target="_blank" rel="noopener">localmin</a>やメールアドレス localmin9201009”at”gmail.comまでお願いします！</p>
 
@@ -454,7 +454,24 @@ h_{i,r}^{''} = \sum_{j=1}^{n}1 - \frac{V_{i,j}H_{r,j}^{2}}{((WH)_{i,j}+sH_{r,j})
             all[i].SourceElement().parentNode.className += ' has-jax';
     });
 </script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 </body>
 </html>
 <!-- styles -->
