@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang=en>
 <head><meta name="generator" content="Hexo 3.8.0">
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-  
-
-  
-  <title>ぼっち・ざ・はっく！</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="localmin&apos;s blog">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="localmin&apos;s blog">
 <meta property="og:type" content="website">
 <meta property="og:title" content="ぼっち・ざ・はっく！">
 <meta property="og:url" content="https://localmin.github.io/index.html">
@@ -17,622 +16,222 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ぼっち・ざ・はっく！">
 <meta name="twitter:description" content="localmin&apos;s blog">
-  
-    <link rel="alternate" href="/atom.xml" title="ぼっち・ざ・はっく！" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-  <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="https://www.gravatar.com/avatar/1c0ccb80f18de6871d3fd37b97cd3594?s=180">
+          
+        
+    
+    <!-- title -->
+    <title>ぼっち・ざ・はっく！</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+    
 </head>
-</html>
-<body>
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">ぼっち・ざ・はっく！</a>
-      </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">localmin</a>
-        </h2>
-      
+
+<body class="max-width mx-auto px3 ltr">    
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="content index py4">
+        
+          <header id="header">
+  <a href="/">
+  
+    
+      <div id="logo" style="background-image: url(/images/logo.png);"></div>
+    
+  
+    <div id="title">
+      <h1>ぼっち・ざ・はっく！</h1>
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://localmin.github.io"></form>
-      </div>
-    </div>
+  </a>
+  <div id="nav">
+    <ul>
+      <li class="icon">
+        <a href="#"><i class="fas fa-bars fa-2x"></i></a>
+      </li>
+       
+        <li><a href="/">Home</a></li>
+       
+        <li><a href="/about/">About</a></li>
+       
+        <li><a href="/archives/">Writing</a></li>
+      
+    </ul>
   </div>
 </header>
-      <div class="outer">
-        <section id="main">
-  
-    <article id="post-fast-nmf" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/12/11/fast-nmf/" class="article-date">
-  <time datetime="2018-12-11T06:37:24.000Z" itemprop="datePublished">2018-12-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+
         
+        <section id="about">
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/11/fast-nmf/">論文紹介：変数選択を用いた高速な非負値行列因子分解 + α</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="はじめに"><a href="#はじめに" class="headerlink" title="はじめに"></a>はじめに</h2><p>おばんです！ <a href="https://twitter.com/localmin?lang=ja" target="_blank" rel="noopener">localmin</a>と申します。現在M2で、普段の研究ではあえてぼかした言い方をすると行列演算について考えたり、パソコンをカタカタしています。本記事は<a href="https://adventar.org/calendars/3392" target="_blank" rel="noopener">#今年読んだ一番好きな論文2018</a>の11日目の記事です。本記事でも少し古いですが行列にまつわる論文について紹介していきたいと思います。</p>
-<h2 id="紹介論文-1"><a href="#紹介論文-1" class="headerlink" title="紹介論文[1]"></a>紹介論文[1]</h2><ul>
-<li>題名<br><a href="http://www.cs.utexas.edu/~cjhsieh/nmf_kdd11.pdf" target="_blank" rel="noopener">Fast Coordinate Descent Methods with Variable Selection for Non-negative Matrix Factorization</a></li>
-<li>著者<br>Cho-Jui Hsieh, Inderjit S. Dhillon</li>
-<li>出典<br>Proceedings of the 17th ACM SIGKDD international conference on Knowledge discovery and data mining Pages 1064-1072, 2011</li>
-</ul>
-<h2 id="論文概要"><a href="#論文概要" class="headerlink" title="論文概要"></a>論文概要</h2><p>非負値行列因子分解(Non-negative Matrix Factorization)(以下NMFとします)の高速化に関する論文です。NMFは反復更新式を用いて最適化を行いますが、既存手法では全変数を等しく更新(要するに更新しなくてもよい要素を更新してしまう)という欠点があります。この論文では目的関数にフロベニウスノルムの二乗を用いたときに、必要な変数のみを選択し更新を行う手法を提案をしています。<br>また目的関数にKL-divergenceを用いた場合の新しい手法も提案してます(ただし変数選択は用いない)。<br>各提案手法と既存手法を実データを用いて比較を行い、提案手法の収束の速さを確認してます。</p>
-<p>…と小難しく書きましたが、これからなるべくわかりやすく説明していく予定です。たぶん。</p>
-<h2 id="なぜこの論文を選んだか？"><a href="#なぜこの論文を選んだか？" class="headerlink" title="なぜこの論文を選んだか？"></a>なぜこの論文を選んだか？</h2><p>もちろん今年読んだ中で印象に残った論文だからというのもありますが、</p>
-<ol>
-<li>巷に溢れるNMFの記事には基本的にMultiplicative Updateの記事しかないから(然るべき理由はありそう)</li>
-<li>速いアルゴリズムはかっこいいから</li>
-</ol>
-<p>といった理由もあります。この記事をきっかけにNMFにはMultiplicative Updateだけでなく、速いアルゴリズムがあるよ！ということを少しでも理解してもらえば冥利に尽きます。<br>っていうか速いアルゴリズムってかっこいいじゃないですか！！(個人の感想)</p>
-<h2 id="非負値行列因子分解-NMF-2-とは"><a href="#非負値行列因子分解-NMF-2-とは" class="headerlink" title="非負値行列因子分解(NMF)[2]とは"></a>非負値行列因子分解(NMF)[2]とは</h2><p>NMFについては論文内でも説明されていますが、少しあっさり風味なのでここでは少し詳しめに説明します。<br>世の中のデータには非負値の行列で表現できるものが多々あり(例えばテキスト、画像、音響信号のパワースペクトルなど)、その特徴を解析したいといった需要があります。<br>NMFは各要素が非負で与えられる行列を二つの非負値行列の積に近似分解してあげる手法です。具体的には各要素が非負である観測行列$V\in {\bf R}^{m \times n}$を以下のように近似分解します。</p>
-<p>$$<br>V \approx WH<br>$$</p>
-<p>$W\in {\bf R}^{m \times k}$は基底行列、$H\in {\bf R}^{k \times n}$は係数行列となっています。<br>NMFはいわゆる次元削減と呼ばれる手法に分類され、観測行列をより小さなランクの行列で近似することを目的とします。<br>$k$は近似に用いる基底ベクトルの本数をあらわしており、何本の基底ベクトルで近似するかは使用者が事前に指定します。<br>行列に馴染みがある人は基底行列、係数行列と言われてすぐにわかるかもしれませんが、そうでない人のためにもう少し詳しく説明すると、<br>観測行列$V$の$i$列目の列ベクトルを$v_{i}$、$H$のj列目の列ベクトル$h_{j}$とすると、NMFでは観測行列の各列は</p>
-<p>$$<br>v_{i} \approx Wh_{j}<br>$$</p>
-<p>と表現することができます。<br>すなわちNMFは観測行列の各列を$W$の列ベクトルの線形結合で近似していると解釈することができます。<br>線形結合に使用されるベクトル(基底)を格納した行列なので基底行列、そして線形結合に置ける係数を格納した列ベクトル$h_{j}$を並べているので係数行列というわけです。</p>
-<p>NMF以外にも行列を分解する手法で有名なものに特異値分解(SVD)や固有分解(スペクトル分解)などがあります。しかし非負値行列を適用した場合に、分解した結果に負の値が出現してしまったり、得られるベクトルが直交してしまうため、結果の解釈が難しくなる欠点が存在します。<br>そこでNMFでは与えられたデータはもちろん、分解結果にも非負の制約与えることでデータの見通しが良くなる長所があります。また分解して得られた基底ベクトルは必ずしも直交しません。</p>
-<h2 id="NMFの解法"><a href="#NMFの解法" class="headerlink" title="NMFの解法"></a>NMFの解法</h2><h3 id="目的関数の設定"><a href="#目的関数の設定" class="headerlink" title="目的関数の設定"></a>目的関数の設定</h3><p>次にどうやって$W$、$H$を求めるのかという話に移っていきます。<br>人によっては行列を二つの積にバラすのは簡単では？と思う人もいるかもしれません。でもそれは具体例をみれば難しいとわかるでしょう。<br>では以下の方程式をを$k=2$という条件で二つの非負値行列$ W$、$H$を求めてみてください。</p>
-<span>$$\begin{pmatrix} 
- 23 &amp; 13  &amp; 22\\
- 8  &amp; 16  &amp;40\\
- 8  &amp; 5  &amp;  9  
-\end{pmatrix}=WH$$</span><!-- Has MathJax -->
-<p>どうですか？難しくないですか？っていうかそもそも解あるのか？ってなると思います。実際のデータは何百、何千のサイズになるのでもっと大変です。</p>
-<p>実際にこのような行列 $W, H$を求めることは可能とは限りません。しかし不可能であっても近似的に求めることは可能なはずです。</p>
-<p>ここで目的関数を用意します</p>
-<ul>
-<li>フロべニウスノルムの二乗</li>
-</ul>
-<p>$$<br>f(W, H) = \frac{1}{2}||V - WH||_{F}^{2}<br>$$</p>
-<p>$||\cdot||_{F}$ はフロべニウスノルムと呼ばれ、行列の全要素の二乗和の平方根をとります。</p>
-<p>この式は観測行列$V$と分解して得られる行列$WH$の距離を測る関数になっています。すなわち分解して得られた$WH$が観測行列に近いほど上述の関数の値が0に近づきます。<br>よってNMFは上述の関数を最小化するような$W,H$を求める問題になります。残念なことにそのような$V, H$は解析的に求めることができないため反復更新によって近似的に求めます。</p>
-<h3 id="一変数ごとの座標降下法"><a href="#一変数ごとの座標降下法" class="headerlink" title="一変数ごとの座標降下法"></a>一変数ごとの座標降下法</h3><p>この論文では反復更新の方法として一変数ごとの座標降下法を用いています。具体的には</p>
-<p>$$<br>(W,H)\leftarrow (W + sE_{i,r}, H)<br>$$</p>
-<p>のような更新を収束するまで行います。$E_{i,r}$は$(i,r)$成分が1, 他の成分が0である$m\times k$の行列です。<br>座標降下法ではある一つの要素に注目して他の変数は固定し、その変数での部分最適化問題を解くということを繰り返していくことになります。<br>この式から読み取れるのは$W$の$(i,r)$成分(以下$W_{i,r}$)を$s$だけ更新しているということ、すなわちまず僕らが知りたいのは$s$の具体的な値になります。</p>
-<p>ではどんな$s$が欲しいのか、それは目的関数を減少する$s$に他なりません。そのような$s$を求めるためには以下のような一変数の部分問題を解きます。</p>
-<p>$$<br>\min_{s:W_{i,r}+s\geq 0}g_{i,r}^{W}(s)\equiv f(W+sE_{i,r}, H)<br>$$</p>
-<p>要するに$W_{i,r}$を$s$だけ更新した時、目的関数を最小化するような$s$を求めることになります。<br>$g_{i,r}^{W}(s)$を$s$について整理してあげると、</p>
-<p>$$<br>g_{i,r}^{W}(s) =  g_{i,r}^{W}(0) +  (g_{i,r}^{W})^{’}(0)s + \frac{1}{2}(g_{i,r}^{W})^{’’}(0)s^2<br>$$</p>
-<p>となり、$s$に関する二次関数になります。こうなってしまえば簡単で、$s$について微分し、その導関数を0にするような$s$を求めます。ただし、$W_{i,r}+s\geq 0$なる制約があるので</p>
-<span>$$s =  \max \left(0, -\frac{(WHH^{T}-VH)_{i,r}}{(HH^{T})_{r,r}}\right) - W_{i,r}\\$$</span><!-- Has MathJax -->
-<p>という結果になります。max関数を使用することで非負性を保持できます(実際に値が負になるような数値を代入してもmax関数のおかげで0になります)。<br>これによって</p>
-<p>$$<br>W_{i,r}\leftarrow W_{i,r} + s<br>$$</p>
-<p>と更新することができます(ちなみに $V$についても同様)。</p>
-<h2 id="変数選択による高速化"><a href="#変数選択による高速化" class="headerlink" title="変数選択による高速化"></a>変数選択による高速化</h2><h3 id="Outer-Iteration-amp-Inner-Update"><a href="#Outer-Iteration-amp-Inner-Update" class="headerlink" title="Outer Iteration &amp; Inner Update"></a>Outer Iteration &amp; Inner Update</h3><p>従来手法(Multiplicative Update[2], FastHALS[4])では上に似たような更新式を導出した後、全変数に対して等しい回数更新を行います。しかし、その場合更新しなくても良い変数を更新してしまうという欠点があります。ここでいう更新しなくても良い変数とは、更新しても目的関数の値が減少しない変数のことであり、そのような変数を更新してしまうことで余計な計算量をくうことになります。<br>よってこの論文では重要な変数、すなわち目的関数の値を大きく減少させることができる変数のみを選択し貪欲に更新し続ける手法を提案しています。</p>
-<p>まず変数選択法の説明の前に更新手順について説明します。この論文では便宜上、注目する行列を変えることをOuter Iteration、注目している行列内での更新をInner Updateとしています。<br>Outer Iterationでは$W, H$を交互に更新していきます。</p>
-<p>$$<br>(W^{0}, H^{0}) \rightarrow  (W^{1}, H^{0}) \rightarrow  (W^{1}, H^{1})…<br>$$</p>
-<p>そして一回のOuter Iterationの間にInner Updateという行列内の更新を行います。</p>
-<p>$$<br>(W^{i,0}, H^{t}) \rightarrow  (W^{i,1}, H^{i,0}) \rightarrow  (W^{i,2}, H^{t})…<br>$$</p>
-<p>実際の変数選択はInner Update内で行います。</p>
-<p>要するに、</p>
-<ol>
-<li>$W$の各要素を変数選択を用いて十分に更新を行う($W$のInner Update)</li>
-<li>$H$の各要素を変数選択を用いて十分に更新を行う($H$のInner Update)</li>
-<li>また$W$に戻って同じことを繰り返す</li>
-</ol>
-<p>といった処理を目的関数の値が収束するまで繰り返す、これが基本的な流れになります。</p>
-<h3 id="変数選択の方法"><a href="#変数選択の方法" class="headerlink" title="変数選択の方法"></a>変数選択の方法</h3><p>$W$の変数選択を行う場合を考えます($V$についても同様に求められます)。<br>変数選択の方法はシンプルで、目的関数の減少量が多い変数を選択します。そのために$W$について、各要素を更新した際の目的関数の減少量を格納した行列を$D^{W}$を用意します。サイズは$W$と同じで、この$(i,r)$成分には$W_{i,r}$を更新した時の目的関数の減少量が格納されています。<br>$D^{W}$の各成分(目的関数の減少量)以下のように計算されます。</p>
-<p>$$<br>D_{i,r}^{W} \equiv g_{i,r}^{W}(0) - g_{i,r}^{W}(s)<br>= -G_{i,r}^{W}s-\frac{1}{2}(HH^{T})_{rr}s^{2}<br>$$</p>
-<p>$g_{i,r}^{W}(s)$は$W_{i,r}$を$s$だけ変化させたときの目的関数の値なので上式が更新後の目的関数の減少量を計算していることはわかると思います。(ここでは$G^{W}=WHH^{T}-VH^{T}$)。<br>当然のことながら更新を行えば$D^{W}$の値も変化していきます。なので$D^{W}$を常に最新に保つことができれば、これに基づいて変数選択を行うことができます。しかし更新の度に先ほどの式に従って$D^{W}$の値を全て再計算していると$\mathcal{O}(mk)$ かかってしまいます。たとえどんなに更新一回あたりの目的関数の減少効率がよくても、変数選択にに時間がかかっていては本末転倒です。<br>よってこのオーバーヘッドを軽減するために$W_{i,r}$を更新した時、$G^{W}$の$i$行目しか変化しないという特徴を利用します。この特徴から$D^{W}$も$i$行目しか変化せず、再計算する必要があるのは$G^{W}$の$i$行目だけになります。<br>以下の式で$G_{i,j}^{W}$を更新することで$D^{W}$を最新に保つことができます。</p>
-<p>$$<br>G_{i,j}^{W}\leftarrow  G_{i,j}^{W} + s(HH^{T})_{r,j} \forall j=1,\dots,k<br>$$</p>
-<p>これらの計算量は$\mathcal{O}(k)$であり、$D^{W}$全ての要素を再計算するよりも少ないコストで変数選択をすることができます。<br>これがこの論文のキモであり、変数選択による計算の軽減に成功しています。</p>
-<p>このことから更新が各行列に及ぼす影響は$i$行目だということがわかります。なので基本的には、行ごとに変数選択および更新を行えば良いということになります。<br>そのため$i$行目の更新において次に選択される列インデックス$q_{i}$は</p>
-<p>$$<br>q_{i} = arg\max_{r}D^{W}_{i,r}<br>$$</p>
-<p>のようにして選択されることになります。</p>
-<p>このように変数選択しながらを更新していく手法をGreedy Coordinate Descent(以下GCD)と論文では名付けています。いいかんじですね。</p>
-<h2 id="実験"><a href="#実験" class="headerlink" title="実験"></a>実験</h2><p>いろいろややこしいことを書いてきましたが要は速いのかって話ですよ。実データを用いて実験をします。この論文では二種類の実験を行なっています。<br>一つは密なデータに対して、もう一つはスパースなデータに対してです。</p>
-<h3 id="実験1-密なデータに対して"><a href="#実験1-密なデータに対して" class="headerlink" title="実験1(密なデータに対して)"></a>実験1(密なデータに対して)</h3><p>比較する手法はGCD、FastHALS[4]、ProjGrad[5], BlockPivot[6]（あれ？Multiplicativeは？)。<br>各アルゴリズムにおいてデータセット毎に設定した相対誤差になるまでの計算時間及び浮動小数点数演算の回数(FLOPs)を比較します。<br>もちいたデータは以下のようになっています。</p>
-<ol>
-<li>Synth03 : 乱数によるデータ。30％が0を要素の持つ</li>
-<li>Synth08 : 乱数によるデータ。80％が0を要素の持つ</li>
-<li>CBCL : 画像データ</li>
-<li>ORL : 画像データ</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>dataset</th>
-<th>m</th>
-<th>n</th>
-<th>k</th>
-<th>relative error</th>
-<th>GCD</th>
-<th>FastHALS</th>
-<th>ProjGrad</th>
-<th>BlockPivot</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Synth03</td>
-<td>500</td>
-<td>1000</td>
-<td>10</td>
-<td>$10^{-4}$</td>
-<td>0.6/0.7G</td>
-<td>2.3/2.9G</td>
-<td>2.1/1.4G</td>
-<td>1.7/1.1G</td>
-</tr>
-<tr>
-<td>Synth03</td>
-<td>500</td>
-<td>1000</td>
-<td>30</td>
-<td>$10^{-4}$</td>
-<td>4.0/5.0G</td>
-<td>9.3/16.1G</td>
-<td>26.6/23.5G</td>
-<td>12.4/8.7G</td>
-</tr>
-<tr>
-<td>Synth08</td>
-<td>500</td>
-<td>1000</td>
-<td>10</td>
-<td>$10^{-4}$</td>
-<td>0.21/0.11G</td>
-<td>0.43/0.38G</td>
-<td>0.53/0.41G</td>
-<td>0.56/0.35G</td>
-</tr>
-<tr>
-<td>Synth08</td>
-<td>500</td>
-<td>1000</td>
-<td>30</td>
-<td>$10^{-4}$</td>
-<td>0.43/0.46G</td>
-<td>0.77/1.71G</td>
-<td>2.54/2.70G</td>
-<td>2.86/1.43G</td>
-</tr>
-<tr>
-<td>CBCL</td>
-<td>361</td>
-<td>2429</td>
-<td>49</td>
-<td>0.0410</td>
-<td>2.3/2.3G</td>
-<td>4.0/10.2G</td>
-<td>13.5/14.4G</td>
-<td>10.6/8.1G</td>
-</tr>
-<tr>
-<td>CBCL</td>
-<td>361</td>
-<td>2429</td>
-<td>49</td>
-<td>0.0376</td>
-<td>8.9/8.8G</td>
-<td>18.0/46.8G</td>
-<td>45.6/49.4G</td>
-<td>30.9/29.8G</td>
-</tr>
-<tr>
-<td>CBCL</td>
-<td>361</td>
-<td>2429</td>
-<td>49</td>
-<td>0.0373</td>
-<td>14.6/14.5G</td>
-<td>29.0/75.7G</td>
-<td>84.6/91.2G</td>
-<td>51.5/53.8G</td>
-</tr>
-<tr>
-<td>ORL</td>
-<td>10304</td>
-<td>400</td>
-<td>25</td>
-<td>0.0365</td>
-<td>1.8/2.7G</td>
-<td>6.5/14.5G</td>
-<td>9.0/9.1G</td>
-<td>7.4/5.4G</td>
-</tr>
-<tr>
-<td>ORL</td>
-<td>10304</td>
-<td>400</td>
-<td>25</td>
-<td>0.0335</td>
-<td>14.1/20.1G</td>
-<td>30.3/66.9G</td>
-<td>98.6/9.1G</td>
-<td>33.9/38.2G</td>
-</tr>
-<tr>
-<td>ORL</td>
-<td>10304</td>
-<td>400</td>
-<td>25</td>
-<td>0.0332</td>
-<td>33.0/51.5G</td>
-<td>63.3/139.0G</td>
-<td>256.8/193.5G</td>
-<td>76.5/82.4G</td>
-</tr>
-</tbody>
-</table>
-<p>(僕のブログテーマのせいか変な表になってます。すいません…。綺麗な表は<a href="http://www.cs.utexas.edu/~cjhsieh/nmf_kdd11.pdf" target="_blank" rel="noopener">論文7ページTable2</a>です。)<br>表での各手法の値はTime(in seconds)/FLOPSを表しており、小さいほどいいです。いずれの場合もGCD(提案手法)が高速であることがわかります。</p>
-<h3 id="実験2-疎なデータに対して"><a href="#実験2-疎なデータに対して" class="headerlink" title="実験2(疎なデータに対して)"></a>実験2(疎なデータに対して)</h3><p>比較する手法はGCD, FastHALS[4]、BlockPivot[6]。<br>もちいたデータは</p>
-<ol>
-<li>Yahoo-News : ニュース記事、$21839\times 2340, k=20$ </li>
-<li>MNIST: 手書き数字の画像、$780 \times 60000, k=10$</li>
-<li>RCV1: ニュース記事、$31025\times 152120, k= 15$ </li>
-</ol>
-<p>時間における相対誤差の推移を計測しています。<br><a href="http://www.cs.utexas.edu/~cjhsieh/nmf_kdd11.pdf" target="_blank" rel="noopener">論文7ページFigure２</a>のグラフを見てください(重ね重ねごめんなさい…)。この場合も提案手法が高速かつ良い局所最適解に達していることがわかります。</p>
-<h3 id="実装上の注意"><a href="#実装上の注意" class="headerlink" title="実装上の注意"></a>実装上の注意</h3><p>論文での実装はMATLABです。しかしMATLABはforループが遅いため、GCDの反復部分をmex(Cで作った関数を呼び出す)で高速化しているそうです。<br>公平な比較じゃない気がしますが、筆者曰くFLOPsでも比較してるから公平性はあるとのこと。あまり腑に落ちないですが。</p>
-<h2 id="α-KL-divergenceへの提案手法"><a href="#α-KL-divergenceへの提案手法" class="headerlink" title="+α(KL-divergenceへの提案手法)"></a>+α(KL-divergenceへの提案手法)</h2><p>時間がないので今回は概略にととどめますが、この論文ではKL-divergenceにおける新しいアルゴリズムも提案しています。</p>
-<ul>
-<li>KL-divergence</li>
-</ul>
-<span>$$L(W, H) = \sum_{i,j}V_{i,j}log(\frac{V_{i,j}}{(WH)_{i,j}})-V_{i,j}+(WH)_{i,j}\\$$</span><!-- Has MathJax -->
-<p>フロべニウスノルムの二乗の場合と異なり、変数選択は用いない循環座標降下法(CCD)になっています。<br>更新幅$s$をニュートン法を用いて高速に求めるのが特徴的な手法です。</p>
-<span>$$s \leftarrow \max(-W_{i,r}, s-h_{i,r}^{&apos;}(s)/h_{i,r}^{&apos;&apos;}(s))\\
-h_{i,r}^{&apos;} = \sum_{j=1}^{n}H_{r,j}\left( 1 - \frac{V_{i,j}}{(WH)_{i,j}+sH_{r,j}} \right) \\
-h_{i,r}^{&apos;&apos;} = \sum_{j=1}^{n}1 - \frac{V_{i,j}H_{r,j}^{2}}{((WH)_{i,j}+sH_{r,j})^{2}}$$</span><!-- Has MathJax -->
-<p>この手法は同じ密なデータでMultiplicative Updateと比較されており、高速化に成功しています。<br>結果は<a href="http://www.cs.utexas.edu/~cjhsieh/nmf_kdd11.pdf" target="_blank" rel="noopener">論文8ページTable3</a>。<br>ただKL-divergenceに関しては2012年にsBCD[7]というより高速な手法が提案されています…。</p>
-<h2 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h2><p>本論文では目的関数がフロべニウスノルムの二乗に用いた時に、変数選択を用いた座標降下法を提案しました。またKL-divergenceにおいてもニュートン法を利用した循環座標降下法を提案しました。この二つの手法に関して実データを用いて実験を行い、高速化に成功したことを確認できました。</p>
-<h2 id="その後-amp-感想"><a href="#その後-amp-感想" class="headerlink" title="その後&amp;感想"></a>その後&amp;感想</h2><p>以上が論文の内容になります。KL-divergenceの話もそうですが、収束の保証の議論、Inner Updateの停止条件、各ステップでの計算量の議論などここに書ききれなかった話が論文にはあるので興味がある人は是非。</p>
-<p>フロべニウスノルムの二乗を用いた際のNMFの高速化に関しては、この論文の手法(GCD)現在が最速だと思われます。そう、この場合の高速化に関してはこの論文(2011)を最後に終わってしまったのです(もしあったら是非教えて下さい！)。かっこいいですね。僕も一分野を終わらせる論文を書いてみたかったです。</p>
-<p>ただGCDはあまり人気がなく、基本的にNMFに使用されているアルゴリズムはMultiplicative Updateが多い印象です。実装が明らかにMultiplicative Updateの方が簡単で、欲しい結果が得られているからなのかなーとか思いますが実際のところはわかりません。おしえてエロい人。</p>
-<p>NMFの研究は現在も続けられており、毎年多くの論文が出ています。特にNMFの亜種や使用条件を絞った場合に性能を向上させる手法などが多い印象です。それには現実に欲しい結果と誤差の小ささが必ずしも関係してないことや、初期値依存性(反復更新の際にどの初期値を入れるのがベストかは基本不明な問題)など、残された問題や改良できる余地が多くあるからだと思います。とにかく今後も目が離せないですね。</p>
-<p>来年からは少なくとも仕事で論文を読むようなことはないでしょうが、せっかく大学で論文を読む能力を身につけたのだから、年に一回こういう場でアウトプットできるぐらいには論文を読んでいきたいと思います。</p>
-<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>これを読んでNMFに興味を持った方はぜひ参考にしてみてください。</p>
-<h3 id="論文"><a href="#論文" class="headerlink" title="論文"></a>論文</h3><p>[1]. <a href="http://www.cs.utexas.edu/~cjhsieh/nmf_kdd11.pdf" target="_blank" rel="noopener">Fast Coordinate Descent Methods with Variable Selection for Non-negative Matrix Factorization</a> ：今回紹介した論文です。コードは<a href="http://www.cs.utexas.edu/~cjhsieh/nmf/" target="_blank" rel="noopener">筆者のホームページ</a>に公開されています。<br>[2]. <a href="https://www.nature.com/articles/44565" target="_blank" rel="noopener">Learning the parts of objects by non-negative matrix factorization</a>:NMFが最初に世に出た時の論文です。<br>[3]. <a href="http://papers.nips.cc/paper/1861-algorithms-for-non-negative-matrix-factorization.pdf" target="_blank" rel="noopener">Algorithms for Non-negative Matrix Factorization</a>：一番有名なNMFのアルゴリズムであるMultiplicative Updateの論文です。<br>[4].<a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.214.6398&amp;rep=rep1&amp;type=pdf" target="_blank" rel="noopener">Fast local algorithms for large scale nonnegative matrix and tensor factorizations</a>:FastHALSの論文です。<br>[5]. <a href="https://www.mitpressjournals.org/action/captchaChallenge?redirectUrl=https%3A%2F%2Fwww.mitpressjournals.org%2Fdoi%2Fpdfplus%2F10.1162%2Fneco.2007.19.10.2756%3Fcasa_token%3DjlubOQwKdb4AAAAA%253AHBNw9iRU6Xsf2grl1CRBhiopkx7uHNNp1b5mnQHlrQ38fgbqZU-BZPoyoLerOTeUtEfc7_GqDC9_Pw" target="_blank" rel="noopener">Projected gradient methods for nonnegative matrix factorization</a>：実験の比較に出てきた手法です。<br>[6]. <a href="https://smartech.gatech.edu/bitstream/handle/1853/25538/GT-CSE-08-03.pdf?sequence=1&amp;isAllowed=y" target="_blank" rel="noopener">Toward Faster Nonnegative Matrix Factorization: A New Algorithm and Comparisons</a>：実験の(ry<br>[7]. <a href="https://www.ime.usp.br/~jstern/miscellanea/seminario/Lebanon13.pdf" target="_blank" rel="noopener">Fast Bregman Divergence NMF using Taylor Expansion and Coordinate Descent</a>:2012に出てきた手法です。僕はこの手法はFastHALSの一般化と解釈しています。</p>
-<h3 id="日本語記事"><a href="#日本語記事" class="headerlink" title="日本語記事"></a>日本語記事</h3><p><a href="http://www.kecl.ntt.co.jp/people/kameoka.hirokazu/publications/Kameoka2012SICE09published.pdf" target="_blank" rel="noopener">非負値行列因子分解</a>：NTT研究所の方によるNMFの解説記事です。非常にわかりやすいです。<br><a href="http://kkimura.hatenablog.com/entry/2017/10/07/211926" target="_blank" rel="noopener">Nonnegative Matrix Factorization:NMFの最適化法についてのまとめ</a>：色々なNMFのアルゴリズムの概説が載っています。</p>
-<p>誤字脱字の指摘から記事の内容に関するツッコミなどなんでも歓迎です！<br>twitterアカウント<a href="https://twitter.com/localmin?lang=ja" target="_blank" rel="noopener">localmin</a>やメールアドレス localmin9201009”at”gmail.comまでお願いします！</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://localmin.github.io/2018/12/11/fast-nmf/" data-id="cjpjewb32000581m2kdw9jvmu" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
+    <p>localmin’s blog</p>
 
   
-    <article id="post-job-hunt2018" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/12/10/job-hunt2018/" class="article-date">
-  <time datetime="2018-12-09T15:04:06.000Z" itemprop="datePublished">2018-12-10</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+  
+    <p>
+      Find me on
+      
+      
+      
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/10/job-hunt2018/">俺の就活2018</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="この記事について"><a href="#この記事について" class="headerlink" title="この記事について"></a>この記事について</h2><p>これは<a href="https://adventar.org/calendars/3218" target="_blank" rel="noopener">自分のことを好きなだけ話す Advent Calendar 2018</a>の10日目の記事です。<br>皆さん就活したことあります？特に新卒就活。これからの人もいれば、既に就活を経て社会人をやっている人、そのどちらでもなく無職を選んだ人もいるでしょう。<br>この記事は今年就活をした僕がその経験・事実を淡々と書いていくものになります。就活についてはブログか何かにまとめて書こうと思っていたのですが、別に僕の就活が他人と比べて劇的なものでもなければ悲劇的なものでもないので、あえて書かなくてもいいか…って感じでした。結局自分語りになってキモいし。そしてこのアドベントカレンダーに乗じて書く気力が出てきたといった次第です。<br>想像はつくかと思いますが基本的には愚痴寄りの内容です。 大抵の人は就活に対していい感情を持ってないでしょう。たまーに就活楽しかった！みたいな人間に出会いますがなんか仲良くなれる気がしない。そしてこの記事は未来の就活生にとって参考になるような話ではないです。反面教師にはなるかもしれないですが。</p>
-<p>ちなみに時系列に沿って語っていきます。長い話になりますがお付き合いください。<br>なんだかんだ言いつつ就活うまくいってるじゃん。自虐風の自慢か？って思う人も中にはいるでしょうが許してください。</p>
-<h2 id="就活以前"><a href="#就活以前" class="headerlink" title="就活以前"></a>就活以前</h2><p>僕はいわゆる情報系とかコンピュータサイエンスとか呼ばれる専攻に属している大学院生です。学部時代の僕は本当にダメな人間で、授業にほとんど出席せず、結果的に卒業に必要な単位数を取得できずに留年しました。じゃあ学校行ってない代わりにバイトでカタカタ経験積んでたの？実は競プロすごいやってた？それとも海外に行ってた？とかではなく、本当に引きこもって漫画やアニメ見たり、ゲームしたり、たまに数少ない友達とダベってただけです。なので技術力皆無のダメ人間でした。今もそうですが。そもそもこの学科選んだのも、なんとなくIT系かっけーとかみたいな感じだったと思います。<br>たまにこの手の学科卒じゃないすごいエンジニアが「学生時代にコンピュータサイエンス勉強したかった」「勉強するためにお金貯めて大学入り直した」みたいな話を聞くと死ぬほど申し訳ない気持ちになります。<br>さすがに留年(というか卒業に失敗)してからは親含む諸々への罪悪感から心を入れ替え、研究に打ち込みました。指導教官に恵まれたことや研究が面白かったこともあり、何回か学会発表とかさせてもらえるくらいには更生しました。まあでも研究してて思うのは、やっぱ学部時代の基礎ってめっちゃ大事で、「あーこれ学部の講義ちゃんと聴いてたら今調べなくてもいいやつやん」ってなることが結構あります。なので特に独学してるわけじゃないなら学校行ったほうがいいです。どの口が言ってんだって感じですが。<br>話が逸れましたがなんだかんだで大学院進学しました。親に感謝するしかない。</p>
-<h2 id="2017-5-6月"><a href="#2017-5-6月" class="headerlink" title="2017 5~6月"></a>2017 5~6月</h2><p>さて、やっと本題です。前置きが長い。<br>就活を意識し始めたのはM1の5月くらいです。就活ってよりはインターンって感じですね。この時期ぐらいから講義が始まる前の待ちの時間にスマホでtwitter見てるか、寝てるふりしてるときになんとなく聞いてた周りの会話にインターンの話題が多くなってきました。<br>研究室の先輩も「インターン受けとけ、落ちてもESとか面接の練習になるし」って言っていたこともあり僕も夏のインターンを考え始めました。ただインターンの準備(ES, 面接とか)が面倒い、受かったら夏休み研究進められないし、労働よりも研究の方が楽しいし…と思っており全然乗り気じゃありませんでした。<br>とはいえ浪人、留年と人より多く負のステータスをもつ自分にとって就活ぐらい人並みに終わらせたいという気持ちもあり、アリバイ的にインターンを受けることにしました。<br>当時(というか今も)自分の技術力は無に等しく、研究内容もそこで使う言語もニッチ、研究以外でコードも書くこともない(たまにVimの設定をいじるくらい)だったのでどの会社を受けるべきか相当迷った覚えがあります。そもそも業界についてもよくわかってなくて、いわゆるSIとかWeb(今でもこの括りが正しいかわからないが…)の区別もついてなかったです。<br>結果的にそこまで技術力を問われない傾向にあるSI系の会社を２社うけ、１社からインターン合格をもらいました。とはいえさっき書いた通り、インターンにモチベーションがなかったので特に準備せず、面接では結構めちゃくちゃなことを言っていたと思います。なんで合格したのか当時は不思議でしょうがなかったので、合格後に面接官(インターン時の部署の上司)になんで自分を合格させたのか尋ねたら、「素で喋ってる感じがしてよかった」とのこと。嬉しかった反面、この会社(というか部署)大丈夫か？って思いました。今でも思ってます。<br>インターン受かってから当日までは就活のことは一切考えてませんでした。研究、学会発表の準備、授業のレポート、見たいアニメ読みたい漫画の消費で手一杯だったこともありますが。</p>
-<h2 id="2017-9月"><a href="#2017-9月" class="headerlink" title="2017 9月"></a>2017 9月</h2><p>インターン自体は9月に1ヶ月弱ありました。僕が行くことになった部署では某OSSを用いた開発および、そのコミュニティへの参画をしてました。僕自体の業務内容は特に技術的に突出してないということを加味してくれて、コードをガリガリ書くというよりはそのOSSのめっちゃ簡単なバグ修正を大げさにアジャイルっぽくやりました。まあ僕の希望でもあるのですが普段の研究ではできないような開発体験しましょうって感じです。部署自体もコード書こうって雰囲気よりも会議とかその資料作り、他部署との諸々のすり合わせに時間を取られている印象でした。そこはちょっと残念な感じでしたが…。<br>インターンの話をすると本当に長くなるのでほどほどにしますが、初日の部署の打ち合わせに参加した時にメンターの人が別件でめっちゃ詰められていたこと、一度も彼女いないって言ってないのに彼女がいない体で社員さんとの会話が進んでたこと、インターネットの使用に関して厳しめの制限があったこと、の三点を除けば結構楽しかったですね(ちなみに彼女はいない)。インターン仲間ができたこと、研究じゃできないような規模が大き目のプロジェクト(のほんのほんの一端)を担わせてもらったことなど。<br>ちなみに僕がしたバク修正は社員さん名義でmergeされるらしんですけど2018年12月現在されてないのですが、いつされるんでしょうか。楽しみです。<br>なんか愚痴っぽいですけど楽しかったのは本当です。でもなんか人事の人が気に入らなくて、インターン後のアンケートにめっちゃ悪口書いてました。当時はこの会社に行くつもりがなかったので結構めちゃくちゃなことを書いてましたが、人生は本当に何が起こるかわかりませんね。先にオチを言うと、最終的にこの会社から内定を受けることになります。なんてこった。</p>
-<h2 id="2017-12月"><a href="#2017-12月" class="headerlink" title="2017 12月"></a>2017 12月</h2><p>他の大学ではどうかはわかりませんが、うちは12月ぐらいから進路ガイダンスみたいなのがあります。インターン行ってなかった人もここぐらいから就活を意識し始めるんじゃないでしょうか。かくいう僕もインターン以降特に何も就活について考えていなかったので、何かしらの活動をしないと思い始めました。<br>この時期になると学外で業界研究セミナー的なものが開かれはじめるので、就活してる感を得るためだけに行っていました。特に得るものはなかったと思います。あ、でも大量のクリアファイルと、グループワークの練習で可愛い女の子がいると俺の発言率がグッと下がる(めっちゃ上がるやつもいる)などの気づきを得ることができましたね。あとこいつは就活するためだけに生まれてきたのか？みたいなやつとは距離をおいた方がいいということもわかりました。結局噂レベルのマイナスな情報を撒き散らし、こっちが疲弊するだけなので。</p>
-<h2 id="2018年1・2月"><a href="#2018年1・2月" class="headerlink" title="2018年1・2月"></a>2018年1・2月</h2><p>研究、レポート〆切、TA、身内の不幸、就活もどきが一気に重なり情緒不安定になり始めます。<br>そのせいか、就活的にはここにきて結局俺は何がしたいんだ？と悩み始めます。とりあえずIT業界で自分の手をなるべく動かしてコードを書ければよい、みたいな漠然としたものはあったのですが、なんの分野か、どんなエンジニアになりたいのか？みたいな考えはなかったと思います。夏のインターンのときは惰性で雰囲気で選んでいたのと面接官が頭おかしい(失礼)こともあったので上手くいきましたが今回はそうもいかず。冬のインターンも何社か受けましたが結局そこらへんを見抜かれたのか落ちるばかりでした。<br>ただ、業界研究セミナーみたいなのに行った際にたまたま会ったOBに研究職いいよ！お前研究好きなんだろ？と言われたのをきっかけに、進学するわけではないけど研究職も視野に入れ始めました。企業の研究職については全く考えてなかったわけではないのですが、なんとなく博士or優秀な修士だけが行く世界だと思っており、無意識に自分には無縁な世界だと考えていました。OBの話を聞いた時少しはこの認識は変わったのですが、やはり根本のところで研究職はめっちゃ優秀な人にしかなれないと今でも思ってしまうところはあります。</p>
-<p>話の流れ的にじゃあ研究職一本に絞ってく感じになった！とはなりませんでした。自分のやっている研究の第一人者が某企業の研究所にいるということもあり、当分の間はそこを第一志望にして、今までと同じく他は漠然とした感じでした。<br>第一志望が決まったということもあって精神的には安定しつつ、滑り止め的に受ける会社を決め始めました。遅いですが。</p>
-<h2 id="2018年3・4月"><a href="#2018年3・4月" class="headerlink" title="2018年3・4月"></a>2018年3・4月</h2><p>経団連云々みたいな会社は本格的にはここから採用活動が始まります。<br>そんなお堅い会社に入るつもりがない人、外資行きたい人は既にちらほら内定もらっていましたね。そういうひとは大抵技術力MAXで成果物とか実績で殴りにいってる人たちでしたが、僕みたいな無能力者は普通の就活をします。俺もそういう就活がしたかったよ。</p>
-<p>とはいえ経団連云々みたいな会社も建前としては3月からといいつつ、2月に研究室訪問と称して企業のOBが来たりします。嫌な感じの会社だと2月時点でそのOBとコンタクトが取れないと実質落ちたも同然みたいな会社もありました。そういう情報は基本そのOBがいた研究室の人経由で知ることがほとんどで、その研究室に知り合いがいないと情報を得られない見たいなことが普通にありました。俺みたいなボッチにはあり得ないぐらいしんどい情報戦です。<br>っていうかそういうことしてくる会社に入りたいのか？みたいな気持ちはめっちゃありましたが。公平性ないし。まあ新卒の就活だからいいのか。しらんけど。<br>ここらへんから就活への憎悪が増していき、ソウルジェムが濁っていきます。</p>
-<p>受ける会社は決めていたので3月中旬まではひたすらESを書いていた覚えがあります。内心労働はしたくない、あと100年は学生をしていたいという気持ちを抑えつつ、労働したいアピールをしていくのは大変きついものがありましたね。</p>
-<p>ここからは時系列に書くと話がごっちゃになるので受けた会社についてざっと書いていきます。</p>
-<h3 id="A社-SI-研究食"><a href="#A社-SI-研究食" class="headerlink" title="A社(SI? 研究食)"></a>A社(SI? 研究食)</h3><p>例の第一志望だった会社です。<br>自分の研究に一番近いことをやっていた国内唯一の会社でした。他の会社と違ってあんまり志望動機、よくわかんない自己PRは必要なく、とりあえず自分の研究について語ってくれって感じで好感が持てました。まあ結果的に落ちましたが。<br>ここ以外にも他の研究所を受けようかと考えましたが、自分がしている研究をやっている研究所がダメで、他の研究所で自分の研究内容とマッチングがとれる気がせず研究職はここで諦めました。<br>ちなみに就職担当の教授に落ちたことを報告した時に「狭い業界だからこの会社と働く機会はあるよ」となんの慰めにもならない言葉をもらうなどしました。</p>
-<h3 id="B社-SI-ソフトウェアエンジニア"><a href="#B社-SI-ソフトウェアエンジニア" class="headerlink" title="B社(SI ソフトウェアエンジニア)"></a>B社(SI ソフトウェアエンジニア)</h3><p>夏にインターンに行った会社です。インターンは選考と関係ないとかいいつつ明らかに有利でした。とりあえずESに書くことは困らないし、最初の面接では自分のインターン先の上司が出現しほぼ世間話をして終わりました(曰く面接官になったのはたまたまらしい。本当か？)。ちなみインターンでお世話になったメンターさんは辞めたとか。理由も聞きたかったがやめました。その後複数回の面接をこなし結果的に内定をもらえたのですが、インターンで行った部署に配属される保証はないとか。まじか。</p>
-<h3 id="C社-web-ソフトウェアエンジニア"><a href="#C社-web-ソフトウェアエンジニア" class="headerlink" title="C社(web ソフトウェアエンジニア)"></a>C社(web ソフトウェアエンジニア)</h3><p>最初は全然受けるつもりはなかったのですが、エントリーがすぐ終わる！って書いてあったので軽い気持ちで受けてみたらエントリー完了するのに１時間かかった。軽い気持ちでエントリーしたせいか軽い感じで書類選考で落ちました。</p>
-<h3 id="D社"><a href="#D社" class="headerlink" title="D社(?)"></a>D社(?)</h3><p>SIに限らず色々手を出している会社。<br>選考過程が非常に腹がたった。会社説明会に行ったのだが、説明会が終わった後に数名だけを別室に通していた。あとで聞いた話だと通された人は研究室で事前に面談していて、今回が第二面接だったらしい。説明会は形だけでその人たち以外はその後にES出しても放置されるとの噂。なんじゃそら。せめてバレないようにやれ。潰れろ。<br>説明会後にESを出さないといけなかったが腹が立ったのでやめた。</p>
-<h3 id="E社-web-ソフトウェアエンジニア"><a href="#E社-web-ソフトウェアエンジニア" class="headerlink" title="E社(web ソフトウェアエンジニア)"></a>E社(web ソフトウェアエンジニア)</h3><p>老舗っぽいweb系の会社。雰囲気も良く面接官はめっちゃ印象良かったが、会社の業績が微妙なんじゃないかみたいな印象を受けました。内定はもらえました。</p>
-<p>で、戦績としてはESすら出さなかったD社を除いて2勝2敗って感じでまずまず。<br>最終的に夏にインターンに行ったB社の内定を受けることにしました。まあなんていうか良くも悪くも内情を知ってるのが決め手だった気がします。そもそも研究所落ちた時点でなんでもいいやって感じでしたが。<br>結果論だけど夏のインターンに拾ってもらったって感じですね。他にも選択肢はあったけど。</p>
-<h2 id="まとめ"><a href="#まとめ" class="headerlink" title="まとめ"></a>まとめ</h2><p>四月中旬で上の会社全ての結果が出て、GWに入る前に決めました。まあ早い方なのかもしれないけどめっちゃ疲れた。<br>上に書いた嫌なこと以外にも「うちの会社に入るなら私生活は捨てろ」とか言ってくるリクルーターのおっさん、入社するつもりはないのにやたらしつこい大学OB、なんの役にも立たないスパムに等しいリクナビ、マイナビ(なぜか女性消防士の求人がやたら送られてきた)、俺の受ける会社の批判をやたらしてくる親戚のじじい、グループワークで俺の意見を封殺する仕切りたがり…などなどありましたが、まあ無事に終わったので良かったです。もっとストレスなことを経験した人は多いとは思いますが。</p>
-<p>反対に相談に乗ってくれた人、アドバイスをくれた人などには感謝してもしきれないです。親とか親戚の支援がなかったら財布が死んでたし。</p>
-<p>僕個人の反省点としては何がしたいのか軸がなかったこと、それゆえ受ける会社選びが適当だったことの二点に尽きます。<br>業界研究てやつもしたっちゃしたんですが、やっぱり明確にやりたいことがないとダメですね。何を基準に選べばいいかわからない。</p>
-<p>そんなわけで四月から某SIの会社でソフト開発っぽいことをします。なにやるかは全く未定ですが。<br>SIはネットでは結構ネガティブなことを言われており、不安になる日々です。まあ上手いことやっていくつもりです。とりあえず内定式では懇親会で馴染むことができず一人で天一にいく(10/1は天一の日なので)など幸先の良いスタートを切っております。まあこれは会社ではなく僕の性格の問題ですけど。<br>とりあえず研修期間(少なくとも夏くらい？)は神奈川にいるので各位よろしくお願いします。</p>
-<p>長くなりましたが以上です。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://localmin.github.io/2018/12/10/job-hunt2018/" data-id="cjpjewb31000481m2y62wt026" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-nocoffeine" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/12/02/nocoffeine/" class="article-date">
-  <time datetime="2018-12-01T17:34:05.000Z" itemprop="datePublished">2018-12-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+          <a class="icon" target="_blank" href="http://github.com/localmin">
+            <i class="fab fa-github"></i><!--
+      ---></a><!--
+    ---><!--
+    --->, 
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/02/nocoffeine/">カフェインの摂取を一週間やめてみた</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
       
-        <p>先週の火曜ふと思い立って一週間程度カフェインをとるのやめてみた。理由は体にいいかもとか思ってた気もする。自分の場合カフェインの摂取源は主にコーヒー(たぶん)なので、とりあえず飲むのをやめた。コーヒーを飲む頻度は最低毎朝インスタントコーヒーを一杯、外食したときに2-3杯飲んだり飲まなかったり。まあカフェイン中毒って呼ばれるほど摂取量多くないけど340/365日は飲んでると思う。</p>
-<h3 id="カフェイン断ち1日目"><a href="#カフェイン断ち1日目" class="headerlink" title="カフェイン断ち1日目"></a>カフェイン断ち1日目</h3><p>特に変化なし。まあ1日くらい飲まないことは普通にあるので。</p>
-<h3 id="2日目"><a href="#2日目" class="headerlink" title="2日目"></a>2日目</h3><p>夕方ぐらいから頭痛。目も痛い。肩こり首こりから頭痛がくることは結構あるんだけど、目が痛くなることはあんまりないのでコーヒー関係あるのかな？わからんって感じだった。バファリン飲んだら少し体調良くなった気もするがいつもより効かなかった。</p>
-<h3 id="3日目"><a href="#3日目" class="headerlink" title="3日目"></a>3日目</h3><p>初っ端からめっちゃ頭が痛くて辛い。目も痛い。この日くらいから札幌では雪が降り始めたりしたので気候の変化のせいな気もした。いつも通りバファリンを飲んだがやっぱり思ったより効かない。夕飯の時間帯には少し体調が良くなったもののまたぶり返し、結構しんどかったので22時には寝た。普段27時らへんで寝てるのでめちゃ早いが、完全に無理な感じだった。結局原因はカフェインのせいか雪のせいかわからなかったが、カファインの禁断症状ならなんて馬鹿なことをしたんだ俺は…とめっちゃ後悔してた。あまりに体調が悪かったので。</p>
-<h3 id="4日目"><a href="#4日目" class="headerlink" title="4日目"></a>4日目</h3><p>体調回復。でも夕方からまた少し頭痛、目に違和感があったりした。いつもの癖でふつーに朝コーヒー入れようとしててビビった。</p>
-<h3 id="5日目"><a href="#5日目" class="headerlink" title="5日目"></a>5日目</h3><p>コンビニで飲み物買おうと思ったときコーヒー駄目となると選択肢めっちゃ減ることに気づいた。</p>
-<p><a href="https://ossan.fm/episode/5" target="_blank" rel="noopener">Ossan.fm</a>で禁カフェインみたいなのをやっていたので聴いた。カフェイン絶ったときの行動パターンが全く一緒でビビった。やっぱ体調悪くなったのそのせいかーみたいな気持ちになった。この日は体調は普通。</p>
-<h3 id="6・7日目"><a href="#6・7日目" class="headerlink" title="6・7日目"></a>6・7日目</h3><p>体調は普通。</p>
-<h3 id="8日目"><a href="#8日目" class="headerlink" title="8日目"></a>8日目</h3><p>朝起きて一瞬でコーヒー飲んだ。まあだからハイになったとかは全くなく普通だった。</p>
-<p>なんとなくカフェイン抜いただけにしてはガチめ体調崩したりしてしんどかった。2度とこんなことはやりません。毎日コーヒー飲みます。俺よりカフェイン摂取してる人間には相当きついんじゃないんだろうか。</p>
-<p>Ossan.fmは<a href="https://ossan.fm/episode/7" target="_blank" rel="noopener">後日談</a>あるっぽいのであとで聴いてみる予定。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://localmin.github.io/2018/12/02/nocoffeine/" data-id="cjpjewb2j000281m2zj92ksdt" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-SECCON-Beginners-2018＠東京東京都立産業技術高専-参加記" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/10/08/SECCON-Beginners-2018＠東京東京都立産業技術高専-参加記/" class="article-date">
-  <time datetime="2018-10-07T17:41:43.000Z" itemprop="datePublished">2018-10-08</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/08/SECCON-Beginners-2018＠東京東京都立産業技術高専-参加記/">SECCON Beginners 2018 東京参加記</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="https://2018.seccon.jp/2018/09/seccon-beginners-2018-tokyo.html" target="_blank" rel="noopener">SECCON Beginners 2018＠東京東京都立産業技術高専</a>に参加してきました。</p>
-<p>最初に断っておくとCTF演習のwrite-upはありません(全然解けなかったから…)。なので技術的な内容はほぼなく、感想を垂れ流しているだけです。もしwrite-upを探しているなら他の人が書かれた以下のブログ記事を読んでください。</p>
-<p><a href="http://ark4rk.hatenablog.com/entry/2018/10/06/223923" target="_blank" rel="noopener">SECCON Beginners 2018東京 参加記</a></p>
-<p><a href="https://qiita.com/RyuSA/items/1af6c37d9886486293f4" target="_blank" rel="noopener">【Crypto】SECCON Beginners 2018 WriteUp@東京都立産業技術高専</a></p>
-<p>僕も復習の参考させてもらう予定です。圧倒的感謝。</p>
-<h3 id="参加した経緯"><a href="#参加した経緯" class="headerlink" title="参加した経緯"></a>参加した経緯</h3><p>CTF歴は5月にあったSECCON Beginners CTF 2018がCTF初体験＆初参加でした。当然完膚なきまでに叩きのめされ、その悔しさと勢いでハリネズミ本を買いました。じゃあCTF歴5ヶ月ぐらいですか？みたいに思うかもしれませんが、本は買ったものの大学の研究して合間にNetflixみたいな生活をしているうちにまったくCTFをすることはなく夏が終了しました。まあ要するにやろうと思えばできたのに怠慢によるNo Touch, No lookです。</p>
-<p>そんなこんなでCTFをやることなく人生を終えていくかと思ったのですが、SECCON Beginners東京開催を知り、しかも当選すれば日程的には内定式のついでにいけるので(札幌在住かつ北海道開催はなさそうなので)これは運命、CTF再開のチャンスだと思い応募、そして当選しました。当選が決まったあとは内定式がついででこっちがメイン的な気持ちに変化し、内定式はよ終われ的な感じでしたね。</p>
-<h3 id="当日"><a href="#当日" class="headerlink" title="当日"></a>当日</h3><p>良い天気でした。なんとなく30~40人くらいかなと思っていたので100人くらいいてびっくり。人間が多いせいか最初は冷房の効き具合が微妙でしたが、だんだん涼しくなってきたので良かったです。会場になっている高専は全体的に設備が立派で、冷房すらなく若者の殺戮を企んでいるとしか思えない田舎公立高校に通っていた身としては羨ましい限り。もしかしたら高専は全体的にこんな感じなのかもしれませんが。</p>
-<p>定刻通りに始まり、最初はCTFとはなんぞやとか法を守ってくださいみたいなお話。なんとなくスパイダーマン(たぶん)の「大いなる力には大いなる責任が伴う」的な名言を思い出すなどしてました。力は全然ないんだけど。</p>
-<h3 id="講義１-Crypto"><a href="#講義１-Crypto" class="headerlink" title="講義１(Crypto)"></a>講義１(Crypto)</h3><p>Cryptoの講義は前回のBeginnersが初めて、今回で２回目。</p>
-<p>内容は「公開鍵暗号の基礎」「RSA」が中心で最後に暗号の全般の話やツール、おすすめ書籍の紹介がありました。忘れかけていた剰余演算(分配法則や逆元の話は、あ、これ数学ガール フェルマーの最終定理で読んだやつだ！ってなった)や、雰囲気だけは知っているRSAの詳しい説明がありました。</p>
-<p>この講義はパソコンをカタカタやるというよりは割と数学の話で、式を追い演習では紙とペンで計算をするといった感じ。CTFに限らず数学的知識は重要と感じつつも後回しにしている節がなんとなくあったので反省。やはりCTFは幅広い知識が必要でトライアスロンみたいなもん(最初のCTFの説明で言ってた)ということをさっそく実感させられました。とはいえ、CTFのイベントなので解く上でのおすすめツールや脆弱性の紹介もあり嬉しかったです。</p>
-<h3 id="昼休み"><a href="#昼休み" class="headerlink" title="昼休み"></a>昼休み</h3><p>北海道からきたので当然知り合いはおらずぼっち飯。ぼっち飯は今までの人生で培った経験をいかしたので余裕です。でも誰かと一緒に来るか事前にtwitterとかで知り合いを作るべきでしたね。余った時間は午前の復習をするなどしていました。この時間からNEXTの参加者が集まりつつありました。</p>
-<h3 id="講義２-Pwn"><a href="#講義２-Pwn" class="headerlink" title="講義２(Pwn)"></a>講義２(Pwn)</h3><p>pwnの講義はBeginners初だとか。歴史に立ち会ってしまった。</p>
-<p>内容はpwn自体の説明(pwnの読み方がわかったことに感動した)、アセンブリとバッファオーバーフロー(BOF)の説明ののち、実際にgdbで解析、攻撃コードの作成などの演習といった流れ。<br>講義の説明や資料には9割は必要な知識はあったと思いますが、俺みたいなモノホンの初心者(アセンブリ言語をほぼ読んだことない人)にはちょっと情報量が多くて大変でした。まあそれくらい事前に勉強しておくべきでしたが…。資料を何回もあっちこっち参照してるうちに結局演習時間中にシェルを奪うことはできず。ただこの手の問題を解けるようになったらめっちゃ気持ちいんだろうな〜っていうのは伝わってきました。ハッキングしてる感があるというか。</p>
-<h3 id="CTF演習"><a href="#CTF演習" class="headerlink" title="CTF演習"></a>CTF演習</h3><p>お待ちかねのCTF演習です。結果だけ言うと89/121。クソザコ。具体的な問題や解法は上のリンクの記事を読んでください。あとBGMめっちゃ怖かったのとカイロ・レンが職場に変装して潜入するやつ流れてませんでした？</p>
-<h3 id="CTF解説"><a href="#CTF解説" class="headerlink" title="CTF解説"></a>CTF解説</h3><p>毎回そうなのかは知らないけど、解説してほしい問題を挙手して聞くみたいなスタイルでした。pwn関連の質問が多かったですね。挙手制だとどうしても強そうな人による強そうな質問が多く、俺みたいなマジモンの初心者は？？？となりがち(そもそもどの問題がどの程度のレベルかもわからない)。もちろん会場にあまりに初学者的な質問をしてはいけないみたいな雰囲気は全くなく、どんな質問にも答えてくれたと思います。ただやはり日本人的なのか初学者はそういう傾向にあるのかはわからないけど、若干簡単な質問に対して遠慮気味なかんじはあった気がします。挙手制オンリーではなく、事前に運営が初心者が気になりそうな問題を選んで、解説を作っておくみたいなのもありそうですが、そうなると運営側の負担も急に増えると思うので難しそう。</p>
-<p>まあゴチャゴチャ考えずに質問すれば良かったんですけどね。</p>
-<h3 id="交流会"><a href="#交流会" class="headerlink" title="交流会"></a>交流会</h3><p>解説のあとは交流会がありました。無料で講義してくれる上にお菓子と飲み物も用意してくれるとか最高か…？当然のようにコミュ障こじらせてましたが何人かとお話できました。僕の知り合いにはCTFなりセキュリティ関連の勉強やってる人が少ないので、こういう場でCTF周りの話ができたのはすごい刺激になりました。いやーもうちょうとコミュ力上げて外に出ないとな…と反省するばかり。コミュ障と電車の時間もあって多くの人とは喋れなかったけど楽しかったです。</p>
-<h3 id="まとめ"><a href="#まとめ" class="headerlink" title="まとめ"></a>まとめ</h3><p>こういう勉強会は出たことがないので、参加する前はめっちゃ緊張してたけど楽しかったです。僕の場合、気を抜くと独学の割合がかなり多くなってしまうのですが、独学だと何が重要かわからないから全探索的な勉強になったり、勉強法から調べたりして時間を消費をしてしまうので、こういう場で強い人からポイントを抑えた内容を教わることも大事だなと改めて思いました。<br>あとtwitterとかで運営の想定する初心者とは？みたいな話もありましたが、やっぱり初心者といっても結構幅があって、コンピュータサイエンスを大学で勉強してたけどCTF歴は短いです！みたいな初心者もいれば、まじで無みたいな初心者もいるかもしれないわけです。運営の方も(たぶん)そこらへんはわかっていて、イベントをやっていく上では大変な部分なのかと。個人的にはなるべく多くの初心者をカバーするような内容だったんじゃないかなと思います(問題解説のところはついていけなかったけど…)。</p>
-<p>小学生並みの感想ですが、参加できて良かったです。とりあえずは今月末のSECCONの予選を目標に精進します。</p>
-<p>講師や運営の方は本当にお疲れ様でした。あと懇親会で僕にかまってくれた人もありがとうございました。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://localmin.github.io/2018/10/08/SECCON-Beginners-2018＠東京東京都立産業技術高専-参加記/" data-id="cjpjewb2s000381m2cjago70x" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-4回目のブログ" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/10/05/4回目のブログ/" class="article-date">
-  <time datetime="2018-10-05T14:58:26.000Z" itemprop="datePublished">2018-10-05</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+          <a class="icon" target="_blank" href="https://twitter.com/localmin">
+            <i class="fab fa-twitter"></i><!--
+      ---></a><!--
+    ---><!--
+    ---> and 
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/05/4回目のブログ/">４回目のブログ</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
       
-        <p>9月ぐらいからまたブログやろうと思ってHexoでちまちま作ってた。</p>
-<p>作るっていってもテーマ選んでテンプレに沿って適当に変えるだけなのですぐに形にはなったけど、細かいところをいじっては直しを何回も繰り返してるうちにそれで満足してしまったことや、結局ブログなんか誰も読まないし書いても意味ないよなーと思ってしまってモチベがなくなったこともあり、しばらく放置していた。結局今回の旅行先での暇つぶしに完成させたけど。</p>
-<p>ブログをやるのはこれで４回目。<br>１回目は中3のときでYahooブログを使った。内容は自分の好きなマンガとかアニメの感想だったが、AmazonとかAnnictのクソレビューみたいに物語のあらすじをただなぞるみたいな感じで全く中身はなかったと思う。結局このブログは高校に入ったと同時に別のことに夢中になって更新しなくなった。4つのブログの中では歴史の黒度合いが濃いために今すぐにでも削除したいが、ブログの名前、当時使ってたyahooIDとそのパスワードを失念したので黒歴史が永遠にネットの海を漂うことが確定した。つらい。まあ今の自分と結びつくものは書いてないので誰かに発見されることはないと思うが。</p>
-<p>２回目ははてなブログで大学2年のときに作った。周りにはてなブログを使う人が増えたことや、何に影響されたかは忘れたけど毎日日記が書きたいと思って始めたことは覚えている。流石に毎日更新は無理だったが大学４年(※１回目 )まで断続的に続いた。過去３回のブログの中では一番続いたと思う。まあ1ヶ月に２０件近く更新したかと思えば、年単位で間が空いたりしてかなりムラがあったが。これも昔の日記を読んだら死ぬほど恥ずかしくなったので消した。ブログに書くかは別として、１０数年単位で日記つけてる人は昔の日記とか読み返すのかな。それって自分の人生と向き合うことに等しいと思うのでめっちゃすごいと思います。俺だったら発狂して死んでしまう。</p>
-<p>３回目は大学４年(※２回目)のとき。ブログと少し違う気もするけど Wikihubというサービス内で日報コミュニティなるものがあり、そこで３〜4ヶ月くらい日報を書いていた。日報ではその日何をしたか(研究の進捗、読んだ本、趣味コーディング)についてを淡々と書く感じ。期間は短かったがほぼ毎日更新していた。日報コミュニティーの良かったところは刺激と安心感の両方得られるところだったと思う。「めっちゃ進捗できた！」と沢山作業内容を書いている人の日報を読んで、俺も頑張らないとヤバイと思ったり、「今日は何もしなかった寝た」と一行書いて終わる人の日報を読んで、こういう日もあって良いよなとか思ったりしてた。一行だけでも必ず誰かしらがリアクションをくれるのも続けられた要因の一つだった気がする。これも最終的にある日を境にまったく書かなくなってしまった。やっぱり俺には何かを毎日続けるということは不可能だと改めて悟った。例えば労働とかもそうだと思うんだが。最近はまったく読んでないけど、日報コミュニティーは新たな人を交えつつ続いてるっぽい。</p>
-<p>そして４回目のこれに至る。なんでまた始めたのか理由を書こうと思ったけど、前三つのブログ遍歴を書いていたらめんどうくさくなってしまった。英語の上達には日本語の能力が関係しているから日本語能力向上のためだとか、就活とか内定式の愚痴をtwitterではなくまとめて長い文章で書きたいとかそこらへん。</p>
-<p>とりあえず今回の目標は更新頻度は気にせず、かつ未来の自分が読んでも消したくならないものを書くことてす。就活とか内定式の話も書こうと思ったけど後で読んで消したくなりそうなので書かないかも。</p>
-<p>ちなみに題名の「ぼっち・ざ・はっく！」は知る人ぞ知る「ぼっち・ざ・ろっく！」からきています。「はっく」とあるけど技術的なものは書かない気がする。技術に明るくないので。</p>
-
+        
+          <a class="icon" target="_blank" href="/localmin9201009@gmail.com">
+            <i class="fas fa-envelope"></i><!--
+      ---></a><!--
+      ---><!--
+    --->.
+        
       
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://localmin.github.io/2018/10/05/4回目のブログ/" data-id="cjpjewb2f000081m2fyvn7aa8" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
+    </p>
   
-</article>
-
-
-  
-
-
 </section>
+
+<section id="writing">
+  <span class="h1"><a href="/archives">Writing</a></span>
+  
+  <ul class="post-list">
+    
+      
+    
+    
+      <li class="post-item">
         
-          <aside id="sidebar">
-  
-    
-
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li></ul>
+    <div class="meta">
+        <time datetime="2018-12-11T06:37:24.000Z" itemprop="datePublished">2018-12-11</time>
     </div>
-  </div>
 
 
-  
+        <span>
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
+        <a class="" href="/2018/12/11/fast-nmf/">論文紹介：変数選択を用いた高速な非負値行列因子分解 + α</a>
+    
+
+
+</span>
+      </li>
+    
+      <li class="post-item">
+        
+    <div class="meta">
+        <time datetime="2018-12-09T15:04:06.000Z" itemprop="datePublished">2018-12-10</time>
+    </div>
+
+
+        <span>
+    
+        <a class="" href="/2018/12/10/job-hunt2018/">俺の就活2018</a>
+    
+
+
+</span>
+      </li>
+    
+      <li class="post-item">
+        
+    <div class="meta">
+        <time datetime="2018-12-01T17:34:05.000Z" itemprop="datePublished">2018-12-02</time>
+    </div>
+
+
+        <span>
+    
+        <a class="" href="/2018/12/02/nocoffeine/">カフェインの摂取を一週間やめてみた</a>
+    
+
+
+</span>
+      </li>
+    
+      <li class="post-item">
+        
+    <div class="meta">
+        <time datetime="2018-10-07T17:41:43.000Z" itemprop="datePublished">2018-10-08</time>
+    </div>
+
+
+        <span>
+    
+        <a class="" href="/2018/10/08/SECCON-Beginners-2018＠東京東京都立産業技術高専-参加記/">SECCON Beginners 2018 東京参加記</a>
+    
+
+
+</span>
+      </li>
+    
+      <li class="post-item">
+        
+    <div class="meta">
+        <time datetime="2018-10-05T14:58:26.000Z" itemprop="datePublished">2018-10-05</time>
+    </div>
+
+
+        <span>
+    
+        <a class="" href="/2018/10/05/4回目のブログ/">４回目のブログ</a>
+    
+
+
+</span>
+      </li>
+    
+  </ul>
+  
+</section>
+
+
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2018 localmin
+  </div>
+  <div class="footer-right">
+    <nav>
       <ul>
-        
-          <li>
-            <a href="/2018/12/11/fast-nmf/">論文紹介：変数選択を用いた高速な非負値行列因子分解 + α</a>
-          </li>
-        
-          <li>
-            <a href="/2018/12/10/job-hunt2018/">俺の就活2018</a>
-          </li>
-        
-          <li>
-            <a href="/2018/12/02/nocoffeine/">カフェインの摂取を一週間やめてみた</a>
-          </li>
-        
-          <li>
-            <a href="/2018/10/08/SECCON-Beginners-2018＠東京東京都立産業技術高専-参加記/">SECCON Beginners 2018 東京参加記</a>
-          </li>
-        
-          <li>
-            <a href="/2018/10/05/4回目のブログ/">４回目のブログ</a>
-          </li>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
         
       </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2018 localmin<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
+    </nav>
   </div>
 </footer>
+
     </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-<script src="/js/script.js"></script>
-
-
-
-  </div>
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
         tex2jax: {
@@ -647,23 +246,23 @@ h_{i,r}^{&apos;&apos;} = \sum_{j=1}^{n}1 - \frac{V_{i,j}H_{r,j}^{2}}{((WH)_{i,j}
             all[i].SourceElement().parentNode.className += ' has-jax';
     });
 </script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config("");
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="custom_mathjax_source">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
 </html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
