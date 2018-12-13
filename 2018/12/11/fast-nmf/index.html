@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="ぼっち・ざ・はっく！">
 <meta property="og:description" content="なぜか数式が表示されないのでhttps://hackmd.io/s/ry0Ajk614をご覧下さい はじめにおばんです！ localminと申します。現在M2で、普段の研究ではあえてぼかした言い方をすると行列演算について考えたり、パソコンをカタカタしています。本記事は#今年読んだ一番好きな論文2018の11日目の記事です。本記事でも少し古いですが行列にまつわる論文について紹介していきたいと思います">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-12-12T15:06:11.440Z">
+<meta property="og:updated_time" content="2018-12-12T15:21:18.352Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="論文紹介：変数選択を用いた高速な非負値行列因子分解 + α">
 <meta name="twitter:description" content="なぜか数式が表示されないのでhttps://hackmd.io/s/ry0Ajk614をご覧下さい はじめにおばんです！ localminと申します。現在M2で、普段の研究ではあえてぼかした言い方をすると行列演算について考えたり、パソコンをカタカタしています。本記事は#今年読んだ一番好きな論文2018の11日目の記事です。本記事でも少し古いですが行列にまつわる論文について紹介していきたいと思います">
@@ -69,6 +69,8 @@
     <br>
     <span id="actions">
       <ul>
+        
+        <li><a class="icon" href="/2018/12/13/english3month/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
         
         <li><a class="icon" href="/2018/12/10/job-hunt2018/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
@@ -440,7 +442,22 @@ h_{i,r}^{&apos;&apos;} = \sum_{j=1}^{n}1 - \frac{V_{i,j}H_{r,j}^{2}}{((WH)_{i,j}
   </div>
 </footer>
 
-    </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+    </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config("");
 </script>
