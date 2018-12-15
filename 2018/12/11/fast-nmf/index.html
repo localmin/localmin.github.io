@@ -6,17 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="なぜか数式が表示されないのでhttps://hackmd.io/s/ry0Ajk614をご覧下さい はじめにおばんです！ localminと申します。現在M2で、普段の研究ではあえてぼかした言い方をすると行列演算について考えたり、パソコンをカタカタしています。本記事は#今年読んだ一番好きな論文2018の11日目の記事です。本記事でも少し古いですが行列にまつわる論文について紹介していきたいと思います">
+    <meta name="description" content="はじめにおばんです！ localminと申します。現在M2で、普段の研究ではあえてぼかした言い方をすると行列演算について考えたり、パソコンをカタカタしています。本記事は#今年読んだ一番好きな論文2018の11日目の記事です。本記事でも少し古いですが行列にまつわる論文について紹介していきたいと思います。 紹介論文[1] 題名Fast Coordinate Descent Methods with V">
 <meta property="og:type" content="article">
 <meta property="og:title" content="論文紹介：変数選択を用いた高速な非負値行列因子分解 + α">
 <meta property="og:url" content="https://localmin.github.io/2018/12/11/fast-nmf/index.html">
 <meta property="og:site_name" content="ぼっち・ざ・はっく！">
-<meta property="og:description" content="なぜか数式が表示されないのでhttps://hackmd.io/s/ry0Ajk614をご覧下さい はじめにおばんです！ localminと申します。現在M2で、普段の研究ではあえてぼかした言い方をすると行列演算について考えたり、パソコンをカタカタしています。本記事は#今年読んだ一番好きな論文2018の11日目の記事です。本記事でも少し古いですが行列にまつわる論文について紹介していきたいと思います">
+<meta property="og:description" content="はじめにおばんです！ localminと申します。現在M2で、普段の研究ではあえてぼかした言い方をすると行列演算について考えたり、パソコンをカタカタしています。本記事は#今年読んだ一番好きな論文2018の11日目の記事です。本記事でも少し古いですが行列にまつわる論文について紹介していきたいと思います。 紹介論文[1] 題名Fast Coordinate Descent Methods with V">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-12-15T04:41:00.948Z">
+<meta property="og:updated_time" content="2018-12-15T05:01:46.944Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="論文紹介：変数選択を用いた高速な非負値行列因子分解 + α">
-<meta name="twitter:description" content="なぜか数式が表示されないのでhttps://hackmd.io/s/ry0Ajk614をご覧下さい はじめにおばんです！ localminと申します。現在M2で、普段の研究ではあえてぼかした言い方をすると行列演算について考えたり、パソコンをカタカタしています。本記事は#今年読んだ一番好きな論文2018の11日目の記事です。本記事でも少し古いですが行列にまつわる論文について紹介していきたいと思います">
+<meta name="twitter:description" content="はじめにおばんです！ localminと申します。現在M2で、普段の研究ではあえてぼかした言い方をすると行列演算について考えたり、パソコンをカタカタしています。本記事は#今年読んだ一番好きな論文2018の11日目の記事です。本記事でも少し古いですが行列にまつわる論文について紹介していきたいと思います。 紹介論文[1] 題名Fast Coordinate Descent Methods with V">
     
     
         
@@ -136,8 +136,7 @@
   
 
   <div class="content" itemprop="articleBody">
-    <p>なぜか数式が表示されないので<a href="https://hackmd.io/s/ry0Ajk614" target="_blank" rel="noopener">https://hackmd.io/s/ry0Ajk614</a>をご覧下さい</p>
-<h2 id="はじめに"><a href="#はじめに" class="headerlink" title="はじめに"></a>はじめに</h2><p>おばんです！ <a href="https://twitter.com/localmin?lang=ja" target="_blank" rel="noopener">localmin</a>と申します。現在M2で、普段の研究ではあえてぼかした言い方をすると行列演算について考えたり、パソコンをカタカタしています。本記事は<a href="https://adventar.org/calendars/3392" target="_blank" rel="noopener">#今年読んだ一番好きな論文2018</a>の11日目の記事です。本記事でも少し古いですが行列にまつわる論文について紹介していきたいと思います。</p>
+    <h2 id="はじめに"><a href="#はじめに" class="headerlink" title="はじめに"></a>はじめに</h2><p>おばんです！ <a href="https://twitter.com/localmin?lang=ja" target="_blank" rel="noopener">localmin</a>と申します。現在M2で、普段の研究ではあえてぼかした言い方をすると行列演算について考えたり、パソコンをカタカタしています。本記事は<a href="https://adventar.org/calendars/3392" target="_blank" rel="noopener">#今年読んだ一番好きな論文2018</a>の11日目の記事です。本記事でも少し古いですが行列にまつわる論文について紹介していきたいと思います。</p>
 <h2 id="紹介論文-1"><a href="#紹介論文-1" class="headerlink" title="紹介論文[1]"></a>紹介論文[1]</h2><ul>
 <li>題名<br><a href="http://www.cs.utexas.edu/~cjhsieh/nmf_kdd11.pdf" target="_blank" rel="noopener">Fast Coordinate Descent Methods with Variable Selection for Non-negative Matrix Factorization</a></li>
 <li>著者<br>Cho-Jui Hsieh, Inderjit S. Dhillon</li>
@@ -157,7 +156,7 @@
 <p>$$<br>v_{i} \approx Wh_{j}<br>$$</p>
 <p>と表現することができます。<br>すなわちNMFは観測行列の各列を$W$の列ベクトルの線形結合で近似していると解釈することができます。<br>線形結合に使用されるベクトル(基底)を格納した行列なので基底行列、そして線形結合に置ける係数を格納した列ベクトル$h_{j}$を並べているので係数行列というわけです。</p>
 <p>NMF以外にも行列を分解する手法で有名なものに特異値分解(SVD)や固有分解(スペクトル分解)などがあります。しかし非負値行列を適用した場合に、分解した結果に負の値が出現してしまったり、得られるベクトルが直交してしまうため、結果の解釈が難しくなる欠点が存在します。<br>そこでNMFでは与えられたデータはもちろん、分解結果にも非負の制約与えることでデータの見通しが良くなる長所があります。また分解して得られた基底ベクトルは必ずしも直交しません。</p>
-<h2 id="NMFの解法"><a href="#NMFの解法" class="headerlink" title="NMFの解法"></a>NMFの解法</h2><h3 id="目的関数の設定"><a href="#目的関数の設定" class="headerlink" title="目的関数の設定"></a>目的関数の設定</h3><p>次にどうやって$W$、$H$を求めるのかという話に移っていきます。<br>人によっては行列を二つの積にバラすのは簡単では？と思う人もいるかもしれません。でもそれは具体例をみれば難しいとわかるでしょう。<br>では以下の方程式をを$k=2$という条件で二つの非負値行列$ W$、$H$を求めてみてください。</p>
+<h2 id="NMFの解法"><a href="#NMFの解法" class="headerlink" title="NMFの解法"></a>NMFの解法</h2><h3 id="目的関数の設定"><a href="#目的関数の設定" class="headerlink" title="目的関数の設定"></a>目的関数の設定</h3><p>次にどうやって$W$、$H$を求めるのかという話に移っていきます。<br>人によっては行列を二つの積にバラすのは簡単では？と思う人もいるかもしれません。でもそれは具体例をみれば難しいとわかるでしょう。<br>では以下の方程式をを$k=2$という条件で二つの非負値行列$W$、$H$を求めてみてください。</p>
 <span>$$\begin{pmatrix} 
  23 &amp; 13  &amp; 22\\
  8  &amp; 16  &amp;40\\
@@ -188,7 +187,7 @@
 <p>まず変数選択法の説明の前に更新手順について説明します。この論文では便宜上、注目する行列を変えることをOuter Iteration、注目している行列内での更新をInner Updateとしています。<br>Outer Iterationでは$W, H$を交互に更新していきます。</p>
 <p>$$<br>(W^{0}, H^{0}) \rightarrow  (W^{1}, H^{0}) \rightarrow  (W^{1}, H^{1})…<br>$$</p>
 <p>そして一回のOuter Iterationの間にInner Updateという行列内の更新を行います。</p>
-<p>$$<br>(W^{i,0}, H^{t}) \rightarrow  (W^{i,1}, H^{i,0}) \rightarrow  (W^{i,2}, H^{t})…<br>$$</p>
+<p>$$<br>(W^{t,0}, H^{t-1}) \rightarrow  (W^{t,1}, H^{t-1}) \rightarrow  (W^{t,2}, H^{t-1})…<br>$$</p>
 <p>実際の変数選択はInner Update内で行います。</p>
 <p>要するに、</p>
 <ol>
@@ -235,7 +234,7 @@
 <td>1000</td>
 <td>10</td>
 <td>$10^{-4}$</td>
-<td>0.6/0.7G</td>
+<td>${\bf 0.6/0.7G}$</td>
 <td>2.3/2.9G</td>
 <td>2.1/1.4G</td>
 <td>1.7/1.1G</td>
@@ -246,7 +245,7 @@
 <td>1000</td>
 <td>30</td>
 <td>$10^{-4}$</td>
-<td>4.0/5.0G</td>
+<td>${\bf 4.0/5.0G}$</td>
 <td>9.3/16.1G</td>
 <td>26.6/23.5G</td>
 <td>12.4/8.7G</td>
@@ -257,7 +256,7 @@
 <td>1000</td>
 <td>10</td>
 <td>$10^{-4}$</td>
-<td>0.21/0.11G</td>
+<td>${\bf 0.21/0.11G}$</td>
 <td>0.43/0.38G</td>
 <td>0.53/0.41G</td>
 <td>0.56/0.35G</td>
@@ -268,7 +267,7 @@
 <td>1000</td>
 <td>30</td>
 <td>$10^{-4}$</td>
-<td>0.43/0.46G</td>
+<td>${\bf 0.43/0.46G}$</td>
 <td>0.77/1.71G</td>
 <td>2.54/2.70G</td>
 <td>2.86/1.43G</td>
@@ -279,7 +278,7 @@
 <td>2429</td>
 <td>49</td>
 <td>0.0410</td>
-<td>2.3/2.3G</td>
+<td>${\bf 2.3/2.3G}$</td>
 <td>4.0/10.2G</td>
 <td>13.5/14.4G</td>
 <td>10.6/8.1G</td>
@@ -290,7 +289,7 @@
 <td>2429</td>
 <td>49</td>
 <td>0.0376</td>
-<td>8.9/8.8G</td>
+<td>${\bf 8.9/8.8G}$</td>
 <td>18.0/46.8G</td>
 <td>45.6/49.4G</td>
 <td>30.9/29.8G</td>
@@ -301,7 +300,7 @@
 <td>2429</td>
 <td>49</td>
 <td>0.0373</td>
-<td>14.6/14.5G</td>
+<td>${\bf 14.6/14.5G}$</td>
 <td>29.0/75.7G</td>
 <td>84.6/91.2G</td>
 <td>51.5/53.8G</td>
@@ -312,7 +311,7 @@
 <td>400</td>
 <td>25</td>
 <td>0.0365</td>
-<td>1.8/2.7G</td>
+<td>${\bf 1.8/2.7G}$</td>
 <td>6.5/14.5G</td>
 <td>9.0/9.1G</td>
 <td>7.4/5.4G</td>
@@ -323,7 +322,7 @@
 <td>400</td>
 <td>25</td>
 <td>0.0335</td>
-<td>14.1/20.1G</td>
+<td>${\bf 14.1/20.1G}$</td>
 <td>30.3/66.9G</td>
 <td>98.6/9.1G</td>
 <td>33.9/38.2G</td>
@@ -334,14 +333,14 @@
 <td>400</td>
 <td>25</td>
 <td>0.0332</td>
-<td>33.0/51.5G</td>
+<td>${\bf 33.0/51.5G}$</td>
 <td>63.3/139.0G</td>
 <td>256.8/193.5G</td>
 <td>76.5/82.4G</td>
 </tr>
 </tbody>
 </table>
-<p>(僕のブログテーマのせいか変な表になってます。すいません…。綺麗な表は<a href="http://www.cs.utexas.edu/~cjhsieh/nmf_kdd11.pdf" target="_blank" rel="noopener">論文7ページTable2</a>です。)<br>表での各手法の値はTime(in seconds)/FLOPSを表しており、小さいほどいいです。いずれの場合もGCD(提案手法)が高速であることがわかります。</p>
+<p>表での各手法の値はTime(in seconds)/FLOPSを表しており、小さいほどいいです。いずれの場合もGCD(提案手法)が高速であることがわかります。</p>
 <h3 id="実験2-疎なデータに対して"><a href="#実験2-疎なデータに対して" class="headerlink" title="実験2(疎なデータに対して)"></a>実験2(疎なデータに対して)</h3><p>比較する手法はGCD, FastHALS[4]、BlockPivot[6]。<br>もちいたデータは</p>
 <ol>
 <li>Yahoo-News : ニュース記事、$21839\times 2340, k=20$ </li>
@@ -357,8 +356,8 @@
 <span>$$L(W, H) = \sum_{i,j}V_{i,j}log(\frac{V_{i,j}}{(WH)_{i,j}})-V_{i,j}+(WH)_{i,j}\\$$</span><!-- Has MathJax -->
 <p>フロべニウスノルムの二乗の場合と異なり、変数選択は用いない循環座標降下法(CCD)になっています。<br>更新幅$s$をニュートン法を用いて高速に求めるのが特徴的な手法です。</p>
 <span>$$s \leftarrow \max(-W_{i,r}, s-h_{i,r}^{&apos;}(s)/h_{i,r}^{&apos;&apos;}(s))\\
-h_{i,r}^{&apos;} = \sum_{j=1}^{n}H_{r,j}\left( 1 - \frac{V_{i,j}}{(WH)_{i,j}+sH_{r,j}} \right) \\
-h_{i,r}^{&apos;&apos;} = \sum_{j=1}^{n}1 - \frac{V_{i,j}H_{r,j}^{2}}{((WH)_{i,j}+sH_{r,j})^{2}}$$</span><!-- Has MathJax -->
+h_{i,r}^{&apos;}(s) = \sum_{j=1}^{n}H_{r,j}\left( 1 - \frac{V_{i,j}}{(WH)_{i,j}+sH_{r,j}} \right) \\
+h_{i,r}^{&apos;&apos;}(s) = \sum_{j=1}^{n}1 - \frac{V_{i,j}H_{r,j}^{2}}{((WH)_{i,j}+sH_{r,j})^{2}}$$</span><!-- Has MathJax -->
 <p>この手法は同じ密なデータでMultiplicative Updateと比較されており、高速化に成功しています。<br>結果は<a href="http://www.cs.utexas.edu/~cjhsieh/nmf_kdd11.pdf" target="_blank" rel="noopener">論文8ページTable3</a>。<br>ただKL-divergenceに関しては2012年にsBCD[7]というより高速な手法が提案されています…。</p>
 <h2 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h2><p>本論文では目的関数がフロべニウスノルムの二乗に用いた時に、変数選択を用いた座標降下法を提案しました。またKL-divergenceにおいてもニュートン法を利用した循環座標降下法を提案しました。この二つの手法に関して実データを用いて実験を行い、高速化に成功したことを確認できました。</p>
 <h2 id="その後-amp-感想"><a href="#その後-amp-感想" class="headerlink" title="その後&amp;感想"></a>その後&amp;感想</h2><p>以上が論文の内容になります。KL-divergenceの話もそうですが、収束の保証の議論、Inner Updateの停止条件、各ステップでの計算量の議論などここに書ききれなかった話が論文にはあるので興味がある人は是非。</p>
