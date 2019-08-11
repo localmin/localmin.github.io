@@ -1,5 +1,142 @@
-<!DOCTYPE html><html lang="en"><head><meta name="generator" content="Hexo 3.8.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width, initial-scale=1"><title>論文紹介：変数選択を用いた高速な非負値行列因子分解 + α</title><link rel="shortcut icon" href="/images/avatar.png"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="stylesheet" href="//cdn.bootcss.com/highlight.js/9.2.0/styles/github.min.css"><script src="//cdn.bootcss.com/highlight.js/9.2.0/highlight.min.js"></script></head><body><nav class="main-nav"><a href="/">Home</a><a href="/archives">Archives</a><a href="/about">whoami </a></nav><div class="profile"><section id="wrapper"><header id="header"><a href="/about"><img class="2x" id="avatar" src="/images/avatar.png"></a><h1>ぼっち・ざ・はっく！</h1><h2>localmin's blog</h2></header></section></div><section class="post" id="wrapper"><article><header><h1>論文紹介：変数選択を用いた高速な非負値行列因子分解 + α</h1><h2 class="headline">2018 Dec 11, 3:37·3.3k words
-·15 minutes read<span class="tags"></span></h2></header><div id="toc"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#はじめに"><span class="toc-text">はじめに</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#紹介論文-1"><span class="toc-text">紹介論文[1]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#論文概要"><span class="toc-text">論文概要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#なぜこの論文を選んだか？"><span class="toc-text">なぜこの論文を選んだか？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#非負値行列因子分解-NMF-2-とは"><span class="toc-text">非負値行列因子分解(NMF)[2]とは</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NMFの解法"><span class="toc-text">NMFの解法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#目的関数の設定"><span class="toc-text">目的関数の設定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一変数ごとの座標降下法"><span class="toc-text">一変数ごとの座標降下法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#変数選択による高速化"><span class="toc-text">変数選択による高速化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Outer-Iteration-amp-Inner-Update"><span class="toc-text">Outer Iteration &amp; Inner Update</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#変数選択の方法"><span class="toc-text">変数選択の方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#実験"><span class="toc-text">実験</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#実験1-密なデータに対して"><span class="toc-text">実験1(密なデータに対して)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#実験2-疎なデータに対して"><span class="toc-text">実験2(疎なデータに対して)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#実装上の注意"><span class="toc-text">実装上の注意</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#α-KL-divergenceへの提案手法"><span class="toc-text">+α(KL-divergenceへの提案手法)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#結論"><span class="toc-text">結論</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#その後-amp-感想"><span class="toc-text">その後&amp;感想</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考文献"><span class="toc-text">参考文献</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#論文"><span class="toc-text">論文</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#日本語記事"><span class="toc-text">日本語記事</span></a></li></ol></li></ol></div><section id="post-body"><h2 id="はじめに"><a href="#はじめに" class="headerlink" title="はじめに"></a>はじめに</h2><p>おばんです！ <a href="https://twitter.com/localmin?lang=ja" target="_blank" rel="noopener">localmin</a>と申します。現在M2で、普段の研究ではあえてぼかした言い方をすると行列演算について考えたり、パソコンをカタカタしています。本記事は<a href="https://adventar.org/calendars/3392" target="_blank" rel="noopener">#今年読んだ一番好きな論文2018</a>の11日目の記事です。本記事でも少し古いですが行列にまつわる論文について紹介していきたいと思います。</p>
+<!DOCTYPE html>
+<html lang=en>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="はじめにおばんです！ localminと申します。現在M2で、普段の研究ではあえてぼかした言い方をすると行列演算について考えたり、パソコンをカタカタしています。本記事は#今年読んだ一番好きな論文2018の11日目の記事です。本記事でも少し古いですが行列にまつわる論文について紹介していきたいと思います。 紹介論文[1] 題名Fast Coordinate Descent Methods with V">
+<meta property="og:type" content="article">
+<meta property="og:title" content="論文紹介：変数選択を用いた高速な非負値行列因子分解 + α">
+<meta property="og:url" content="https://localmin.github.io/2018/12/11/fast-nmf/index.html">
+<meta property="og:site_name" content="ぼっち・ざ・はっく！">
+<meta property="og:description" content="はじめにおばんです！ localminと申します。現在M2で、普段の研究ではあえてぼかした言い方をすると行列演算について考えたり、パソコンをカタカタしています。本記事は#今年読んだ一番好きな論文2018の11日目の記事です。本記事でも少し古いですが行列にまつわる論文について紹介していきたいと思います。 紹介論文[1] 題名Fast Coordinate Descent Methods with V">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-12-15T05:01:46.944Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="論文紹介：変数選択を用いた高速な非負値行列因子分解 + α">
+<meta name="twitter:description" content="はじめにおばんです！ localminと申します。現在M2で、普段の研究ではあえてぼかした言い方をすると行列演算について考えたり、パソコンをカタカタしています。本記事は#今年読んだ一番好きな論文2018の11日目の記事です。本記事でも少し古いですが行列にまつわる論文について紹介していきたいと思います。 紹介論文[1] 題名Fast Coordinate Descent Methods with V">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="https://www.gravatar.com/avatar/1c0ccb80f18de6871d3fd37b97cd3594?s=180">
+          
+        
+    
+    <!-- title -->
+    <title>論文紹介：変数選択を用いた高速な非負値行列因子分解 + α</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2018/12/13/english3month/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2018/12/10/job-hunt2018/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://localmin.github.io/2018/12/11/fast-nmf/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://localmin.github.io/2018/12/11/fast-nmf/&text=論文紹介：変数選択を用いた高速な非負値行列因子分解 + α"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://localmin.github.io/2018/12/11/fast-nmf/&title=論文紹介：変数選択を用いた高速な非負値行列因子分解 + α"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://localmin.github.io/2018/12/11/fast-nmf/&is_video=false&description=論文紹介：変数選択を用いた高速な非負値行列因子分解 + α"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=論文紹介：変数選択を用いた高速な非負値行列因子分解 + α&body=Check out this article: https://localmin.github.io/2018/12/11/fast-nmf/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://localmin.github.io/2018/12/11/fast-nmf/&title=論文紹介：変数選択を用いた高速な非負値行列因子分解 + α"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://localmin.github.io/2018/12/11/fast-nmf/&title=論文紹介：変数選択を用いた高速な非負値行列因子分解 + α"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://localmin.github.io/2018/12/11/fast-nmf/&title=論文紹介：変数選択を用いた高速な非負値行列因子分解 + α"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://localmin.github.io/2018/12/11/fast-nmf/&title=論文紹介：変数選択を用いた高速な非負値行列因子分解 + α"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://localmin.github.io/2018/12/11/fast-nmf/&name=論文紹介：変数選択を用いた高速な非負値行列因子分解 + α&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#はじめに"><span class="toc-number">1.</span> <span class="toc-text">はじめに</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#紹介論文-1"><span class="toc-number">2.</span> <span class="toc-text">紹介論文[1]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#論文概要"><span class="toc-number">3.</span> <span class="toc-text">論文概要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#なぜこの論文を選んだか？"><span class="toc-number">4.</span> <span class="toc-text">なぜこの論文を選んだか？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#非負値行列因子分解-NMF-2-とは"><span class="toc-number">5.</span> <span class="toc-text">非負値行列因子分解(NMF)[2]とは</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NMFの解法"><span class="toc-number">6.</span> <span class="toc-text">NMFの解法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#目的関数の設定"><span class="toc-number">6.1.</span> <span class="toc-text">目的関数の設定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一変数ごとの座標降下法"><span class="toc-number">6.2.</span> <span class="toc-text">一変数ごとの座標降下法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#変数選択による高速化"><span class="toc-number">7.</span> <span class="toc-text">変数選択による高速化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Outer-Iteration-amp-Inner-Update"><span class="toc-number">7.1.</span> <span class="toc-text">Outer Iteration &amp; Inner Update</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#変数選択の方法"><span class="toc-number">7.2.</span> <span class="toc-text">変数選択の方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#実験"><span class="toc-number">8.</span> <span class="toc-text">実験</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#実験1-密なデータに対して"><span class="toc-number">8.1.</span> <span class="toc-text">実験1(密なデータに対して)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#実験2-疎なデータに対して"><span class="toc-number">8.2.</span> <span class="toc-text">実験2(疎なデータに対して)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#実装上の注意"><span class="toc-number">8.3.</span> <span class="toc-text">実装上の注意</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#α-KL-divergenceへの提案手法"><span class="toc-number">9.</span> <span class="toc-text">+α(KL-divergenceへの提案手法)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#結論"><span class="toc-number">10.</span> <span class="toc-text">結論</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#その後-amp-感想"><span class="toc-number">11.</span> <span class="toc-text">その後&amp;感想</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考文献"><span class="toc-number">12.</span> <span class="toc-text">参考文献</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#論文"><span class="toc-number">12.1.</span> <span class="toc-text">論文</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#日本語記事"><span class="toc-number">12.2.</span> <span class="toc-text">日本語記事</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        論文紹介：変数選択を用いた高速な非負値行列因子分解 + α
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+        <span itemprop="name">ぼっち・ざ・はっく！</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2018-12-11T06:37:24.000Z" itemprop="datePublished">2018-12-11</time>
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="はじめに"><a href="#はじめに" class="headerlink" title="はじめに"></a>はじめに</h2><p>おばんです！ <a href="https://twitter.com/localmin?lang=ja" target="_blank" rel="noopener">localmin</a>と申します。現在M2で、普段の研究ではあえてぼかした言い方をすると行列演算について考えたり、パソコンをカタカタしています。本記事は<a href="https://adventar.org/calendars/3392" target="_blank" rel="noopener">#今年読んだ一番好きな論文2018</a>の11日目の記事です。本記事でも少し古いですが行列にまつわる論文について紹介していきたいと思います。</p>
 <h2 id="紹介論文-1"><a href="#紹介論文-1" class="headerlink" title="紹介論文[1]"></a>紹介論文[1]</h2><ul>
 <li>題名<br><a href="http://www.cs.utexas.edu/~cjhsieh/nmf_kdd11.pdf" target="_blank" rel="noopener">Fast Coordinate Descent Methods with Variable Selection for Non-negative Matrix Factorization</a></li>
 <li>著者<br>Cho-Jui Hsieh, Inderjit S. Dhillon</li>
@@ -232,4 +369,127 @@ h_{i,r}^{&apos;&apos;}(s) = \sum_{j=1}^{n}1 - \frac{V_{i,j}H_{r,j}^{2}}{((WH)_{i
 <h3 id="論文"><a href="#論文" class="headerlink" title="論文"></a>論文</h3><p>[1]. <a href="http://www.cs.utexas.edu/~cjhsieh/nmf_kdd11.pdf" target="_blank" rel="noopener">Fast Coordinate Descent Methods with Variable Selection for Non-negative Matrix Factorization</a> ：今回紹介した論文です。コードは<a href="http://www.cs.utexas.edu/~cjhsieh/nmf/" target="_blank" rel="noopener">筆者のホームページ</a>に公開されています。<br>[2]. <a href="https://www.nature.com/articles/44565" target="_blank" rel="noopener">Learning the parts of objects by non-negative matrix factorization</a>:NMFが最初に世に出た時の論文です。<br>[3]. <a href="http://papers.nips.cc/paper/1861-algorithms-for-non-negative-matrix-factorization.pdf" target="_blank" rel="noopener">Algorithms for Non-negative Matrix Factorization</a>：一番有名なNMFのアルゴリズムであるMultiplicative Updateの論文です。<br>[4].<a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.214.6398&amp;rep=rep1&amp;type=pdf" target="_blank" rel="noopener">Fast local algorithms for large scale nonnegative matrix and tensor factorizations</a>:FastHALSの論文です。<br>[5]. <a href="https://www.mitpressjournals.org/action/captchaChallenge?redirectUrl=https%3A%2F%2Fwww.mitpressjournals.org%2Fdoi%2Fpdfplus%2F10.1162%2Fneco.2007.19.10.2756%3Fcasa_token%3DjlubOQwKdb4AAAAA%253AHBNw9iRU6Xsf2grl1CRBhiopkx7uHNNp1b5mnQHlrQ38fgbqZU-BZPoyoLerOTeUtEfc7_GqDC9_Pw" target="_blank" rel="noopener">Projected gradient methods for nonnegative matrix factorization</a>：実験の比較に出てきた手法です。<br>[6]. <a href="https://smartech.gatech.edu/bitstream/handle/1853/25538/GT-CSE-08-03.pdf?sequence=1&amp;isAllowed=y" target="_blank" rel="noopener">Toward Faster Nonnegative Matrix Factorization: A New Algorithm and Comparisons</a>：実験の(ry<br>[7]. <a href="https://www.ime.usp.br/~jstern/miscellanea/seminario/Lebanon13.pdf" target="_blank" rel="noopener">Fast Bregman Divergence NMF using Taylor Expansion and Coordinate Descent</a>:2012に出てきた手法です。僕はこの手法はFastHALSの一般化と解釈しています。</p>
 <h3 id="日本語記事"><a href="#日本語記事" class="headerlink" title="日本語記事"></a>日本語記事</h3><p><a href="http://www.kecl.ntt.co.jp/people/kameoka.hirokazu/publications/Kameoka2012SICE09published.pdf" target="_blank" rel="noopener">非負値行列因子分解</a>：NTT研究所の方によるNMFの解説記事です。非常にわかりやすいです。<br><a href="http://kkimura.hatenablog.com/entry/2017/10/07/211926" target="_blank" rel="noopener">Nonnegative Matrix Factorization:NMFの最適化法についてのまとめ</a>：色々なNMFのアルゴリズムの概説が載っています。</p>
 <p>誤字脱字の指摘から記事の内容に関するツッコミなどなんでも歓迎です！<br>twitterアカウント<a href="https://twitter.com/localmin?lang=ja" target="_blank" rel="noopener">localmin</a>やメールアドレス localmin9201009”at”gmail.comまでお願いします！</p>
-</section><nav id="post-nav"><span class="prev"><a href="/2018/12/13/english3month/"><span class="arrow">←</span>Newer Posts</a></span><span class="next"><a href="/2018/12/10/job-hunt2018/">Older Posts<span class="arrow">→</span></a></span></nav></article></section><footer id="footer"><div id="social"><a class="symbol" href="https://github.com/localmin"><i class="fa fa-github"></i></a></div><p class="small">© Copyright 2018 &nbsp;<i class="fa fa-heart" aria-hidden="true">&nbsp;localmin</i></p><p class="small">Powered by&nbsp;<a href="https://hexo.io/">Hexo&nbsp;</a> Theme by&nbsp;<a href="https://github.com/localmin/hexo-theme-lxx">lxx&nbsp</a>based on&nbsp;<a href="https://github.com/fuzhouxxdong/hexo-theme-dxx">dxx</a></p></footer><script>hljs.initHighlightingOnLoad();</script></body></html>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#はじめに"><span class="toc-number">1.</span> <span class="toc-text">はじめに</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#紹介論文-1"><span class="toc-number">2.</span> <span class="toc-text">紹介論文[1]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#論文概要"><span class="toc-number">3.</span> <span class="toc-text">論文概要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#なぜこの論文を選んだか？"><span class="toc-number">4.</span> <span class="toc-text">なぜこの論文を選んだか？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#非負値行列因子分解-NMF-2-とは"><span class="toc-number">5.</span> <span class="toc-text">非負値行列因子分解(NMF)[2]とは</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NMFの解法"><span class="toc-number">6.</span> <span class="toc-text">NMFの解法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#目的関数の設定"><span class="toc-number">6.1.</span> <span class="toc-text">目的関数の設定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一変数ごとの座標降下法"><span class="toc-number">6.2.</span> <span class="toc-text">一変数ごとの座標降下法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#変数選択による高速化"><span class="toc-number">7.</span> <span class="toc-text">変数選択による高速化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Outer-Iteration-amp-Inner-Update"><span class="toc-number">7.1.</span> <span class="toc-text">Outer Iteration &amp; Inner Update</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#変数選択の方法"><span class="toc-number">7.2.</span> <span class="toc-text">変数選択の方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#実験"><span class="toc-number">8.</span> <span class="toc-text">実験</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#実験1-密なデータに対して"><span class="toc-number">8.1.</span> <span class="toc-text">実験1(密なデータに対して)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#実験2-疎なデータに対して"><span class="toc-number">8.2.</span> <span class="toc-text">実験2(疎なデータに対して)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#実装上の注意"><span class="toc-number">8.3.</span> <span class="toc-text">実装上の注意</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#α-KL-divergenceへの提案手法"><span class="toc-number">9.</span> <span class="toc-text">+α(KL-divergenceへの提案手法)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#結論"><span class="toc-number">10.</span> <span class="toc-text">結論</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#その後-amp-感想"><span class="toc-number">11.</span> <span class="toc-text">その後&amp;感想</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考文献"><span class="toc-number">12.</span> <span class="toc-text">参考文献</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#論文"><span class="toc-number">12.1.</span> <span class="toc-text">論文</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#日本語記事"><span class="toc-number">12.2.</span> <span class="toc-text">日本語記事</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://localmin.github.io/2018/12/11/fast-nmf/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://localmin.github.io/2018/12/11/fast-nmf/&text=論文紹介：変数選択を用いた高速な非負値行列因子分解 + α"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://localmin.github.io/2018/12/11/fast-nmf/&title=論文紹介：変数選択を用いた高速な非負値行列因子分解 + α"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://localmin.github.io/2018/12/11/fast-nmf/&is_video=false&description=論文紹介：変数選択を用いた高速な非負値行列因子分解 + α"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=論文紹介：変数選択を用いた高速な非負値行列因子分解 + α&body=Check out this article: https://localmin.github.io/2018/12/11/fast-nmf/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://localmin.github.io/2018/12/11/fast-nmf/&title=論文紹介：変数選択を用いた高速な非負値行列因子分解 + α"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://localmin.github.io/2018/12/11/fast-nmf/&title=論文紹介：変数選択を用いた高速な非負値行列因子分解 + α"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://localmin.github.io/2018/12/11/fast-nmf/&title=論文紹介：変数選択を用いた高速な非負値行列因子分解 + α"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://localmin.github.io/2018/12/11/fast-nmf/&title=論文紹介：変数選択を用いた高速な非負値行列因子分解 + α"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://localmin.github.io/2018/12/11/fast-nmf/&name=論文紹介：変数選択を用いた高速な非負値行列因子分解 + α&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 localmin
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["$$","$$"],["\\[","\\]"]]}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
