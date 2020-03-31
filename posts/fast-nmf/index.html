@@ -36,7 +36,7 @@
 		
 		<meta name="author" content="localmin">
 		<meta name="description" content="localmin&#39;s blog">
-        <meta name="generator" content="Hugo 0.60.1" />
+		<meta name="generator" content="Hugo 0.68.3" />
 		<title>論文紹介：変数選択を用いた高速な非負値行列因子分解 &#43; α &middot; ぼっち・ざ・はっく！</title>
 		<link rel="shortcut icon" href="https://localmin.github.io/images/favicon.ico">
 		<link rel="stylesheet" href="https://localmin.github.io/css/style.css">
@@ -90,37 +90,37 @@
                     <div id="toc">
                       <nav id="TableOfContents">
   <ul>
-    <li><a href="#heading">はじめに</a></li>
-    <li><a href="#1">紹介論文[1]</a></li>
-    <li><a href="#heading1">論文概要</a></li>
-    <li><a href="#heading2">なぜこの論文を選んだか？</a></li>
-    <li><a href="#nmf2">非負値行列因子分解(NMF)[2]とは</a></li>
-    <li><a href="#nmf">NMFの解法</a>
+    <li><a href="#はじめに">はじめに</a></li>
+    <li><a href="#紹介論文1">紹介論文[1]</a></li>
+    <li><a href="#論文概要">論文概要</a></li>
+    <li><a href="#なぜこの論文を選んだか">なぜこの論文を選んだか？</a></li>
+    <li><a href="#非負値行列因子分解nmf2とは">非負値行列因子分解(NMF)[2]とは</a></li>
+    <li><a href="#nmfの解法">NMFの解法</a>
       <ul>
-        <li><a href="#heading3">目的関数の設定</a></li>
-        <li><a href="#heading4">一変数ごとの座標降下法</a></li>
+        <li><a href="#目的関数の設定">目的関数の設定</a></li>
+        <li><a href="#一変数ごとの座標降下法">一変数ごとの座標降下法</a></li>
       </ul>
     </li>
-    <li><a href="#heading5">変数選択による高速化</a>
+    <li><a href="#変数選択による高速化">変数選択による高速化</a>
       <ul>
-        <li><a href="#outer-iteration--inner-update">Outer Iteration & Inner Update</a></li>
-        <li><a href="#heading6">変数選択の方法</a></li>
+        <li><a href="#outer-iteration--inner-update">Outer Iteration &amp; Inner Update</a></li>
+        <li><a href="#変数選択の方法">変数選択の方法</a></li>
       </ul>
     </li>
-    <li><a href="#heading7">実験</a>
+    <li><a href="#実験">実験</a>
       <ul>
-        <li><a href="#11">実験1(密なデータに対して)</a></li>
-        <li><a href="#2">実験2(疎なデータに対して)</a></li>
-        <li><a href="#heading8">実装上の注意</a></li>
+        <li><a href="#実験1密なデータに対して">実験1(密なデータに対して)</a></li>
+        <li><a href="#実験2疎なデータに対して">実験2(疎なデータに対して)</a></li>
+        <li><a href="#実装上の注意">実装上の注意</a></li>
       </ul>
     </li>
-    <li><a href="#kldivergence">+α(KL-divergenceへの提案手法)</a></li>
-    <li><a href="#heading9">結論</a></li>
-    <li><a href="#heading10">その後&感想</a></li>
-    <li><a href="#heading11">参考文献</a>
+    <li><a href="#αkl-divergenceへの提案手法">+α(KL-divergenceへの提案手法)</a></li>
+    <li><a href="#結論">結論</a></li>
+    <li><a href="#その後感想">その後&amp;感想</a></li>
+    <li><a href="#参考文献">参考文献</a>
       <ul>
-        <li><a href="#heading12">論文</a></li>
-        <li><a href="#heading13">日本語記事</a></li>
+        <li><a href="#論文">論文</a></li>
+        <li><a href="#日本語記事">日本語記事</a></li>
       </ul>
     </li>
   </ul>
@@ -129,9 +129,9 @@
                   
                 
                 <section id="post-body">
-                    <h2 id="heading">はじめに</h2>
+                    <h2 id="はじめに">はじめに</h2>
 <p>おばんです！ <a href="https://twitter.com/localmin?lang=ja">localmin</a>と申します。現在M2で、普段の研究ではあえてぼかした言い方をすると行列演算について考えたり、パソコンをカタカタしています。本記事は<a href="https://adventar.org/calendars/3392">#今年読んだ一番好きな論文2018</a>の11日目の記事です。本記事でも少し古いですが行列にまつわる論文について紹介していきたいと思います。</p>
-<h2 id="1">紹介論文[1]</h2>
+<h2 id="紹介論文1">紹介論文[1]</h2>
 <ul>
 <li>題名
 <a href="http://www.cs.utexas.edu/~cjhsieh/nmf_kdd11.pdf">Fast Coordinate Descent Methods with Variable Selection for Non-negative Matrix Factorization</a></li>
@@ -140,12 +140,12 @@ Cho-Jui Hsieh, Inderjit S. Dhillon</li>
 <li>出典
 Proceedings of the 17th ACM SIGKDD international conference on Knowledge discovery and data mining Pages 1064-1072, 2011</li>
 </ul>
-<h2 id="heading1">論文概要</h2>
+<h2 id="論文概要">論文概要</h2>
 <p>非負値行列因子分解(Non-negative Matrix Factorization)(以下NMFとします)の高速化に関する論文です。NMFは反復更新式を用いて最適化を行いますが、既存手法では全変数を等しく更新(要するに更新しなくてもよい要素を更新してしまう)という欠点があります。この論文では目的関数にフロベニウスノルムの二乗を用いたときに、必要な変数のみを選択し更新を行う手法を提案をしています。
 また目的関数にKL-divergenceを用いた場合の新しい手法も提案してます(ただし変数選択は用いない)。
 各提案手法と既存手法を実データを用いて比較を行い、提案手法の収束の速さを確認してます。</p>
 <p>&hellip;と小難しく書きましたが、これからなるべくわかりやすく説明していく予定です。たぶん。</p>
-<h2 id="heading2">なぜこの論文を選んだか？</h2>
+<h2 id="なぜこの論文を選んだか">なぜこの論文を選んだか？</h2>
 <p>もちろん今年読んだ中で印象に残った論文だからというのもありますが、</p>
 <ol>
 <li>
@@ -157,7 +157,7 @@ Proceedings of the 17th ACM SIGKDD international conference on Knowledge discove
 </ol>
 <p>といった理由もあります。この記事をきっかけにNMFにはMultiplicative Updateだけでなく、速いアルゴリズムがあるよ！ということを少しでも理解してもらえば冥利に尽きます。
 っていうか速いアルゴリズムってかっこいいじゃないですか！！(個人の感想)</p>
-<h2 id="nmf2">非負値行列因子分解(NMF)[2]とは</h2>
+<h2 id="非負値行列因子分解nmf2とは">非負値行列因子分解(NMF)[2]とは</h2>
 <p>NMFについては論文内でも説明されていますが、少しあっさり風味なのでここでは少し詳しめに説明します。
 世の中のデータには非負値の行列で表現できるものが多々あり(例えばテキスト、画像、音響信号のパワースペクトルなど)、その特徴を解析したいといった需要があります。
 NMFは各要素が非負で与えられる行列を二つの非負値行列の積に近似分解してあげる手法です。具体的には各要素が非負である観測行列$V\in {\bf R}^{m \times n}$を以下のように近似分解します。</p>
@@ -177,8 +177,8 @@ $$</p>
 線形結合に使用されるベクトル(基底)を格納した行列なので基底行列、そして線形結合に置ける係数を格納した列ベクトル$h_{j}$を並べているので係数行列というわけです。</p>
 <p>NMF以外にも行列を分解する手法で有名なものに特異値分解(SVD)や固有分解(スペクトル分解)などがあります。しかし非負値行列を適用した場合に、分解した結果に負の値が出現してしまったり、得られるベクトルが直交してしまうため、結果の解釈が難しくなる欠点が存在します。
 そこでNMFでは与えられたデータはもちろん、分解結果にも非負の制約与えることでデータの見通しが良くなる長所があります。また分解して得られた基底ベクトルは必ずしも直交しません。</p>
-<h2 id="nmf">NMFの解法</h2>
-<h3 id="heading3">目的関数の設定</h3>
+<h2 id="nmfの解法">NMFの解法</h2>
+<h3 id="目的関数の設定">目的関数の設定</h3>
 <p>次にどうやって$W$、$H$を求めるのかという話に移っていきます。
 人によっては行列を二つの積にバラすのは簡単では？と思う人もいるかもしれません。でもそれは具体例をみれば難しいとわかるでしょう。
 では以下の方程式をを$k=2$という条件で二つの非負値行列$W$、$H$を求めてみてください。</p>
@@ -195,7 +195,7 @@ $$</p>
 <p>$||\cdot||_{F}$ はフロべニウスノルムと呼ばれ、行列の全要素の二乗和の平方根をとります。</p>
 <p>この式は観測行列$V$と分解して得られる行列$WH$の距離を測る関数になっています。すなわち分解して得られた$WH$が観測行列に近いほど上述の関数の値が0に近づきます。
 よってNMFは上述の関数を最小化するような$W,H$を求める問題になります。残念なことにそのような$V, H$は解析的に求めることができないため反復更新によって近似的に求めます。</p>
-<h3 id="heading4">一変数ごとの座標降下法</h3>
+<h3 id="一変数ごとの座標降下法">一変数ごとの座標降下法</h3>
 <p>この論文では反復更新の方法として一変数ごとの座標降下法を用いています。具体的には</p>
 <p>$$
 (W,H)\leftarrow (W + sE_{i,r}, H)
@@ -222,7 +222,7 @@ $$</p>
 W_{i,r}\leftarrow W_{i,r} + s
 $$</p>
 <p>と更新することができます(ちなみに $V$についても同様)。</p>
-<h2 id="heading5">変数選択による高速化</h2>
+<h2 id="変数選択による高速化">変数選択による高速化</h2>
 <h3 id="outer-iteration--inner-update">Outer Iteration &amp; Inner Update</h3>
 <p>従来手法(Multiplicative Update[2], FastHALS[4])では上に似たような更新式を導出した後、全変数に対して等しい回数更新を行います。しかし、その場合更新しなくても良い変数を更新してしまうという欠点があります。ここでいう更新しなくても良い変数とは、更新しても目的関数の値が減少しない変数のことであり、そのような変数を更新してしまうことで余計な計算量をくうことになります。
 よってこの論文では重要な変数、すなわち目的関数の値を大きく減少させることができる変数のみを選択し貪欲に更新し続ける手法を提案しています。</p>
@@ -249,7 +249,7 @@ $$</p>
 </li>
 </ol>
 <p>といった処理を目的関数の値が収束するまで繰り返す、これが基本的な流れになります。</p>
-<h3 id="heading6">変数選択の方法</h3>
+<h3 id="変数選択の方法">変数選択の方法</h3>
 <p>$W$の変数選択を行う場合を考えます($V$についても同様に求められます)。
 変数選択の方法はシンプルで、目的関数の減少量が多い変数を選択します。そのために$W$について、各要素を更新した際の目的関数の減少量を格納した行列を$D^{W}$を用意します。サイズは$W$と同じで、この$(i,r)$成分には$W_{i,r}$を更新した時の目的関数の減少量が格納されています。
 $D^{W}$の各成分(目的関数の減少量)以下のように計算されます。</p>
@@ -273,10 +273,10 @@ q_{i} = arg\max_{r}D^{W}_{i,r}
 $$</p>
 <p>のようにして選択されることになります。</p>
 <p>このように変数選択しながらを更新していく手法をGreedy Coordinate Descent(以下GCD)と論文では名付けています。いいかんじですね。</p>
-<h2 id="heading7">実験</h2>
+<h2 id="実験">実験</h2>
 <p>いろいろややこしいことを書いてきましたが要は速いのかって話ですよ。実データを用いて実験をします。この論文では二種類の実験を行なっています。
 一つは密なデータに対して、もう一つはスパースなデータに対してです。</p>
-<h3 id="11">実験1(密なデータに対して)</h3>
+<h3 id="実験1密なデータに対して">実験1(密なデータに対して)</h3>
 <p>比較する手法はGCD、FastHALS[4]、ProjGrad[5], BlockPivot[6]（あれ？Multiplicativeは？)。
 各アルゴリズムにおいてデータセット毎に設定した相対誤差になるまでの計算時間及び浮動小数点数演算の回数(FLOPs)を比較します。
 もちいたデータは以下のようになっています。</p>
@@ -422,7 +422,7 @@ $$</p>
 </tbody>
 </table>
 <p>表での各手法の値はTime(in seconds)/FLOPSを表しており、小さいほどいいです。いずれの場合もGCD(提案手法)が高速であることがわかります。</p>
-<h3 id="2">実験2(疎なデータに対して)</h3>
+<h3 id="実験2疎なデータに対して">実験2(疎なデータに対して)</h3>
 <p>比較する手法はGCD, FastHALS[4]、BlockPivot[6]。
 もちいたデータは</p>
 <ol>
@@ -438,10 +438,10 @@ $$</p>
 </ol>
 <p>時間における相対誤差の推移を計測しています。
 <a href="http://www.cs.utexas.edu/~cjhsieh/nmf_kdd11.pdf">論文7ページFigure２</a>のグラフを見てください(重ね重ねごめんなさい…)。この場合も提案手法が高速かつ良い局所最適解に達していることがわかります。</p>
-<h3 id="heading8">実装上の注意</h3>
+<h3 id="実装上の注意">実装上の注意</h3>
 <p>論文での実装はMATLABです。しかしMATLABはforループが遅いため、GCDの反復部分をmex(Cで作った関数を呼び出す)で高速化しているそうです。
 公平な比較じゃない気がしますが、筆者曰くFLOPsでも比較してるから公平性はあるとのこと。あまり腑に落ちないですが。</p>
-<h2 id="kldivergence">+α(KL-divergenceへの提案手法)</h2>
+<h2 id="αkl-divergenceへの提案手法">+α(KL-divergenceへの提案手法)</h2>
 <p>時間がないので今回は概略にととどめますが、この論文ではKL-divergenceにおける新しいアルゴリズムも提案しています。</p>
 <ul>
 <li>KL-divergence</li>
@@ -455,17 +455,17 @@ $$</p>
 <p>この手法は同じ密なデータでMultiplicative Updateと比較されており、高速化に成功しています。
 結果は<a href="http://www.cs.utexas.edu/~cjhsieh/nmf_kdd11.pdf">論文8ページTable3</a>。
 ただKL-divergenceに関しては2012年にsBCD[7]というより高速な手法が提案されています…。</p>
-<h2 id="heading9">結論</h2>
+<h2 id="結論">結論</h2>
 <p>本論文では目的関数がフロべニウスノルムの二乗に用いた時に、変数選択を用いた座標降下法を提案しました。またKL-divergenceにおいてもニュートン法を利用した循環座標降下法を提案しました。この二つの手法に関して実データを用いて実験を行い、高速化に成功したことを確認できました。</p>
-<h2 id="heading10">その後&amp;感想</h2>
+<h2 id="その後感想">その後&amp;感想</h2>
 <p>以上が論文の内容になります。KL-divergenceの話もそうですが、収束の保証の議論、Inner Updateの停止条件、各ステップでの計算量の議論などここに書ききれなかった話が論文にはあるので興味がある人は是非。</p>
 <p>フロべニウスノルムの二乗を用いた際のNMFの高速化に関しては、この論文の手法(GCD)現在が最速だと思われます。そう、この場合の高速化に関してはこの論文(2011)を最後に終わってしまったのです(もしあったら是非教えて下さい！)。かっこいいですね。僕も一分野を終わらせる論文を書いてみたかったです。</p>
 <p>ただGCDはあまり人気がなく、基本的にNMFに使用されているアルゴリズムはMultiplicative Updateが多い印象です。実装が明らかにMultiplicative Updateの方が簡単で、欲しい結果が得られているからなのかなーとか思いますが実際のところはわかりません。おしえてエロい人。</p>
 <p>NMFの研究は現在も続けられており、毎年多くの論文が出ています。特にNMFの亜種や使用条件を絞った場合に性能を向上させる手法などが多い印象です。それには現実に欲しい結果と誤差の小ささが必ずしも関係してないことや、初期値依存性(反復更新の際にどの初期値を入れるのがベストかは基本不明な問題)など、残された問題や改良できる余地が多くあるからだと思います。とにかく今後も目が離せないですね。</p>
 <p>来年からは少なくとも仕事で論文を読むようなことはないでしょうが、せっかく大学で論文を読む能力を身につけたのだから、年に一回こういう場でアウトプットできるぐらいには論文を読んでいきたいと思います。</p>
-<h2 id="heading11">参考文献</h2>
+<h2 id="参考文献">参考文献</h2>
 <p>これを読んでNMFに興味を持った方はぜひ参考にしてみてください。</p>
-<h3 id="heading12">論文</h3>
+<h3 id="論文">論文</h3>
 <p>[1]. <a href="http://www.cs.utexas.edu/~cjhsieh/nmf_kdd11.pdf">Fast Coordinate Descent Methods with Variable Selection for Non-negative Matrix Factorization</a> ：今回紹介した論文です。コードは<a href="http://www.cs.utexas.edu/~cjhsieh/nmf/">筆者のホームページ</a>に公開されています。</p>
 <p>[2]. <a href="https://www.nature.com/articles/44565">Learning the parts of objects by non-negative matrix factorization</a>:NMFが最初に世に出た時の論文です。</p>
 <p>[3]. <a href="http://papers.nips.cc/paper/1861-algorithms-for-non-negative-matrix-factorization.pdf">Algorithms for Non-negative Matrix Factorization</a>：一番有名なNMFのアルゴリズムであるMultiplicative Updateの論文です。</p>
@@ -473,7 +473,7 @@ $$</p>
 <p>[5]. <a href="https://www.mitpressjournals.org/action/captchaChallenge?redirectUrl=https%3A%2F%2Fwww.mitpressjournals.org%2Fdoi%2Fpdfplus%2F10.1162%2Fneco.2007.19.10.2756%3Fcasa_token%3DjlubOQwKdb4AAAAA%253AHBNw9iRU6Xsf2grl1CRBhiopkx7uHNNp1b5mnQHlrQ38fgbqZU-BZPoyoLerOTeUtEfc7_GqDC9_Pw">Projected gradient methods for nonnegative matrix factorization</a>：実験の比較に出てきた手法です。</p>
 <p>[6]. <a href="https://smartech.gatech.edu/bitstream/handle/1853/25538/GT-CSE-08-03.pdf?sequence=1&amp;isAllowed=y">Toward Faster Nonnegative Matrix Factorization: A New Algorithm and Comparisons</a>：実験の(ry</p>
 <p>[7]. <a href="https://www.ime.usp.br/~jstern/miscellanea/seminario/Lebanon13.pdf">Fast Bregman Divergence NMF using Taylor Expansion and Coordinate Descent</a>:2012に出てきた手法です。僕はこの手法はFastHALSの一般化と解釈しています。</p>
-<h3 id="heading13">日本語記事</h3>
+<h3 id="日本語記事">日本語記事</h3>
 <p><a href="http://www.kecl.ntt.co.jp/people/kameoka.hirokazu/publications/Kameoka2012SICE09published.pdf">非負値行列因子分解</a>：NTT研究所の方によるNMFの解説記事です。非常にわかりやすいです。</p>
 <p><a href="http://kkimura.hatenablog.com/entry/2017/10/07/211926">Nonnegative Matrix Factorization:NMFの最適化法についてのまとめ</a>：色々なNMFのアルゴリズムの概説が載っています。</p>
 <p>誤字脱字の指摘から記事の内容に関するツッコミなどなんでも歓迎です！
@@ -505,7 +505,7 @@ twitterアカウント<a href="https://twitter.com/localmin?lang=ja">localmin</a
     
     <p class="small">
     
-       © Copyright 2019 <i class="fa fa-heart" aria-hidden="true"></i> localmin
+       © Copyright 2020 <i class="fa fa-heart" aria-hidden="true"></i> localmin
     
     </p>
     <p class="small">
