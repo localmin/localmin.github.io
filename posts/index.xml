@@ -6,10 +6,23 @@
     <description>Recent content in Posts on ぼっち・ざ・はっく！</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Fri, 01 May 2020 02:43:36 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 17 May 2020 23:23:37 +0900</lastBuildDate>
     
 	<atom:link href="https://localmin.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Starshipの導入 </title>
+      <link>https://localmin.github.io/posts/starship-installation/</link>
+      <pubDate>Sun, 17 May 2020 23:23:37 +0900</pubDate>
+      
+      <guid>https://localmin.github.io/posts/starship-installation/</guid>
+      <description>https://starship.rs/ (公式) https://starship.rs/ja-JP/ (日本語公式)
+プロンプトをいい感じにしてくれるやつ。
+普段プロンプトをカスタマイズすることはあんまりないんだが、ちょっとお洒落だしrust製だったのでお試しで使ってみた。 公式ドキュメントも日本語訳があったからもしかして結構普及しているのかな。まあところどころ怪しい日本語があったけど。
+以下自分の設定
+# Disable the newline at the start of the prompt add_newline = false [character] symbol = &amp;#34;( ╹◡╹)&amp;#34; style_success = &amp;#34;green&amp;#34; style_failure= &amp;#34;red&amp;#34; [battery] full_symbol = &amp;#34;🔋&amp;#34; charging_symbol = &amp;#34;⚡️&amp;#34; discharging_symbol = &amp;#34;💀&amp;#34; [[battery.display]] threshold = 10 style = &amp;#34;bold red&amp;#34; [[battery.display]] threshold = 30 style = &amp;#34;bold yellow&amp;#34; [directory] truncation_length = 20 style = &amp;#34;172&amp;#34; [git_status] conflicted = &amp;#34;💀&amp;#34; conflicted_count.enabled = true conflicted_count.</description>
+    </item>
     
     <item>
       <title>入社して1年経った</title>
