@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
-    <title>ぼっち・ざ・はっく！</title>
+    <title>Starshipの導入  | ぼっち・ざ・はっく！</title>
 
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">    
 <meta name="viewport" content="width=device-width,minimum-scale=1">
-<meta name="description" content="My Blog">
+<meta name="description" content="https://starship.rs/ (公式) https://starship.rs/ja-JP/ (日本語公式) プロンプトをいい感じにしてくれるやつ。 普段プロンプトをカスタマイズすることはあんまりないんだが、ちょっとお洒落だし">
 <meta name="generator" content="Hugo 0.91.2" />
 
 
@@ -30,16 +30,13 @@
 
 
 
-  
-    <link href="/index.xml" rel="alternate" type="application/rss+xml" title="ぼっち・ざ・はっく！" />
-    <link href="/index.xml" rel="feed" type="application/rss+xml" title="ぼっち・ざ・はっく！" />
-  
-
 
   </head>
 
   <body>
     <nav class="navigation">
+	
+		<a href="/"> <span class="arrow">←</span>Home</a>
 	
 	<a href="/posts">Archive</a>
 	<a href="/tags">Tags</a>
@@ -55,53 +52,105 @@
 
     <main class="main">
       
-<header class="profile">
-    
-        <img class="avatar" alt="avatar" src="/images/avatar.png" />
-    
 
-    <h1>ぼっち・ざ・はっく！</h1>
-    
-    
-      <h2>localmin&rsquo;s blog</h2>
-    
-</header>
+<section id="single">
+    <h1 class="title">Starshipの導入 </h1>
 
-<div id="list-page">
-    
+    <div class="tip">
+        <time datetime="2020-05-17 23:23:37 &#43;0900 JST">May 17, 2020</time>
+        <span class="split">
+          ·
+        </span>
+        <span>
+          863 words
+        </span>
+        <span class="split">
+          ·
+        </span>
+        <span>
+          2 minute read
+        </span>
+    </div>
+
     
     
         
-        
-        <section class="item">
-          <div>
-            <h1 class="title"><a href='/posts/%EF%BC%94%E5%9B%9E%E7%9B%AE%E3%81%AE%E3%83%96%E3%83%AD%E3%82%B0/'>４回目のブログ</a></h1>
-            <div class ="date">
-                <time datetime="2018-10-05 23:58:26 &#43;0000 UTC">Oct 5, 2018</time>  
-            </div>
-          </div>
+  
 
-          
 
-        </section>
-    
-
-    
-        <div class="pagination">
-          
-              <span class="prev">
-                  <a href="/page/2/">
-                      <span class="arrow">←</span> Newer posts
-                  </a>
-            </span>
-          
-          
-          
-        </div>
     
 
 
-</div>
+    <div class="content">
+      <p><a href="https://starship.rs/" target="_blank" rel="noopener">https://starship.rs/</a> (公式)
+<a href="https://starship.rs/ja-JP/" target="_blank" rel="noopener">https://starship.rs/ja-JP/</a> (日本語公式)</p>
+<p>プロンプトをいい感じにしてくれるやつ。</p>
+<p>普段プロンプトをカスタマイズすることはあんまりないんだが、ちょっとお洒落だしrust製だったのでお試しで使ってみた。
+公式ドキュメントも日本語訳があったからもしかして結構普及しているのかな。まあところどころ怪しい日本語があったけど。</p>
+<p>以下自分の設定</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-toml" data-lang="toml"><span style="color:#080;font-style:italic"># Disable the newline at the start of the prompt</span>
+add_newline = <span style="color:#a2f;font-weight:bold">false</span>
+
+[character]      
+symbol = <span style="color:#b44">&#34;( ╹◡╹)&#34;</span>     
+style_success = <span style="color:#b44">&#34;green&#34;</span>
+style_failure= <span style="color:#b44">&#34;red&#34;</span>
+
+[battery]
+full_symbol = <span style="color:#b44">&#34;🔋&#34;</span>
+charging_symbol = <span style="color:#b44">&#34;⚡️&#34;</span>
+discharging_symbol = <span style="color:#b44">&#34;💀&#34;</span>
+
+[[battery.display]]  
+threshold = <span style="color:#666">10</span>
+style = <span style="color:#b44">&#34;bold red&#34;</span>
+
+[[battery.display]]  
+threshold = <span style="color:#666">30</span>
+style = <span style="color:#b44">&#34;bold yellow&#34;</span>
+
+[directory]
+truncation_length = <span style="color:#666">20</span>
+style = <span style="color:#b44">&#34;172&#34;</span>
+
+[git_status]
+conflicted = <span style="color:#b44">&#34;💀&#34;</span>
+conflicted_count.enabled = <span style="color:#a2f;font-weight:bold">true</span>
+conflicted_count.style = <span style="color:#b44">&#34;green&#34;</span>
+ahead = <span style="color:#b44">&#34;🏎💨&#34;</span>
+behind = <span style="color:#b44">&#34;😰&#34;</span>
+diverged = <span style="color:#b44">&#34;😵&#34;</span>
+untracked = <span style="color:#b44">&#34;🤷‍&#34;</span>
+untracked_count.enabled = <span style="color:#a2f;font-weight:bold">true</span>
+untracked_count.style = <span style="color:#b44">&#34;green&#34;</span>
+stashed = <span style="color:#b44">&#34;📦&#34;</span>
+modified = <span style="color:#b44">&#34;📝&#34;</span>
+modified_count.enabled = <span style="color:#a2f;font-weight:bold">true</span>
+modified_count.style = <span style="color:#b44">&#34;green&#34;</span>
+staged.value = <span style="color:#b44">&#34;+&#34;</span>
+staged.style = <span style="color:#b44">&#34;green&#34;</span>
+staged_count.enabled = <span style="color:#a2f;font-weight:bold">true</span>
+staged_count.style = <span style="color:#b44">&#34;green&#34;</span>
+renamed = <span style="color:#b44">&#34;👅&#34;</span>
+deleted = <span style="color:#b44">&#34;🗑&#34;</span>
+
+[docker_context]
+disabled = <span style="color:#a2f;font-weight:bold">true</span>
+</code></pre></div><p>割と公式準拠な内容のはず。強いて言えばgit_statusのcountところはちょっと手を加えた。これで開発でgit叩いてるときに幸せになれるのかもしれない(うまく行ってないときは苛つきそうな気もする…</p>
+<p>フォントは公式だと<a href="https://github.com/tonsky/FiraCode" target="_blank" rel="noopener">FIraCode</a>推奨だったけど、もともと設定していたMonacoでも問題なさそう。</p>
+<p>一個だけ不満点があってpythonのversion表示が2~で表示されている。brewでのデフォルトが現時点では2系なので普段はaliasで<code>python </code>を叩くと3系が呼び出されるようにしてるが
+Starfishだと2系が表示されてしまうの回避する方法はぱっと思いつかなかった。githubのissueを探れば何かありそうだけど、そこまでモチベはなくて今のところ未確認。今日は店じまいってことであとで追記するかも。</p>
+<p>公式のデモを見るとfish使い向けに見えるが今のところ問題なし。
+まあ今のところのgitのstatus表示がお洒落になったくらいしかメリットを感じないんだけど、とりあえずはこのままでいく。デメリットもないので。</p>
+
+    </div>
+
+    
+    
+    
+
+</section>
+
 
     </main>
     
