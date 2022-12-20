@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <title>論文紹介：変数選択を用いた高速な非負値行列因子分解 &#43; α | ぼっち・ざ・はっく！</title>
+
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">    
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+<meta name="description" content="はじめに 🔗おばんです！ localminと申します。現在M2で、普段の研究ではあえてぼかした言い方をすると行列演算について考えたり、パソコンを">
+<meta name="generator" content="Hugo 0.107.0">
+
+
+  <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+
+
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css" integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js" integrity="sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+
+
+
+
+  </head>
+
+  <body>
+    <nav class="navigation">
+	
+		<a href="/"> <span class="arrow">←</span>Home</a>
+	
+	<a href="/posts">Archive</a>
+	<a href="/about">About</a>
+
+	
+
+	
+	  <a class="button" href="https://localmin.github.io/index.xml">Subscribe</a>
+	
+</nav>
+
+
+    <main class="main">
+      
+
+<section id="single">
+    <h1 class="title">論文紹介：変数選択を用いた高速な非負値行列因子分解 &#43; α</h1>
+
+    <div class="tip">
+        <time datetime="2018-12-11 15:37:24 &#43;0000 UTC">Dec 11, 2018</time>
+        <span class="split">
+          ·
+        </span>
+        <span>
+          7285 words
+        </span>
+        <span class="split">
+          ·
+        </span>
+        <span>
+          15 minute read
+        </span>
+    </div>
+
+    
+    
+        
+  
+    <aside class="toc">
+        <div>Table of Contents
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#はじめに">はじめに</a></li>
+    <li><a href="#紹介論文1">紹介論文[1]</a></li>
+    <li><a href="#論文概要">論文概要</a></li>
+    <li><a href="#なぜこの論文を選んだか">なぜこの論文を選んだか？</a></li>
+    <li><a href="#非負値行列因子分解nmf2とは">非負値行列因子分解(NMF)[2]とは</a></li>
+    <li><a href="#nmfの解法">NMFの解法</a>
+      <ul>
+        <li><a href="#目的関数の設定">目的関数の設定</a></li>
+        <li><a href="#一変数ごとの座標降下法">一変数ごとの座標降下法</a></li>
+      </ul>
+    </li>
+    <li><a href="#変数選択による高速化">変数選択による高速化</a>
+      <ul>
+        <li><a href="#outer-iteration--inner-update">Outer Iteration &amp; Inner Update</a></li>
+        <li><a href="#変数選択の方法">変数選択の方法</a></li>
+      </ul>
+    </li>
+    <li><a href="#実験">実験</a>
+      <ul>
+        <li><a href="#実験1密なデータに対して">実験1(密なデータに対して)</a></li>
+        <li><a href="#実験2疎なデータに対して">実験2(疎なデータに対して)</a></li>
+        <li><a href="#実装上の注意">実装上の注意</a></li>
+      </ul>
+    </li>
+    <li><a href="#αkl-divergenceへの提案手法">+α(KL-divergenceへの提案手法)</a></li>
+    <li><a href="#結論">結論</a></li>
+    <li><a href="#その後感想">その後&amp;感想</a></li>
+    <li><a href="#参考文献">参考文献</a>
+      <ul>
+        <li><a href="#論文">論文</a></li>
+        <li><a href="#日本語記事">日本語記事</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+        </div>
+    </aside>
+  
+
+
+    
+
+
+    <div class="content">
+      <h2 id="はじめに">はじめに <a href="#%e3%81%af%e3%81%98%e3%82%81%e3%81%ab" class="anchor">🔗</a></h2><p>おばんです！ <a href="https://twitter.com/localmin?lang=ja" target="_blank" rel="noopener">localmin</a>と申します。現在M2で、普段の研究ではあえてぼかした言い方をすると行列演算について考えたり、パソコンをカタカタしています。本記事は<a href="https://adventar.org/calendars/3392" target="_blank" rel="noopener">#今年読んだ一番好きな論文2018</a>の11日目の記事です。本記事でも少し古いですが行列にまつわる論文について紹介していきたいと思います。</p>
+<h2 id="紹介論文1">紹介論文[1] <a href="#%e7%b4%b9%e4%bb%8b%e8%ab%96%e6%96%871" class="anchor">🔗</a></h2><ul>
+<li>題名
+<a href="http://www.cs.utexas.edu/~cjhsieh/nmf_kdd11.pdf" target="_blank" rel="noopener">Fast Coordinate Descent Methods with Variable Selection for Non-negative Matrix Factorization</a></li>
+<li>著者
+Cho-Jui Hsieh, Inderjit S. Dhillon</li>
+<li>出典
+Proceedings of the 17th ACM SIGKDD international conference on Knowledge discovery and data mining Pages 1064-1072, 2011</li>
+</ul>
+<h2 id="論文概要">論文概要 <a href="#%e8%ab%96%e6%96%87%e6%a6%82%e8%a6%81" class="anchor">🔗</a></h2><p>非負値行列因子分解(Non-negative Matrix Factorization)(以下NMFとします)の高速化に関する論文です。NMFは反復更新式を用いて最適化を行いますが、既存手法では全変数を等しく更新(要するに更新しなくてもよい要素を更新してしまう)という欠点があります。この論文では目的関数にフロベニウスノルムの二乗を用いたときに、必要な変数のみを選択し更新を行う手法を提案をしています。
+また目的関数にKL-divergenceを用いた場合の新しい手法も提案してます(ただし変数選択は用いない)。
+各提案手法と既存手法を実データを用いて比較を行い、提案手法の収束の速さを確認してます。</p>
+<p>&hellip;と小難しく書きましたが、これからなるべくわかりやすく説明していく予定です。たぶん。</p>
+<h2 id="なぜこの論文を選んだか">なぜこの論文を選んだか？ <a href="#%e3%81%aa%e3%81%9c%e3%81%93%e3%81%ae%e8%ab%96%e6%96%87%e3%82%92%e9%81%b8%e3%82%93%e3%81%a0%e3%81%8b" class="anchor">🔗</a></h2><p>もちろん今年読んだ中で印象に残った論文だからというのもありますが、</p>
+<ol>
+<li>
+<p>巷に溢れるNMFの記事には基本的にMultiplicative Updateの記事しかないから(然るべき理由はありそう)</p>
+</li>
+<li>
+<p>速いアルゴリズムはかっこいいから</p>
+</li>
+</ol>
+<p>といった理由もあります。この記事をきっかけにNMFにはMultiplicative Updateだけでなく、速いアルゴリズムがあるよ！ということを少しでも理解してもらえば冥利に尽きます。
+っていうか速いアルゴリズムってかっこいいじゃないですか！！(個人の感想)</p>
+<h2 id="非負値行列因子分解nmf2とは">非負値行列因子分解(NMF)[2]とは <a href="#%e9%9d%9e%e8%b2%a0%e5%80%a4%e8%a1%8c%e5%88%97%e5%9b%a0%e5%ad%90%e5%88%86%e8%a7%a3nmf2%e3%81%a8%e3%81%af" class="anchor">🔗</a></h2><p>NMFについては論文内でも説明されていますが、少しあっさり風味なのでここでは少し詳しめに説明します。
+世の中のデータには非負値の行列で表現できるものが多々あり(例えばテキスト、画像、音響信号のパワースペクトルなど)、その特徴を解析したいといった需要があります。
+NMFは各要素が非負で与えられる行列を二つの非負値行列の積に近似分解してあげる手法です。具体的には各要素が非負である観測行列$V\in {\bf R}^{m \times n}$を以下のように近似分解します。</p>
+<p>$$
+V \approx WH
+$$</p>
+<p>$W\in {\bf R}^{m \times k}$は基底行列、$H\in {\bf R}^{k \times n}$は係数行列となっています。
+NMFはいわゆる次元削減と呼ばれる手法に分類され、観測行列をより小さなランクの行列で近似することを目的とします。
+$k$は近似に用いる基底ベクトルの本数をあらわしており、何本の基底ベクトルで近似するかは使用者が事前に指定します。
+行列に馴染みがある人は基底行列、係数行列と言われてすぐにわかるかもしれませんが、そうでない人のためにもう少し詳しく説明すると、
+観測行列$V$の$i$列目の列ベクトルを$v_{i}$、$H$のj列目の列ベクトル$h_{j}$とすると、NMFでは観測行列の各列は</p>
+<p>$$
+v_{i} \approx Wh_{j}
+$$</p>
+<p>と表現することができます。
+すなわちNMFは観測行列の各列を$W$の列ベクトルの線形結合で近似していると解釈することができます。
+線形結合に使用されるベクトル(基底)を格納した行列なので基底行列、そして線形結合に置ける係数を格納した列ベクトル$h_{j}$を並べているので係数行列というわけです。</p>
+<p>NMF以外にも行列を分解する手法で有名なものに特異値分解(SVD)や固有分解(スペクトル分解)などがあります。しかし非負値行列を適用した場合に、分解した結果に負の値が出現してしまったり、得られるベクトルが直交してしまうため、結果の解釈が難しくなる欠点が存在します。
+そこでNMFでは与えられたデータはもちろん、分解結果にも非負の制約与えることでデータの見通しが良くなる長所があります。また分解して得られた基底ベクトルは必ずしも直交しません。</p>
+<h2 id="nmfの解法">NMFの解法 <a href="#nmf%e3%81%ae%e8%a7%a3%e6%b3%95" class="anchor">🔗</a></h2><h3 id="目的関数の設定">目的関数の設定 <a href="#%e7%9b%ae%e7%9a%84%e9%96%a2%e6%95%b0%e3%81%ae%e8%a8%ad%e5%ae%9a" class="anchor">🔗</a></h3><p>次にどうやって$W$、$H$を求めるのかという話に移っていきます。
+人によっては行列を二つの積にバラすのは簡単では？と思う人もいるかもしれません。でもそれは具体例をみれば難しいとわかるでしょう。
+では以下の方程式をを$k=2$という条件で二つの非負値行列$W$、$H$を求めてみてください。</p>
+<!-- raw HTML omitted -->
+<p>どうですか？難しくないですか？っていうかそもそも解あるのか？ってなると思います。実際のデータは何百、何千のサイズになるのでもっと大変です。</p>
+<p>実際にこのような行列 $W, H$を求めることは可能とは限りません。しかし不可能であっても近似的に求めることは可能なはずです。</p>
+<p>ここで目的関数を用意します</p>
+<ul>
+<li>フロべニウスノルムの二乗</li>
+</ul>
+<p>$$
+f(W, H) = \frac{1}{2}||V - WH||_{F}^{2}
+$$</p>
+<p>$||\cdot||_{F}$ はフロべニウスノルムと呼ばれ、行列の全要素の二乗和の平方根をとります。</p>
+<p>この式は観測行列$V$と分解して得られる行列$WH$の距離を測る関数になっています。すなわち分解して得られた$WH$が観測行列に近いほど上述の関数の値が0に近づきます。
+よってNMFは上述の関数を最小化するような$W,H$を求める問題になります。残念なことにそのような$V, H$は解析的に求めることができないため反復更新によって近似的に求めます。</p>
+<h3 id="一変数ごとの座標降下法">一変数ごとの座標降下法 <a href="#%e4%b8%80%e5%a4%89%e6%95%b0%e3%81%94%e3%81%a8%e3%81%ae%e5%ba%a7%e6%a8%99%e9%99%8d%e4%b8%8b%e6%b3%95" class="anchor">🔗</a></h3><p>この論文では反復更新の方法として一変数ごとの座標降下法を用いています。具体的には</p>
+<p>$$
+(W,H)\leftarrow (W + sE_{i,r}, H)
+$$</p>
+<p>のような更新を収束するまで行います。$E_{i,r}$は$(i,r)$成分が1, 他の成分が0である$m\times k$の行列です。
+座標降下法ではある一つの要素に注目して他の変数は固定し、その変数での部分最適化問題を解くということを繰り返していくことになります。
+この式から読み取れるのは$W$の$(i,r)$成分(以下$W_{i,r}$)を$s$だけ更新しているということ、すなわちまず僕らが知りたいのは$s$の具体的な値になります。</p>
+<p>ではどんな$s$が欲しいのか、それは目的関数を減少する$s$に他なりません。そのような$s$を求めるためには以下のような一変数の部分問題を解きます。</p>
+<p>$$
+\min_{s:W_{i,r}+s\geq 0}g_{i,r}^{W}(s)\equiv f(W+sE_{i,r}, H)
+$$</p>
+<p>要するに$W_{i,r}$を$s$だけ更新した時、目的関数を最小化するような$s$を求めることになります。
+$g_{i,r}^{W}(s)$を$s$について整理してあげると、</p>
+<p>$$
+g_{i,r}^{W}(s) =  g_{i,r}^{W}(0) +  (g_{i,r}^{W})^{’}(0)s + \frac{1}{2}(g_{i,r}^{W})^{’’}(0)s^2
+$$</p>
+<p>となり、$s$に関する二次関数になります。こうなってしまえば簡単で、$s$について微分し、その導関数を0にするような$s$を求めます。ただし、$W_{i,r}+s\geq 0$なる制約があるので</p>
+<p>$$
+s =  \max \left(0, -\frac{(WHH^{T}-VH)_{i,r}}{(HH^{T})_{r,r}}\right) - W_{i,r}
+$$</p>
+<p>という結果になります。max関数を使用することで非負性を保持できます(実際に値が負になるような数値を代入してもmax関数のおかげで0になります)。
+これによって</p>
+<p>$$
+W_{i,r}\leftarrow W_{i,r} + s
+$$</p>
+<p>と更新することができます(ちなみに $V$についても同様)。</p>
+<h2 id="変数選択による高速化">変数選択による高速化 <a href="#%e5%a4%89%e6%95%b0%e9%81%b8%e6%8a%9e%e3%81%ab%e3%82%88%e3%82%8b%e9%ab%98%e9%80%9f%e5%8c%96" class="anchor">🔗</a></h2><h3 id="outer-iteration--inner-update">Outer Iteration &amp; Inner Update <a href="#outer-iteration--inner-update" class="anchor">🔗</a></h3><p>従来手法(Multiplicative Update[2], FastHALS[4])では上に似たような更新式を導出した後、全変数に対して等しい回数更新を行います。しかし、その場合更新しなくても良い変数を更新してしまうという欠点があります。ここでいう更新しなくても良い変数とは、更新しても目的関数の値が減少しない変数のことであり、そのような変数を更新してしまうことで余計な計算量をくうことになります。
+よってこの論文では重要な変数、すなわち目的関数の値を大きく減少させることができる変数のみを選択し貪欲に更新し続ける手法を提案しています。</p>
+<p>まず変数選択法の説明の前に更新手順について説明します。この論文では便宜上、注目する行列を変えることをOuter Iteration、注目している行列内での更新をInner Updateとしています。
+Outer Iterationでは$W, H$を交互に更新していきます。</p>
+<p>$$
+(W^{0}, H^{0}) \rightarrow  (W^{1}, H^{0}) \rightarrow  (W^{1}, H^{1})&hellip;
+$$</p>
+<p>そして一回のOuter Iterationの間にInner Updateという行列内の更新を行います。</p>
+<p>$$
+(W^{t,0}, H^{t-1}) \rightarrow  (W^{t,1}, H^{t-1}) \rightarrow  (W^{t,2}, H^{t-1})&hellip;
+$$</p>
+<p>実際の変数選択はInner Update内で行います。</p>
+<p>要するに、</p>
+<ol>
+<li>
+<p>$W$の各要素を変数選択を用いて十分に更新を行う($W$のInner Update)</p>
+</li>
+<li>
+<p>$H$の各要素を変数選択を用いて十分に更新を行う($H$のInner Update)</p>
+</li>
+<li>
+<p>また$W$に戻って同じことを繰り返す</p>
+</li>
+</ol>
+<p>といった処理を目的関数の値が収束するまで繰り返す、これが基本的な流れになります。</p>
+<h3 id="変数選択の方法">変数選択の方法 <a href="#%e5%a4%89%e6%95%b0%e9%81%b8%e6%8a%9e%e3%81%ae%e6%96%b9%e6%b3%95" class="anchor">🔗</a></h3><p>$W$の変数選択を行う場合を考えます($V$についても同様に求められます)。
+変数選択の方法はシンプルで、目的関数の減少量が多い変数を選択します。そのために$W$について、各要素を更新した際の目的関数の減少量を格納した行列を$D^{W}$を用意します。サイズは$W$と同じで、この$(i,r)$成分には$W_{i,r}$を更新した時の目的関数の減少量が格納されています。
+$D^{W}$の各成分(目的関数の減少量)以下のように計算されます。</p>
+<p>$$
+D_{i,r}^{W} \equiv g_{i,r}^{W}(0) - g_{i,r}^{W}(s)
+= -G_{i,r}^{W}s-\frac{1}{2}(HH^{T})_{rr}s^{2}
+$$</p>
+<p>$g_{i,r}^{W}(s)$は$W_{i,r}$を$s$だけ変化させたときの目的関数の値なので上式が更新後の目的関数の減少量を計算していることはわかると思います。(ここでは$G^{W}=WHH^{T}-VH^{T}$)。
+当然のことながら更新を行えば$D^{W}$の値も変化していきます。なので$D^{W}$を常に最新に保つことができれば、これに基づいて変数選択を行うことができます。しかし更新の度に先ほどの式に従って$D^{W}$の値を全て再計算していると$\mathcal{O}(mk)$ かかってしまいます。たとえどんなに更新一回あたりの目的関数の減少効率がよくても、変数選択にに時間がかかっていては本末転倒です。
+よってこのオーバーヘッドを軽減するために$W_{i,r}$を更新した時、$G^{W}$の$i$行目しか変化しないという特徴を利用します。この特徴から$D^{W}$も$i$行目しか変化せず、再計算する必要があるのは$G^{W}$の$i$行目だけになります。
+以下の式で$G_{i,j}^{W}$を更新することで$D^{W}$を最新に保つことができます。</p>
+<p>$$
+G_{i,j}^{W}\leftarrow  G_{i,j}^{W} + s(HH^{T})_{r,j} \forall j=1,\dots,k
+$$</p>
+<p>これらの計算量は$\mathcal{O}(k)$であり、$D^{W}$全ての要素を再計算するよりも少ないコストで変数選択をすることができます。
+これがこの論文のキモであり、変数選択による計算の軽減に成功しています。</p>
+<p>このことから更新が各行列に及ぼす影響は$i$行目だということがわかります。なので基本的には、行ごとに変数選択および更新を行えば良いということになります。
+そのため$i$行目の更新において次に選択される列インデックス$q_{i}$は</p>
+<p>$$
+q_{i} = arg\max_{r}D^{W}_{i,r}
+$$</p>
+<p>のようにして選択されることになります。</p>
+<p>このように変数選択しながらを更新していく手法をGreedy Coordinate Descent(以下GCD)と論文では名付けています。いいかんじですね。</p>
+<h2 id="実験">実験 <a href="#%e5%ae%9f%e9%a8%93" class="anchor">🔗</a></h2><p>いろいろややこしいことを書いてきましたが要は速いのかって話ですよ。実データを用いて実験をします。この論文では二種類の実験を行なっています。
+一つは密なデータに対して、もう一つはスパースなデータに対してです。</p>
+<h3 id="実験1密なデータに対して">実験1(密なデータに対して) <a href="#%e5%ae%9f%e9%a8%931%e5%af%86%e3%81%aa%e3%83%87%e3%83%bc%e3%82%bf%e3%81%ab%e5%af%be%e3%81%97%e3%81%a6" class="anchor">🔗</a></h3><p>比較する手法はGCD、FastHALS[4]、ProjGrad[5], BlockPivot[6]（あれ？Multiplicativeは？)。
+各アルゴリズムにおいてデータセット毎に設定した相対誤差になるまでの計算時間及び浮動小数点数演算の回数(FLOPs)を比較します。
+もちいたデータは以下のようになっています。</p>
+<ol>
+<li>
+<p>Synth03 : 乱数によるデータ。30％が0を要素の持つ</p>
+</li>
+<li>
+<p>Synth08 : 乱数によるデータ。80％が0を要素の持つ</p>
+</li>
+<li>
+<p>CBCL : 画像データ</p>
+</li>
+<li>
+<p>ORL : 画像データ</p>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>dataset</th>
+<th>m</th>
+<th>n</th>
+<th>k</th>
+<th>relative error</th>
+<th>GCD</th>
+<th>FastHALS</th>
+<th>ProjGrad</th>
+<th>BlockPivot</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Synth03</td>
+<td>500</td>
+<td>1000</td>
+<td>10</td>
+<td>$10^{-4}$</td>
+<td>${\bf 0.6 / 0.7G}$</td>
+<td>2.3 / 2.9G</td>
+<td>2.1 / 1.4G</td>
+<td>1.7 / 1.1G</td>
+</tr>
+<tr>
+<td>Synth03</td>
+<td>500</td>
+<td>1000</td>
+<td>30</td>
+<td>$10^{-4}$</td>
+<td>${\bf 4.0 / 5.0G}$</td>
+<td>9.3 / 16.1G</td>
+<td>26.6 / 23.5G</td>
+<td>12.4 / 8.7G</td>
+</tr>
+<tr>
+<td>Synth08</td>
+<td>500</td>
+<td>1000</td>
+<td>10</td>
+<td>$10^{-4}$</td>
+<td>${\bf 0.21 / 0.11G}$</td>
+<td>0.43 / 0.38G</td>
+<td>0.53 / 0.41G</td>
+<td>0.56 / 0.35G</td>
+</tr>
+<tr>
+<td>Synth08</td>
+<td>500</td>
+<td>1000</td>
+<td>30</td>
+<td>$10^{-4}$</td>
+<td>${\bf 0.43 / 0.46G}$</td>
+<td>0.77 / 1.71G</td>
+<td>2.54 / 2.70G</td>
+<td>2.86 / 1.43G</td>
+</tr>
+<tr>
+<td>CBCL</td>
+<td>361</td>
+<td>2429</td>
+<td>49</td>
+<td>0.0410</td>
+<td>${\bf 2.3 / 2.3G}$</td>
+<td>4.0 / 10.2G</td>
+<td>13.5 / 14.4G</td>
+<td>10.6 / 8.1G</td>
+</tr>
+<tr>
+<td>CBCL</td>
+<td>361</td>
+<td>2429</td>
+<td>49</td>
+<td>0.0376</td>
+<td>${\bf 8.9 / 8.8G}$</td>
+<td>18.0 / 46.8G</td>
+<td>45.6 / 49.4G</td>
+<td>30.9 / 29.8G</td>
+</tr>
+<tr>
+<td>CBCL</td>
+<td>361</td>
+<td>2429</td>
+<td>49</td>
+<td>0.0373</td>
+<td>${\bf 14.6 / 14.5G}$</td>
+<td>29.0 / 75.7G</td>
+<td>84.6 / 91.2G</td>
+<td>51.5 / 53.8G</td>
+</tr>
+<tr>
+<td>ORL</td>
+<td>10304</td>
+<td>400</td>
+<td>25</td>
+<td>0.0365</td>
+<td>${\bf 1.8 / 2.7G}$</td>
+<td>6.5 / 14.5G</td>
+<td>9.0 / 9.1G</td>
+<td>7.4 / 5.4G</td>
+</tr>
+<tr>
+<td>ORL</td>
+<td>10304</td>
+<td>400</td>
+<td>25</td>
+<td>0.0335</td>
+<td>${\bf 14.1 / 20.1G}$</td>
+<td>30.3 / 66.9G</td>
+<td>98.6 / 9.1G</td>
+<td>33.9 / 38.2G</td>
+</tr>
+<tr>
+<td>ORL</td>
+<td>10304</td>
+<td>400</td>
+<td>25</td>
+<td>0.0332</td>
+<td>${\bf 33.0 / 51.5G}$</td>
+<td>63.3 / 139.0G</td>
+<td>256.8 / 193.5G</td>
+<td>76.5 / 82.4G</td>
+</tr>
+</tbody>
+</table>
+<p>表での各手法の値はTime(in seconds)/FLOPSを表しており、小さいほどいいです。いずれの場合もGCD(提案手法)が高速であることがわかります。</p>
+<h3 id="実験2疎なデータに対して">実験2(疎なデータに対して) <a href="#%e5%ae%9f%e9%a8%932%e7%96%8e%e3%81%aa%e3%83%87%e3%83%bc%e3%82%bf%e3%81%ab%e5%af%be%e3%81%97%e3%81%a6" class="anchor">🔗</a></h3><p>比較する手法はGCD, FastHALS[4]、BlockPivot[6]。
+もちいたデータは</p>
+<ol>
+<li>
+<p>Yahoo-News : ニュース記事、$21839\times 2340, k=20$</p>
+</li>
+<li>
+<p>MNIST: 手書き数字の画像、$780 \times 60000, k=10$</p>
+</li>
+<li>
+<p>RCV1: ニュース記事、$31025\times 152120, k= 15$</p>
+</li>
+</ol>
+<p>時間における相対誤差の推移を計測しています。
+<a href="http://www.cs.utexas.edu/~cjhsieh/nmf_kdd11.pdf" target="_blank" rel="noopener">論文7ページFigure２</a>のグラフを見てください(重ね重ねごめんなさい…)。この場合も提案手法が高速かつ良い局所最適解に達していることがわかります。</p>
+<h3 id="実装上の注意">実装上の注意 <a href="#%e5%ae%9f%e8%a3%85%e4%b8%8a%e3%81%ae%e6%b3%a8%e6%84%8f" class="anchor">🔗</a></h3><p>論文での実装はMATLABです。しかしMATLABはforループが遅いため、GCDの反復部分をmex(Cで作った関数を呼び出す)で高速化しているそうです。
+公平な比較じゃない気がしますが、筆者曰くFLOPsでも比較してるから公平性はあるとのこと。あまり腑に落ちないですが。</p>
+<h2 id="αkl-divergenceへの提案手法">+α(KL-divergenceへの提案手法) <a href="#%ce%b1kl-divergence%e3%81%b8%e3%81%ae%e6%8f%90%e6%a1%88%e6%89%8b%e6%b3%95" class="anchor">🔗</a></h2><p>時間がないので今回は概略にととどめますが、この論文ではKL-divergenceにおける新しいアルゴリズムも提案しています。</p>
+<ul>
+<li>KL-divergence</li>
+</ul>
+<p>$$
+L(W, H) = \sum_{i,j}V_{i,j}log(\frac{V_{i,j}}{(WH)_{i,j}})-V_{i,j}+(WH)_{i,j}
+$$</p>
+<p>フロべニウスノルムの二乗の場合と異なり、変数選択は用いない循環座標降下法(CCD)になっています。
+更新幅$s$をニュートン法を用いて高速に求めるのが特徴的な手法です。</p>
+<!-- raw HTML omitted -->
+<p>この手法は同じ密なデータでMultiplicative Updateと比較されており、高速化に成功しています。
+結果は<a href="http://www.cs.utexas.edu/~cjhsieh/nmf_kdd11.pdf" target="_blank" rel="noopener">論文8ページTable3</a>。
+ただKL-divergenceに関しては2012年にsBCD[7]というより高速な手法が提案されています…。</p>
+<h2 id="結論">結論 <a href="#%e7%b5%90%e8%ab%96" class="anchor">🔗</a></h2><p>本論文では目的関数がフロべニウスノルムの二乗に用いた時に、変数選択を用いた座標降下法を提案しました。またKL-divergenceにおいてもニュートン法を利用した循環座標降下法を提案しました。この二つの手法に関して実データを用いて実験を行い、高速化に成功したことを確認できました。</p>
+<h2 id="その後感想">その後&amp;感想 <a href="#%e3%81%9d%e3%81%ae%e5%be%8c%e6%84%9f%e6%83%b3" class="anchor">🔗</a></h2><p>以上が論文の内容になります。KL-divergenceの話もそうですが、収束の保証の議論、Inner Updateの停止条件、各ステップでの計算量の議論などここに書ききれなかった話が論文にはあるので興味がある人は是非。</p>
+<p>フロべニウスノルムの二乗を用いた際のNMFの高速化に関しては、この論文の手法(GCD)現在が最速だと思われます。そう、この場合の高速化に関してはこの論文(2011)を最後に終わってしまったのです(もしあったら是非教えて下さい！)。かっこいいですね。僕も一分野を終わらせる論文を書いてみたかったです。</p>
+<p>ただGCDはあまり人気がなく、基本的にNMFに使用されているアルゴリズムはMultiplicative Updateが多い印象です。実装が明らかにMultiplicative Updateの方が簡単で、欲しい結果が得られているからなのかなーとか思いますが実際のところはわかりません。おしえてエロい人。</p>
+<p>NMFの研究は現在も続けられており、毎年多くの論文が出ています。特にNMFの亜種や使用条件を絞った場合に性能を向上させる手法などが多い印象です。それには現実に欲しい結果と誤差の小ささが必ずしも関係してないことや、初期値依存性(反復更新の際にどの初期値を入れるのがベストかは基本不明な問題)など、残された問題や改良できる余地が多くあるからだと思います。とにかく今後も目が離せないですね。</p>
+<p>来年からは少なくとも仕事で論文を読むようなことはないでしょうが、せっかく大学で論文を読む能力を身につけたのだから、年に一回こういう場でアウトプットできるぐらいには論文を読んでいきたいと思います。</p>
+<h2 id="参考文献">参考文献 <a href="#%e5%8f%82%e8%80%83%e6%96%87%e7%8c%ae" class="anchor">🔗</a></h2><p>これを読んでNMFに興味を持った方はぜひ参考にしてみてください。</p>
+<h3 id="論文">論文 <a href="#%e8%ab%96%e6%96%87" class="anchor">🔗</a></h3><p>[1]. <a href="http://www.cs.utexas.edu/~cjhsieh/nmf_kdd11.pdf" target="_blank" rel="noopener">Fast Coordinate Descent Methods with Variable Selection for Non-negative Matrix Factorization</a> ：今回紹介した論文です。コードは<a href="http://www.cs.utexas.edu/~cjhsieh/nmf/" target="_blank" rel="noopener">筆者のホームページ</a>に公開されています。</p>
+<p>[2]. <a href="https://www.nature.com/articles/44565" target="_blank" rel="noopener">Learning the parts of objects by non-negative matrix factorization</a>:NMFが最初に世に出た時の論文です。</p>
+<p>[3]. <a href="http://papers.nips.cc/paper/1861-algorithms-for-non-negative-matrix-factorization.pdf" target="_blank" rel="noopener">Algorithms for Non-negative Matrix Factorization</a>：一番有名なNMFのアルゴリズムであるMultiplicative Updateの論文です。</p>
+<p>[4].<a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.214.6398&amp;rep=rep1&amp;type=pdf" target="_blank" rel="noopener">Fast local algorithms for large scale nonnegative matrix and tensor factorizations</a>:FastHALSの論文です。</p>
+<p>[5]. <a href="https://www.mitpressjournals.org/action/captchaChallenge?redirectUrl=https%3A%2F%2Fwww.mitpressjournals.org%2Fdoi%2Fpdfplus%2F10.1162%2Fneco.2007.19.10.2756%3Fcasa_token%3DjlubOQwKdb4AAAAA%253AHBNw9iRU6Xsf2grl1CRBhiopkx7uHNNp1b5mnQHlrQ38fgbqZU-BZPoyoLerOTeUtEfc7_GqDC9_Pw" target="_blank" rel="noopener">Projected gradient methods for nonnegative matrix factorization</a>：実験の比較に出てきた手法です。</p>
+<p>[6]. <a href="https://smartech.gatech.edu/bitstream/handle/1853/25538/GT-CSE-08-03.pdf?sequence=1&amp;isAllowed=y" target="_blank" rel="noopener">Toward Faster Nonnegative Matrix Factorization: A New Algorithm and Comparisons</a>：実験の(ry</p>
+<p>[7]. <a href="https://www.ime.usp.br/~jstern/miscellanea/seminario/Lebanon13.pdf" target="_blank" rel="noopener">Fast Bregman Divergence NMF using Taylor Expansion and Coordinate Descent</a>:2012に出てきた手法です。僕はこの手法はFastHALSの一般化と解釈しています。</p>
+<h3 id="日本語記事">日本語記事 <a href="#%e6%97%a5%e6%9c%ac%e8%aa%9e%e8%a8%98%e4%ba%8b" class="anchor">🔗</a></h3><p><a href="http://www.kecl.ntt.co.jp/people/kameoka.hirokazu/publications/Kameoka2012SICE09published.pdf" target="_blank" rel="noopener">非負値行列因子分解</a>：NTT研究所の方によるNMFの解説記事です。非常にわかりやすいです。</p>
+<p><a href="http://kkimura.hatenablog.com/entry/2017/10/07/211926" target="_blank" rel="noopener">Nonnegative Matrix Factorization:NMFの最適化法についてのまとめ</a>：色々なNMFのアルゴリズムの概説が載っています。</p>
+<p>誤字脱字の指摘から記事の内容に関するツッコミなどなんでも歓迎です！
+twitterアカウント<a href="https://twitter.com/localmin?lang=ja" target="_blank" rel="noopener">localmin</a>やメールアドレス localmin9201009&quot;at&quot;gmail.comまでお願いします！</p>
+
+    </div>
+
+    
+    
+    
+
+</section>
+
+
+    </main>
+    
+    <footer id="footer">
+    
+        <div id="social">
+
+
+    <a class="symbol" href="https://www.github.com/localmin" rel="me" target="_blank">
+        
+        <svg fill="#bbbbbb" width="28" height="28"  viewBox="0 0 72 72" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    
+    <title>Github</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Social-Icons---Rounded-Black" transform="translate(-264.000000, -939.000000)">
+            <g id="Github" transform="translate(264.000000, 939.000000)">
+                <path d="M8,72 L64,72 C68.418278,72 72,68.418278 72,64 L72,8 C72,3.581722 68.418278,-8.11624501e-16 64,0 L8,0 C3.581722,8.11624501e-16 -5.41083001e-16,3.581722 0,8 L0,64 C5.41083001e-16,68.418278 3.581722,72 8,72 Z" id="Rounded" fill="#bbbbbb"></path>
+                <path d="M35.9985,13 C22.746,13 12,23.7870921 12,37.096644 C12,47.7406712 18.876,56.7718301 28.4145,59.9584121 C29.6145,60.1797862 30.0525,59.4358488 30.0525,58.7973276 C30.0525,58.2250681 30.0315,56.7100863 30.0195,54.6996482 C23.343,56.1558981 21.9345,51.4693938 21.9345,51.4693938 C20.844,48.6864054 19.2705,47.9454799 19.2705,47.9454799 C17.091,46.4500754 19.4355,46.4801943 19.4355,46.4801943 C21.843,46.6503662 23.1105,48.9634994 23.1105,48.9634994 C25.2525,52.6455377 28.728,51.5823398 30.096,50.9649018 C30.3135,49.4077535 30.9345,48.3460615 31.62,47.7436831 C26.2905,47.1352808 20.688,45.0691228 20.688,35.8361671 C20.688,33.2052792 21.6225,31.0547881 23.1585,29.3696344 C22.911,28.7597262 22.0875,26.3110578 23.3925,22.9934585 C23.3925,22.9934585 25.4085,22.3459017 29.9925,25.4632101 C31.908,24.9285993 33.96,24.6620468 36.0015,24.6515052 C38.04,24.6620468 40.0935,24.9285993 42.0105,25.4632101 C46.5915,22.3459017 48.603,22.9934585 48.603,22.9934585 C49.9125,26.3110578 49.089,28.7597262 48.8415,29.3696344 C50.3805,31.0547881 51.309,33.2052792 51.309,35.8361671 C51.309,45.0917119 45.6975,47.1292571 40.3515,47.7256117 C41.2125,48.4695491 41.9805,49.9393525 41.9805,52.1877301 C41.9805,55.4089489 41.9505,58.0067059 41.9505,58.7973276 C41.9505,59.4418726 42.3825,60.1918338 43.6005,59.9554002 C53.13,56.7627944 60,47.7376593 60,37.096644 C60,23.7870921 49.254,13 35.9985,13" fill="#FFFFFF"></path>
+            </g>
+        </g>
+    </g>
+</svg>
+    </a>
+
+    <a class="symbol" href="https://twitter.com/localmin" rel="me" target="_blank">
+        
+        <svg fill="#bbbbbb" width="28" height="28" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="438.536px" height="438.536px" viewBox="0 0 438.536 438.536" style="enable-background:new 0 0 438.536 438.536;"
+	 xml:space="preserve">
+<g>
+	<path d="M414.41,24.123C398.333,8.042,378.963,0,356.315,0H82.228C59.58,0,40.21,8.042,24.126,24.123
+		C8.045,40.207,0.003,59.576,0.003,82.225v274.084c0,22.647,8.042,42.018,24.123,58.102c16.084,16.084,35.454,24.126,58.102,24.126
+		h274.084c22.648,0,42.018-8.042,58.095-24.126c16.084-16.084,24.126-35.454,24.126-58.102V82.225
+		C438.532,59.576,430.49,40.204,414.41,24.123z M335.471,168.735c0.191,1.713,0.288,4.278,0.288,7.71
+		c0,15.989-2.334,32.025-6.995,48.104c-4.661,16.087-11.8,31.504-21.416,46.254c-9.606,14.749-21.074,27.791-34.396,39.115
+		c-13.325,11.32-29.311,20.365-47.968,27.117c-18.648,6.762-38.637,10.143-59.953,10.143c-33.116,0-63.76-8.952-91.931-26.836
+		c4.568,0.568,9.329,0.855,14.275,0.855c27.6,0,52.439-8.565,74.519-25.7c-12.941-0.185-24.506-4.179-34.688-11.991
+		c-10.185-7.803-17.273-17.699-21.271-29.691c4.947,0.76,8.658,1.137,11.132,1.137c4.187,0,9.042-0.76,14.56-2.279
+		c-13.894-2.669-25.598-9.562-35.115-20.697c-9.519-11.136-14.277-23.84-14.277-38.114v-0.571
+		c10.085,4.755,19.602,7.229,28.549,7.422c-17.321-11.613-25.981-28.265-25.981-49.963c0-10.66,2.758-20.747,8.278-30.264
+		c15.035,18.464,33.311,33.213,54.816,44.252c21.507,11.038,44.54,17.227,69.092,18.558c-0.95-3.616-1.427-8.186-1.427-13.704
+		c0-16.562,5.853-30.692,17.56-42.399c11.703-11.706,25.837-17.561,42.394-17.561c17.515,0,32.079,6.283,43.688,18.846
+		c13.134-2.474,25.892-7.33,38.26-14.56c-4.757,14.652-13.613,25.788-26.55,33.402c12.368-1.716,23.88-4.95,34.537-9.708
+		C357.458,149.793,347.462,160.166,335.471,168.735z"/>
+</g>
+</svg>
+
+    </a>
+
+
+</div>
+
+    
+    <p class="small">
+    
+       © Copyright 2022 <i class="fa fa-heart" aria-hidden="true"></i> localmin
+    
+    </p>
+    <p class="small">
+        Powered by <a href="http://www.gohugo.io/">Hugo</a> Theme By <a href="https://github.com/nodejh/hugo-theme-cactus-plus">nodejh</a>
+    </p>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css" integrity="sha384-dbVIfZGuN1Yq7/1Ocstc1lUEm+AT+/rCkibIcC/OmWo5f0EA48Vf8CytHzGrSwbQ" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.js" integrity="sha384-2BKqo+exmr9su6dir+qCw08N2ZKRucY4PrGQPPWU1A7FtlCGjmEGFqXCv5nyM5Ij" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {delimiters: [
+          {left: "$$", right: "$$", display: true},
+          {left: "$", right: "$", display: false}]
+        });
+      });
+    </script>
+
+</footer>
+
+  </body>
+</html>
