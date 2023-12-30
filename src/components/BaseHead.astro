@@ -9,7 +9,7 @@ export interface Props {
   image?: string
 }
 
-const { title, description, image = '/back.png' } = Astro.props
+const { title, description, image = '/avatar.png' } = Astro.props
 ---
 
 <!-- Global Metadata -->
@@ -31,7 +31,7 @@ const { title, description, image = '/back.png' } = Astro.props
 <meta property="og:image" content={new URL(image, Astro.url)} />
 
 <!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:card" content="summary" />
 <meta property="twitter:url" content={Astro.url} />
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
