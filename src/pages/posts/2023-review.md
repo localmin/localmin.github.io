@@ -99,7 +99,7 @@ slug: '2023-review'
 
 [ツイートないですが水無月リンさんが書いたリリィちゃん(スパイ教室)](https://skeb.jp/@rin_ateria/works/53)
 
-<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">skebで<a href="https://twitter.com/imsaibo3?ref_src=twsrc%5Etfw">@imsaibo3</a> さんに色づく世界の明日からの月白瞳美さんをリクエストしました。めっちゃ可愛い！！作品もちょうど五周年らしくタイムリーすぎる(youtubeで公式が全話無料上げてるのを昨日見て知った)<a href="https://t.co/jyvq8x6GT4">https://t.co/jyvq8x6GT4</a> <a href="https://twitter.com/hashtag/Skeb?src=hash&amp;ref_src=twsrc%5Etfw">#Skeb</a> <a href="https://twitter.com/hashtag/Commission?src=hash&amp;ref_src=twsrc%5Etfw">#Commission</a> <a href="https://twitter.com/skeb_jp?ref_src=twsrc%5Etfw">@skeb_jp</a>より</p>&mdash; 笠 (@localmin) <a href="https://twitter.com/localmin/status/1734983342632886505?ref_src=twsrc%5Etfw">December 13, 2023</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">skeb��<a href="https://twitter.com/imsaibo3?ref_src=twsrc%5Etfw">@imsaibo3</a> ����ɐF�Â����E�̖�������̌���������������N�G�X�g���܂����B�߂���������I�I��i�����傤�ǌ܎��N�炵���^�C�����[������(youtube�Ō������S�b�����グ�Ă�̂�������Ēm����)<a href="https://t.co/jyvq8x6GT4">https://t.co/jyvq8x6GT4</a> <a href="https://twitter.com/hashtag/Skeb?src=hash&amp;ref_src=twsrc%5Etfw">#Skeb</a> <a href="https://twitter.com/hashtag/Commission?src=hash&amp;ref_src=twsrc%5Etfw">#Commission</a> <a href="https://twitter.com/skeb_jp?ref_src=twsrc%5Etfw">@skeb_jp</a>���</p>&mdash; �} (@localmin) <a href="https://twitter.com/localmin/status/1734983342632886505?ref_src=twsrc%5Etfw">December 13, 2023</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 skebは好きなクリエイターへの支援に繋がっているものの、変な中毒性があり冗談ではなく程々にしたいと思っている。
 
