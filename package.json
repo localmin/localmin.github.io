@@ -23,7 +23,7 @@
     "react-icons": "^4.4.0"
   },
   "devDependencies": {
-    "@inkdropapp/live-export": "^0.1.8",
+    "@inkdropapp/live-export": "^0.2.0",
     "@types/react": "^18.0.20",
     "@typescript-eslint/parser": "^5.37.0",
     "dotenv": "^16.0.2",
