@@ -4,16 +4,12 @@ import react from '@astrojs/react'
 import image from '@astrojs/image'
 import tailwind from '@astrojs/tailwind'
 import addClasses from 'rehype-add-classes'
-import remarkMath from "remark-math"
-import rehypeKatex from "rehype-katex"
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://localmin.github.io',
   integrations: [sitemap(), react(), image(), tailwind()],
   markdown: {
-    remarkPlugins: [remarkMath],
-    rehypePlugins: [rehypeKatex],
     shikiConfig: {
       theme: 'dark-plus'
     },
