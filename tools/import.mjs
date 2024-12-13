@@ -19,8 +19,7 @@ await liveExport.start({
   preProcessNote: ({ note, frontmatter, tags }) => {
     frontmatter.layout = '../../layouts/BlogPost.astro'
     frontmatter.title = note.title
-    frontmatter.createdAt = note.createdAt
-    frontmatter.updatedAt = note.updatedAt
+    frontmatter.createdAt = note.updatedAt
     frontmatter.tags = tags.map(t => t.name)
     // frontmatter.heroImage = '/placeholder-hero.png'
     //if (!frontmatter.slug) frontmatter.slug = toKebabCase(note.title)
