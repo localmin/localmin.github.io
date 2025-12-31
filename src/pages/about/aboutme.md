@@ -2,16 +2,16 @@
 public: true
 layout: ../../layouts/BlogPost.astro
 title: About
-createdAt: 2023-12-29
+createdAt: 2026-01-01
 slug: example
 ---
 ##  [localmin](https://twitter.com/localmin) (a.k.a 笠)
 * システムエンジニア/アプリケーションエンジニア@JTBC
     * NW装置のシステム開発
-        * 最近は装置の仕様策定やドライバ開発をしてます
-        * 前までは耐量子計算機暗号関連の機能の検討とか
+        * 最近は装置データセンター向けの仕様策定やドライバ開発をしてます
+        * 耐量子計算機暗号関連の機能の検討をしていた時期もありました
     * NW装置の監視アプリ開発
-        * フロントエンドとバックエンド両方ほどほどにやってます
+        * フロントエンドとバックエンド両方ほどほどにやってました
         * 昔はSDNコントローラとL3機能に関連した開発に従事していました
 
 * 週末プログラマ
@@ -40,9 +40,9 @@ slug: example
 
 ### icon
 skebで描いてもらったアイコンを使用しています。
-- [Xのアイコン：銀髪セーラーJK(OC)](https://skeb.jp/@mochigomerenshu/works/43)
+- [Xのアイコン：金髪セーラーJK(OC)](https://skeb.jp/@tenoo12/works/3)
 
-- [mastodonのアイコン：金髪セーラーJK(OC)](https://skeb.jp/@Full_burrrrrrst/works/49)
+- [mstdnのアイコン：銀髪JK(OC)](https://skeb.jp/@kuchisode/works/23)
 
-- [Blueskyのアイコン：金髪セーラーJK(OC)](https://skeb.jp/@tenoo12/works/3)
+- [Blueskyのアイコン：金髪セーラーJK(OC)](https://skeb.jp/@Full_burrrrrrst/works/49)
 
