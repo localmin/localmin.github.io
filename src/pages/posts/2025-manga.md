@@ -3,7 +3,7 @@ public: true
 slug: 2025-manga
 layout: ../../layouts/BlogPost.astro
 title: オタク！漫画読んでるか？俺は…(2025/12/21時点)
-createdAt: 2025-12-21
+createdAt: 1767121748172
 tags: []
 ---
 
