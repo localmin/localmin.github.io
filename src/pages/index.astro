@@ -6,10 +6,24 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../config'
 import Body from '../components/Body.astro'
 import Content from '../components/Content.astro'
 
+// Keys written by tools/import.mjs when it exports a note from Inkdrop.
+interface PostFrontmatter {
+  title: string
+  description?: string
+  createdAt: string | number
+  heroImage?: string
+  tags: string[]
+  slug: string
+  public: boolean
+}
+
 const posts = Object.values(
-  import.meta.glob('./posts/*.md', { eager: true }) as Record<string, any>
+  import.meta.glob<{ url?: string; frontmatter: PostFrontmatter }>(
+    './posts/*.md',
+    { eager: true }
+  )
 ).sort(
-  (a: any, b: any) =>
+  (a, b) =>
     new Date(b.frontmatter.createdAt).valueOf() -
     new Date(a.frontmatter.createdAt).valueOf()
 )

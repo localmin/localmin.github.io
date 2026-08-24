@@ -3,10 +3,9 @@ import HeaderLink from './HeaderLink.astro'
 import { SITE_TITLE, SITE_DESCRIPTION } from '../config'
 import ThemeToggle from './ThemeToggleButton'
 const posts = Object.values(
-  import.meta.glob('../pages/about/aboutme.md', { eager: true }) as Record<
-    string,
-    any
-  >
+  import.meta.glob<{ url?: string }>('../pages/about/aboutme.md', {
+    eager: true
+  })
 )
 ---
 
