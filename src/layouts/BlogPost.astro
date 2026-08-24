@@ -6,7 +6,7 @@ import Body from '../components/Body.astro'
 import Content from '../components/Content.astro'
 
 export interface Props {
-  content: {
+  frontmatter: {
     title: string
     description: string
     createdAt: string
@@ -17,7 +17,7 @@ export interface Props {
 }
 
 const {
-  content: { title, description, heroImage, createdAt }
+  frontmatter: { title, description, heroImage, createdAt }
 } = Astro.props
 ---
 

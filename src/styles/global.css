@@ -4,12 +4,42 @@
   License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
  */
 @import url("https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300;500;700&display=swap");
+@import "tailwindcss";
+
+/* Tailwind 4 no longer ships a `darkMode: 'class'` option; the class strategy is
+   declared here instead. Matches the `dark` class toggled by BaseHead/ThemeToggleButton. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-mplus: "M PLUS Rounded 1c", Verdana, sans-serif;
+}
+
+/* Tailwind 4 defaults the `border` utility to currentColor; restore the v3 default
+   so existing markup keeps its previous appearance. */
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow-wrap: break-word;
+}
+
+/* rehype-add-classes also matches the <code> element that Shiki emits inside a
+   highlighted block. That element is inline, so its border is painted once per
+   wrapped line. Only inline code should carry the boxed style. */
+pre.astro-code > code {
+  border: none;
+  border-radius: 0;
+  padding: 0;
 }
 
 pre.astro-code {
