@@ -3,7 +3,7 @@ import { unified } from '@astrojs/markdown-remark'
 import sitemap from '@astrojs/sitemap'
 import react from '@astrojs/react'
 import tailwindcss from '@tailwindcss/vite'
-import addClasses from 'rehype-add-classes'
+import addClasses from './plugins/rehype-add-classes.mjs'
 
 // https://astro.build/config
 export default defineConfig({
@@ -20,7 +20,7 @@ export default defineConfig({
       theme: 'dark-plus'
     },
     // Astro 7 renders Markdown with Sätteri by default. Keep the unified()
-    // pipeline so the rehype-add-classes plugin below still applies.
+    // pipeline so the class-adding rehype plugin below still applies.
     processor: unified({
       rehypePlugins: [
         [

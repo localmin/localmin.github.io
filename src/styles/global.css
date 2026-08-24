@@ -33,15 +33,6 @@ body {
   overflow-wrap: break-word;
 }
 
-/* rehype-add-classes also matches the <code> element that Shiki emits inside a
-   highlighted block. That element is inline, so its border is painted once per
-   wrapped line. Only inline code should carry the boxed style. */
-pre.astro-code > code {
-  border: none;
-  border-radius: 0;
-  padding: 0;
-}
-
 pre.astro-code {
   border-radius: 0.4em;
   border: 1px solid rgb(63 63 70 / 0.5);
