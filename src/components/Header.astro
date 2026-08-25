@@ -1,10 +1,12 @@
 ---
 import HeaderLink from './HeaderLink.astro'
-import { SITE_TITLE, SITE_DESCRIPTION, HOMEPAGE_URL } from '../config'
-import { IoLogoGithub } from 'react-icons/io5/index.js'
-import FootprintIcon from './icons/footprint'
+import { SITE_TITLE, SITE_DESCRIPTION } from '../config'
 import ThemeToggle from './ThemeToggleButton'
-const posts = await Astro.glob('../pages/about/aboutme.md')
+const posts = Object.values(
+  import.meta.glob<{ url?: string }>('../pages/about/aboutme.md', {
+    eager: true
+  })
+)
 ---
 
 <header

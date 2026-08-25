@@ -3,16 +3,16 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [ main ]
+  pull_request:
+    branches: [ main ]
   workflow_dispatch:
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-  actions: read  # deploy-pages@v4‚Å•K—v‚É‚È‚é
 
 jobs:
   build:
+    # The build only reads the repository. Pages write access belongs to deploy,
+    # which does not run for pull requests.
+    permissions:
+      contents: read
     runs-on: ubuntu-latest
     steps:
       - name: Checkout your repository using git
@@ -27,6 +27,12 @@ jobs:
 
   deploy:
     needs: build
+    # Pull requests run the build as a check only; deployment happens on main.
+    if: github.event_name != 'pull_request'
+    permissions:
+      pages: write
+      id-token: write
+      actions: read  # required by deploy-pages@v4
     runs-on: ubuntu-latest
     environment:
       name: github-pages

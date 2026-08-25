@@ -12,23 +12,23 @@
     "live-import": "node --experimental-vm-modules tools/import.mjs"
   },
   "dependencies": {
-    "@astrojs/image": "^0.7.0",
-    "@astrojs/react": "^1.1.2",
-    "@astrojs/rss": "^1.0.1",
-    "@astrojs/sitemap": "^1.0.0",
-    "@astrojs/tailwind": "^1.0.1",
-    "astro": "^1.2.3",
+    "@astrojs/markdown-remark": "^7.2.4",
+    "@astrojs/react": "^6.0.4",
+    "@astrojs/sitemap": "^3.7.3",
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "^7.2.4",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "react-icons": "^4.4.0"
+    "react-icons": "^5.7.0",
+    "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
     "@inkdropapp/live-export": "^0.2.0",
     "@types/react": "^18.0.20",
+    "@types/react-dom": "^18.0.6",
     "@typescript-eslint/parser": "^5.37.0",
     "dotenv": "^16.0.2",
     "eslint": "^8.23.1",
-    "eslint-plugin-astro": "^0.19.0",
-    "rehype-add-classes": "^1.0.0"
+    "eslint-plugin-astro": "^0.19.0"
   }
 }
