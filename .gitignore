@@ -4,6 +4,9 @@ dist/
 # astro generated types and cache
 .astro/
 
+# playwright mcp session output
+.playwright-mcp/
+
 # dependencies
 node_modules/
 
