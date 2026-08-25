@@ -6,12 +6,13 @@ import Body from '../components/Body.astro'
 import Content from '../components/Content.astro'
 
 // Written by tools/import.mjs. No post carries a `description`, and notes
-// exported after the Inkdrop migration store `createdAt` as an epoch number.
+// exported after the Inkdrop migration store `createdAt` as an epoch number,
+// while js-yaml parses the unquoted dates in older posts into Date objects.
 export interface Props {
   frontmatter: {
     title: string
     description?: string
-    createdAt: string | number
+    createdAt: string | number | Date
     updatedAt?: string
     heroImage?: string
     tags: string[]

@@ -4,7 +4,15 @@
   License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
  */
 @import url("https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300;500;700&display=swap");
-@import "tailwindcss";
+/* Tailwind 4 detects sources by walking the project root, skipping what the
+   repository .gitignore lists. That is too wide here: it reaches agent notes
+   under .claude/ (ignored only by the user's global gitignore, which the
+   scanner does not read), and prose there leaks utilities into the bundle.
+   Declare the sources instead. astro.config.mjs is one of them because the
+   rehype plugin's class map lives in it. */
+@import "tailwindcss" source(none);
+@source "../../src/**/*.{astro,html,js,jsx,md,mdx,ts,tsx}";
+@source "../../astro.config.mjs";
 
 /* Tailwind 4 no longer ships a `darkMode: 'class'` option; the class strategy is
    declared here instead. Matches the `dark` class toggled by BaseHead/ThemeToggleButton. */

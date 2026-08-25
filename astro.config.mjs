@@ -21,6 +21,10 @@ export default defineConfig({
     },
     // Astro 7 renders Markdown with Sätteri by default. Keep the unified()
     // pipeline so the class-adding rehype plugin below still applies.
+    //
+    // Every remark/rehype plugin has to go inside unified(). Setting them on
+    // `markdown` itself has no effect once `processor` is present: the renderer
+    // is built from the processor options, and it does not warn.
     processor: unified({
       rehypePlugins: [
         [

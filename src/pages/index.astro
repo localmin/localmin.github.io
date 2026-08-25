@@ -7,10 +7,12 @@ import Body from '../components/Body.astro'
 import Content from '../components/Content.astro'
 
 // Keys written by tools/import.mjs when it exports a note from Inkdrop.
+// `createdAt` is an epoch number for those; js-yaml parses the unquoted dates
+// in older posts into Date objects.
 interface PostFrontmatter {
   title: string
   description?: string
-  createdAt: string | number
+  createdAt: string | number | Date
   heroImage?: string
   tags: string[]
   slug: string
