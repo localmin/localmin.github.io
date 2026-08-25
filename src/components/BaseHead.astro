@@ -5,7 +5,8 @@ import '../styles/global.css'
 
 export interface Props {
   title: string
-  description: string
+  // Posts carry no description, so the meta tags are simply left out for them.
+  description?: string
   image?: string
 }
 

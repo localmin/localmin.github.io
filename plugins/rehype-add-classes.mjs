@@ -11,16 +11,17 @@
  * wrapped line of the block. Those elements are skipped.
  */
 export default function rehypeAddClasses(classNamesByTagName) {
+  // hast represents className as an array of tokens. Always produce that shape,
+  // so a plugin running after this one can rely on it.
   const addTo = (node, className) => {
     const properties = (node.properties ??= {})
     const existing = properties.className
-    if (Array.isArray(existing)) {
-      properties.className = [...existing, ...className.split(' ')]
-    } else if (existing) {
-      properties.className = `${existing} ${className}`
-    } else {
-      properties.className = className
-    }
+    const tokens = Array.isArray(existing)
+      ? existing
+      : existing
+        ? String(existing).split(' ')
+        : []
+    properties.className = [...tokens, ...className.split(' ')]
   }
 
   const walk = (node, parent) => {

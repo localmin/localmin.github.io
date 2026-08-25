@@ -5,12 +5,14 @@ import Footer from '../components/Footer.astro'
 import Body from '../components/Body.astro'
 import Content from '../components/Content.astro'
 
+// Written by tools/import.mjs. No post carries a `description`, and notes
+// exported after the Inkdrop migration store `createdAt` as an epoch number.
 export interface Props {
   frontmatter: {
     title: string
-    description: string
-    createdAt: string
-    updatedAt: string
+    description?: string
+    createdAt: string | number
+    updatedAt?: string
     heroImage?: string
     tags: string[]
   }
