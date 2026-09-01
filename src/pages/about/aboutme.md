@@ -33,8 +33,10 @@ slug: example
 * [X(Twitter)](https://twitter.com/localmin)
 * [mastodon(:don:)](https://mstdn.maud.io/@localmin)
 * [Bluesky](https://bsky.app/profile/localmin.bsky.social)
+* [Keybase](https://keybase.io/localmin)
 * **Email**: localmin9201009"at"gmail.com
-* **PGP Public key & Fingerprint** : Coming soon
+* **PGP Public key**: [localmin-pgp.asc](/localmin-pgp.asc)
+    * Fingerprint: `A90D 047F 43A9 86B0 439E  096C 6FFB 9AA7 2320 5CF7`
 
 ### icon
 skebで描いてもらったアイコンを使用しています。
