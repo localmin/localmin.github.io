@@ -1,0 +1,56 @@
+==================================================================
+https://keybase.io/localmin
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://localmin.github.io
+  * I am localmin (https://keybase.io/localmin) on keybase.
+  * I have a public key ASDyjp5cL61ZQqCcnhlNU5p8CL9M47m44tXQ_d60FQF62wo
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0120f28e9e5c2fad5942a09c9e194d539a7c08bf4ce3b9b8e2d5d0fddeb415017adb0a",
+      "host": "keybase.io",
+      "kid": "0120f28e9e5c2fad5942a09c9e194d539a7c08bf4ce3b9b8e2d5d0fddeb415017adb0a",
+      "uid": "4de29a4d0d1be610675ab5c56bf24f19",
+      "username": "localmin"
+    },
+    "merkle_root": {
+      "ctime": 1788281588,
+      "hash": "d3f037227d3c8cc2251bf180b07779d5d810bb008b3e97c50d31e72f52f76233cd878152ac99622e44d69bfc088314db65706dc30e9068d684c5ec337a17c409",
+      "hash_meta": "913c5c18b23e03559f73cd3c7821bc9ec3b3d5ae35c118b60258fa76680e7c08",
+      "seqno": 27753423
+    },
+    "service": {
+      "entropy": "lBqvNhgJuN/EIl3bMUwMsudF",
+      "hostname": "localmin.github.io",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 2
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "6.6.3"
+  },
+  "ctime": 1788281794,
+  "expire_in": 504576000,
+  "prev": "3e8a92843f1951d940e56ca4bb02cee57bec5f60dee96ac28ad17d47ae923e8a",
+  "seqno": 9,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEg8o6eXC+tWUKgnJ4ZTVOafAi/TOO5uOLV0P3etBUBetsKp3BheWxvYWTESpcCCcQgPoqShD8ZUdlA5WykuwLO5XvsX2De6WrCitF9R66SPorEIA7YhBeXbLLMYDVGMpWQ30EgUEH1yEUtA9XhbiSz3KJNAgHCo3NpZ8RAVwG8a9kVooKlKvhLf1A2zxct2AlmX0cBi1I2wisVzw3QZghZgQLa/uuEYymw7TdJFEXf99W8JmY8AU0kKYk0AqhzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEIK/MEwkFKx82vcJMu3iI3vgmN+WDTxiNx0DBTshGt0wYo3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/localmin
+
+==================================================================
