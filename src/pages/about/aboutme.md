@@ -29,6 +29,9 @@ slug: example
 
 * [読んでる漫画一覧](https://gist.github.com/localmin/e53657ccc6d682660104046516132897)
 
+### Blog
+* [/home/localmin/tmp](https://localmin.hateblo.jp/): このサイトに書けなかったものを置いているはてなブログ
+
 ### Contact
 * [X(Twitter)](https://twitter.com/localmin)
 * [mastodon(:don:)](https://mstdn.maud.io/@localmin)
