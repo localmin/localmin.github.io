@@ -4,6 +4,7 @@ import sitemap from '@astrojs/sitemap'
 import react from '@astrojs/react'
 import tailwindcss from '@tailwindcss/vite'
 import addClasses from './plugins/rehype-add-classes.mjs'
+import linkCard from './plugins/rehype-link-card.mjs'
 
 // https://astro.build/config
 export default defineConfig({
@@ -49,7 +50,9 @@ export default defineConfig({
             blockquote:
               'px-4 my-4 border-l-4 border-l-slate-200 dark:border-l-zinc-500 italic'
           }
-        ]
+        ],
+        // After addClasses, so the article styles for <a> and <img> stay off the card.
+        linkCard
       ]
     })
   }
