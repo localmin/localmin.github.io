@@ -47,4 +47,4 @@ skebで描いてもらったアイコンを使用しています。
 
 - [mstdnのアイコン：赤髪JK(OC)](https://skeb.jp/@05reigo_/works/19)
 
-- [Blueskyのアイコン：金髪JK(OC)](https://skeb.jp/@nimame629/works/26)
+- [Blueskyのアイコン：赤髪JK(OC)](https://skeb.jp/@tenoo12/works/6)
